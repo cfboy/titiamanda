@@ -202,15 +202,6 @@
         @apply text-3xl capitalize text-gray-dark font-extrabold relative z-10 leading-tight;
     }
 
-    /* Features Section */
-    .features {
-        @apply pt-32;
-    }
-
-    /* .features .features-content {
-        @apply z-10 relative bg-white rounded-[50px] shadow-lg;
-    } */
-
     .features-item {
         @apply text-center p-8 rounded-[50px] bg-white transition-all duration-500;
     }
