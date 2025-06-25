@@ -1,0 +1,22 @@
+{
+    "name": "titi-amanda-website",
+    "version": "1.0.0",
+    "description": "Professional babysitter services website with Tailwind CSS integration",
+    "main": "index.html",
+    "scripts": {
+        "build-css": "tailwindcss -i ./src/input.css -o ./assets/css/tailwind.css --watch",
+        "build": "tailwindcss -i ./src/input.css -o ./assets/css/tailwind.css --minify"
+    },
+    "keywords": [
+        "babysitter",
+        "childcare",
+        "tailwind",
+        "responsive",
+        "website"
+    ],
+    "author": "Titi Amanda",
+    "license": "MIT",
+    "devDependencies": {
+        "tailwindcss": "^3.4.0"
+    }
+}

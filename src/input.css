@@ -1,0 +1,740 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+
+    html,
+    body {
+        @apply font-primary bg-cream text-dark;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply m-0;
+    }
+
+    p {
+        @apply text-sm leading-relaxed text-gray-dark;
+    }
+
+    a {
+        @apply no-underline;
+    }
+
+    img {
+        @apply w-full overflow-hidden;
+    }
+}
+
+/* Custom component classes using Tailwind */
+@layer components {
+
+    /* Buttons */
+    .btn-primary {
+        @apply bg-pink text-white px-6 py-3 rounded-default hover:bg-white hover:text-pink border-2 border-pink transition-all duration-300 font-medium;
+    }
+
+    .btn-secondary {
+        @apply bg-transparent text-blue border-2 border-blue px-6 py-3 rounded-default hover:bg-blue hover:text-white transition-all duration-300 font-medium;
+    }
+
+    .main-button a {
+        @apply inline-block bg-pink text-white text-sm font-normal capitalize px-6 py-3 rounded-default tracking-wide border-b-2 border-white transition-all duration-300;
+    }
+
+    .main-button a:hover {
+        @apply bg-white text-pink border-b-2 border-pink;
+    }
+
+    .main-green-button a {
+        @apply inline-block bg-blue text-white text-sm font-normal capitalize px-6 py-3 rounded-default tracking-wide border-b-2 border-blue transition-all duration-300;
+    }
+
+    .main-green-button a:hover {
+        @apply bg-blue text-white border-b-2 border-green;
+    }
+
+    /* Layout Components */
+    .container {
+        @apply max-w-7xl mx-auto px-4;
+    }
+
+    .page-section {
+        @apply mt-32;
+    }
+
+    /* Header Styles */
+    .header-area {
+        @apply bg-transparent absolute top-0 left-0 right-0 z-50 h-24 transition-all duration-300;
+        overflow: visible;
+        /* Allow mobile menu to show outside */
+    }
+
+    .header-area.background-header {
+        @apply fixed top-0 left-0 right-0 h-20 bg-white;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+        overflow: visible;
+        /* Allow mobile menu to show outside */
+    }
+
+    .header-area .main-nav {
+        @apply bg-transparent transition-all duration-300;
+        min-height: 5rem;
+        height: auto;
+        /* Allow natural height */
+        overflow: visible;
+        /* Allow children to be positioned outside */
+    }
+
+    .header-area.background-header .main-nav {
+        min-height: 5rem;
+        height: 5rem;
+        /* Fixed height when sticky */
+    }
+
+    .header-area .main-nav .logo {
+        @apply transition-all duration-300;
+    }
+
+    .header-area .main-nav .logo h4 {
+        @apply text-3xl font-extrabold capitalize text-gray-dark leading-none transition-all duration-300;
+    }
+
+    .header-area .main-nav .logo h4 img {
+        @apply max-w-24 -mt-5 ml-1;
+    }
+
+    .header-area .main-nav .nav {
+        @apply mt-8 mr-0 bg-transparent transition-all duration-300 relative z-50;
+    }
+
+    .header-area .main-nav .nav li {
+        @apply px-5;
+    }
+
+    .header-area .main-nav .nav li a {
+        @apply block font-medium text-sm text-dark capitalize transition-all duration-300 h-10 leading-10 border-transparent tracking-wide;
+    }
+
+    .header-area .main-nav .nav li:hover a,
+    .header-area .main-nav .nav li a.active {
+        @apply text-pink;
+    }
+
+    /* Mobile Menu Styles - FontAwesome Icons */
+    .menu-trigger {
+        @apply lg:hidden cursor-pointer flex items-center justify-center absolute top-1/2 right-4 w-8 h-8 z-30;
+        transform: translateY(-50%);
+    }
+
+    .menu-trigger i {
+        @apply text-xl transition-all duration-300;
+    }
+
+    .menu-trigger .fa-bars {
+        @apply text-gray-dark;
+    }
+
+    .menu-trigger .fa-times {
+        @apply text-pink hidden;
+    }
+
+    .menu-trigger.active .fa-bars {
+        @apply hidden;
+    }
+
+    .menu-trigger.active .fa-times {
+        @apply block;
+    }
+
+    /* Banner Styles */
+    .main-banner {
+        @apply bg-no-repeat bg-center bg-cover pt-56 pb-28 relative overflow-hidden;
+    }
+
+    /* .main-banner:after {
+        content: '';
+        @apply absolute left-0 top-24 w-52 h-96 -z-10;
+        background-image: url("../assets/images/elements/Elementos gráficos Titi Amanda-08.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .main-banner:before {
+        content: '';
+        @apply absolute right-5 top-12 w-80 h-80 -z-10;
+        background-image: url("../assets/images/elements/Elementos gráficos Titi Amanda-08.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center right;
+    } */
+
+    .main-banner .left-content h2 {
+        @apply mt-8 pt-5 mb-11 text-6xl font-extrabold text-gray-dark leading-none;
+        background: linear-gradient(to right, #f99898 0%, #f99898 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .main-banner .left-content h6 {
+        @apply capitalize text-sm font-normal text-gray-dark mb-2;
+    }
+
+    .main-banner .left-content h4 {
+        @apply relative z-10 font-bold text-xl text-gray-dark;
+    }
+
+    /* Section Headings */
+    .section-heading {
+        @apply mb-16;
+    }
+
+    .section-heading h6 {
+        @apply text-sm font-bold text-pink uppercase mb-4;
+    }
+
+    .section-heading h2 {
+        @apply text-3xl capitalize text-gray-dark font-extrabold relative z-10 leading-tight;
+    }
+
+    .section-heading h2 em {
+        @apply not-italic text-pink;
+    }
+
+    .section-heading h2 span {
+        @apply text-blue;
+    }
+
+    /* Features Section */
+    .features {
+        @apply pt-32;
+    }
+
+    /* .features .features-content {
+        @apply z-10 relative bg-white rounded-[50px] shadow-lg;
+    } */
+
+    .features-item {
+        @apply text-center p-8 rounded-[50px] bg-white transition-all duration-500;
+    }
+
+    .features-item:hover {
+        @apply bg-light-blue;
+    }
+
+    .features-item:hover h4,
+    .features-item:hover p {
+        @apply text-white;
+    }
+
+    .features-item:hover .line-dec {
+        @apply bg-cream;
+    }
+
+    .features-item .number h6 {
+        @apply bg-no-repeat w-28 h-16 text-white mx-auto text-3xl font-bold text-center leading-none -mt-16 mb-8;
+    }
+
+    .features-item .first-number h6 {
+        background-image: url(../assets/images/features-number-01.png);
+    }
+
+    .features-item .second-number h6 {
+        background-image: url(../assets/images/features-number-02.png);
+    }
+
+    .features-item .third-number h6 {
+        background-image: url(../assets/images/features-number-03.png);
+    }
+
+    .features-item .fourth-number h6 {
+        background-image: url(../assets/images/features-number-04.png);
+    }
+
+    .features-item .icon {
+        @apply w-24 h-24 mx-auto transition-all duration-500 bg-contain bg-no-repeat bg-center;
+    }
+
+    .first-feature .icon {
+        background-image: url(../assets/images/elements/play-element.png);
+    }
+
+    .second-feature .icon {
+        background-image: url("../assets/images/elements/Elementos gráficos Titi Amanda-03.png");
+    }
+
+    .third-feature .icon {
+        background-image: url("../assets/images/elements/Elementos gráficos Titi Amanda-04.png");
+    }
+
+    .fourth-feature .icon {
+        background-image: url("../assets/images/elements/Elementos gráficos Titi Amanda-10.png");
+    }
+
+    .features-item h4 {
+        @apply mx-4 mt-1 text-xl leading-7 font-bold text-gray-dark relative transition-all duration-500;
+    }
+
+    .features-item .line-dec {
+        @apply w-24 h-0.5 bg-blue bg-opacity-30 mx-auto my-8 transition-all duration-500;
+    }
+
+    .features-item p {
+        @apply relative mt-0 transition-all duration-500;
+    }
+
+    /* About Section */
+    .about-us {
+        @apply pt-32;
+    }
+
+    .about-us .section-heading {
+        @apply mb-10;
+    }
+
+    .about-us p {
+        @apply my-10;
+    }
+
+    /* Services Section */
+    .our-services {
+        @apply pt-32;
+    }
+
+    .our-services .section-heading {
+        @apply text-center mx-20;
+    }
+
+    .our-services .container-fluid {
+        @apply px-20;
+    }
+
+    .service-item {
+        @apply p-8 border-2 border-light-gray rounded-md transition-all duration-300 mb-8;
+    }
+
+    .service-item:hover {
+        @apply bg-white border-transparent shadow-lg;
+    }
+
+    .service-item .icon {
+        @apply mt-2 w-20 h-20 inline-block text-center leading-none bg-light-gray rounded-full;
+    }
+
+    .service-item .icon img {
+        @apply w-10 h-10;
+    }
+
+    .service-item h4 {
+        @apply text-xl font-bold text-gray-dark mb-4;
+    }
+
+    /* Portfolio Section */
+    .our-portfolio {
+        @apply pt-24 overflow-hidden;
+    }
+
+    .portfolio-item {
+        @apply mb-8 rounded-[50px];
+    }
+
+    .portfolio-item:hover .thumb .hover-content {
+        @apply opacity-100 visible;
+    }
+
+    .portfolio-item .thumb {
+        @apply relative rounded-[50px];
+    }
+
+    .portfolio-item .thumb img {
+        @apply rounded-[50px] overflow-hidden;
+    }
+
+    .portfolio-item .thumb .hover-content {
+        @apply rounded-[50px] overflow-hidden absolute left-0 top-0 w-full h-full opacity-0 invisible transition-all duration-500;
+        background: linear-gradient(105deg, rgba(51, 204, 197, 1) 0%, rgba(8, 141, 195, 1) 100%);
+    }
+
+    .portfolio-item .thumb .hover-content .inner-content {
+        @apply absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center;
+    }
+
+    .portfolio-item .thumb .hover-content .inner-content h4 {
+        @apply text-xl font-bold text-white mb-2;
+    }
+
+    .portfolio-item .thumb .hover-content .inner-content span {
+        @apply text-sm text-white;
+    }
+
+    /* Contact Section */
+    .contact-us {
+        @apply mt-24 py-32;
+        background-image: url(../assets/images/contact-bg.jpg);
+        @apply bg-no-repeat bg-center bg-cover;
+    }
+
+    .contact-us .section-heading {
+        @apply text-center mx-5;
+    }
+
+    .contact-us .contact-info {
+        @apply p-10 border-2 border-light-gray;
+    }
+
+    .contact-us .contact-info ul li {
+        @apply text-center block mb-8;
+    }
+
+    .contact-us .contact-info ul li a {
+        @apply text-sm text-gray-medium transition-all duration-500;
+    }
+
+    .contact-us .contact-info ul li:hover a {
+        @apply text-gray-dark;
+    }
+
+    .contact-us .contact-info ul li:last-child {
+        @apply mb-0;
+    }
+
+    .contact-us .contact-info ul li .icon {
+        @apply mb-2;
+    }
+
+    .contact-us .contact-info ul li .icon img {
+        @apply max-w-8;
+    }
+
+    form#contact {
+        @apply relative bg-white py-16 px-20 rounded-[50px] text-center;
+    }
+
+    form#contact input {
+        @apply w-full h-12 rounded-md bg-transparent border-2 border-gray-300 outline-none text-sm font-light text-gray-dark px-5 mb-5;
+    }
+
+    form#contact input::placeholder {
+        @apply text-gray-medium;
+    }
+
+    form#contact textarea {
+        @apply w-full min-w-full max-w-full max-h-44 min-h-36 h-36 rounded-md bg-transparent border-2 border-gray-300 outline-none text-sm font-light text-gray-dark p-5 mb-5;
+    }
+
+    form#contact textarea::placeholder {
+        @apply text-gray-medium;
+    }
+
+    form#contact button {
+        @apply inline-block bg-pink text-sm font-normal text-white mt-5 capitalize px-6 py-3 rounded-default tracking-wide border-b-2 border-orange transition-all duration-300 outline-none border-none;
+    }
+
+    form#contact button:hover {
+        @apply bg-white text-dark border-b-2 border-pink;
+    }
+
+    /* Footer */
+    footer p {
+        @apply text-center my-8;
+    }
+
+    footer p a {
+        @apply text-blue transition-all duration-500;
+    }
+
+    footer p a:hover {
+        @apply text-light-blue;
+    }
+
+    /* Cards */
+    .card-elevated {
+        @apply bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300;
+    }
+
+    /* Utilities */
+    .section-title {
+        @apply text-3xl md:text-4xl font-bold text-gray-dark mb-4;
+    }
+
+    .section-subtitle {
+        @apply text-pink text-sm font-bold uppercase tracking-wide mb-4;
+    }
+
+    /* Custom background utilities */
+    .bg-features-icon-01 {
+        background-image: url("../assets/images/elements/play-element.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .bg-features-icon-02 {
+        background-image: url("../assets/images/elements/Elementos gráficos Titi Amanda-03.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    /* Feature card components */
+    .feature-card {
+        @apply text-center p-8 rounded-3xl bg-white shadow-lg hover:shadow-xl transition-all duration-300;
+    }
+
+    .feature-number {
+        @apply w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 -mt-8;
+    }
+
+    .feature-icon {
+        transition: all 0.3s ease;
+    }
+
+    /* Animation classes */
+    .animate-fade-in-up {
+        animation: fadeInUp 0.6s ease-out;
+    }
+
+    .animate-fade-in-left {
+        animation: fadeInLeft 0.6s ease-out;
+    }
+
+    .animate-fade-in-right {
+        animation: fadeInRight 0.6s ease-out;
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 0.6s ease-out;
+    }
+
+    .animate-slide-in-down {
+        animation: slideInDown 0.75s ease-out;
+    }
+
+    /* Banner floating animations */
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-float-slow {
+        animation: float 8s ease-in-out infinite;
+    }
+
+    .animate-float-reverse {
+        animation: float-reverse 7s ease-in-out infinite;
+    }
+
+    .animate-bounce-slow {
+        animation: bounce-slow 4s ease-in-out infinite;
+    }
+
+    /* Navigation styles */
+    .nav-item {
+        @apply block font-medium text-sm text-dark capitalize transition-all duration-300 py-2 px-4 hover:text-pink;
+    }
+
+    .nav-item.active {
+        @apply text-pink;
+    }
+
+    /* Preloader Styles */
+    .js-preloader {
+        @apply fixed inset-0 z-[99999] bg-white flex items-center justify-center;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .js-preloader.loaded {
+        @apply opacity-0 pointer-events-none;
+    }
+
+    .preloader-inner {
+        @apply text-center;
+    }
+
+    .preloader-inner .dot {
+        @apply w-2 h-2 bg-pink rounded-full mx-auto mb-4;
+        animation: preloaderDot 1.2s infinite ease-in-out;
+    }
+
+    .preloader-inner .dots {
+        @apply flex justify-center space-x-1;
+    }
+
+    .preloader-inner .dots span {
+        @apply w-2 h-2 bg-pink rounded-full;
+        animation: preloaderDots 1.4s infinite ease-in-out both;
+    }
+
+    .preloader-inner .dots span:nth-child(1) {
+        animation-delay: -0.32s;
+    }
+
+    .preloader-inner .dots span:nth-child(2) {
+        animation-delay: -0.16s;
+    }
+
+    .preloader-inner .dots span:nth-child(3) {
+        animation-delay: 0s;
+    }
+
+    /* Mobile Navigation Positioning */
+    .mobile-nav {
+        display: none;
+        /* Ensure jQuery can toggle this properly */
+        top: 6rem;
+        /* Default position for normal header */
+    }
+
+    /* Adjust mobile menu position for sticky header */
+    .background-header+* .mobile-nav,
+    body.sticky-header .mobile-nav {
+        top: 5rem !important;
+        /* Adjust for sticky header height */
+    }
+
+    /* Ensure main navigation doesn't affect layout on mobile */
+    @media (max-width: 1023px) {
+        .header-area .main-nav {
+            position: relative;
+            overflow: visible;
+        }
+
+        .header-area .main-nav .nav.desktop-nav {
+            position: static;
+        }
+    }
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes preloaderDot {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes preloaderDots {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Banner floating animation keyframes */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes float-reverse {
+
+    0%,
+    100% {
+        transform: translateY(-10px);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+@keyframes bounce-slow {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}

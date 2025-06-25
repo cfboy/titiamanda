@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description"
-    content="Professional babysitter services in Puerto Rico focusing on play time, quality time, and screen-free activities for children">
+    content="Professional babysitter services in Puerto Rico focusing on play time, quality care, and screen-free activities for children">
   <meta name="author" content="Titi Amanda">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
@@ -14,13 +14,11 @@
 
   <title>Titi Amanda - Quality Babysitter Services in Puerto Rico</title>
 
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+  <!-- Tailwind CSS (Built) -->
+  <link rel="stylesheet" href="assets/css/tailwind.css">
 
   <!-- Additional CSS Files -->
   <link rel="stylesheet" href="assets/css/fontawesome.css">
-  <link rel="stylesheet" href="assets/css/templatemo-seo-dream.css">
   <link rel="stylesheet" href="assets/css/animated.css">
   <link rel="stylesheet" href="assets/css/owl.css">
   <!--
@@ -49,392 +47,517 @@ https://templatemo.com/tm-563-seo-dream
   <!-- ***** Preloader End ***** -->
 
   <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <nav class="main-nav">
+  <header class="header-area wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="row flex flex-wrap -mx-4">
+        <div class="col-12 w-full px-4">
+          <nav class="main-nav min-h-20 bg-transparent flex items-center justify-between relative">
             <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
-              <h4>
-                <!-- SEO Dream  -->
-                <img src="assets/images/logo/logo-no-description.png" alt="">
+            <a href="index.html" class="logo transition-all duration-300 flex items-center h-20">
+              <h4
+                class="text-3xl font-extrabold capitalize text-gray-dark leading-6 transition-all duration-300 lg:leading-none flex items-center h-full">
+                <!-- Desktop Logo -->
+                <img src="assets/images/logo/logo-no-description.png" alt="Titi Amanda Logo"
+                  class="!max-w-40 !mt-0 ml-1 object-contain hidden lg:block">
+                <!-- Mobile Logo -->
+                <img src="assets/images/logo/mini-logo.png" alt="Titi Amanda Logo"
+                  class="!max-w-24 !mt-0 ml-1 object-contain block lg:hidden">
               </h4>
             </a>
-            <!-- ***** Logo End ***** --> <!-- ***** Menu Start ***** -->
-            <ul class="nav">
-              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-              <li class="scroll-to-section"><a href="#features">Activities</a></li>
-              <li class="scroll-to-section"><a href="#about">About Me</a></li>
-              <li class="scroll-to-section"><a href="#services">Services</a></li>
-              <li class="scroll-to-section"><a href="#contact">Contact Me</a></li>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <!-- Desktop Menu -->
+            <ul
+              class="nav desktop-nav !mt-0 bg-transparent transition-all duration-300 relative z-50 hidden lg:flex items-center">
+              <li class="scroll-to-section px-5 flex items-center">
+                <a href="#top"
+                  class="active flex items-center font-medium text-sm text-dark capitalize transition-all duration-300 border-transparent tracking-wider hover:text-pink">Home</a>
+              </li>
+              <li class="scroll-to-section px-5 flex items-center">
+                <a href="#features"
+                  class="flex items-center font-medium text-sm text-dark capitalize transition-all duration-300 border-transparent tracking-wider hover:text-pink">Activities</a>
+              </li>
+              <li class="scroll-to-section px-5 flex items-center">
+                <a href="#about"
+                  class="flex items-center font-medium text-sm text-dark capitalize transition-all duration-300 border-transparent tracking-wider hover:text-pink">About
+                  Me</a>
+              </li>
+              <li class="scroll-to-section px-5 flex items-center">
+                <a href="#services"
+                  class="flex items-center font-medium text-sm text-dark capitalize transition-all duration-300 border-transparent tracking-wider hover:text-pink">Services</a>
+              </li>
+              <li class="scroll-to-section px-5 flex items-center">
+                <a href="#contact"
+                  class="flex items-center font-medium text-sm text-dark capitalize transition-all duration-300 border-transparent tracking-wider hover:text-pink">Contact
+                  Me</a>
+              </li>
             </ul>
-            <a class='menu-trigger'>
-              <span>Menu</span>
-            </a>
+
+            <!-- Mobile Menu Trigger -->
+            <div
+              class='menu-trigger lg:hidden cursor-pointer flex items-center justify-center absolute top-1/2 right-4 w-8 h-8 z-30'
+              style="transform: translateY(-50%);">
+              <i class="fa fa-bars text-gray-dark text-xl transition-all duration-300" aria-hidden="true"></i>
+              <i class="fa fa-times text-pink text-xl transition-all duration-300 hidden" aria-hidden="true"></i>
+            </div>
             <!-- ***** Menu End ***** -->
           </nav>
         </div>
       </div>
     </div>
+
+    <!-- Mobile Menu - Outside Header -->
+    <ul class="nav mobile-nav hidden fixed top-24 left-0 w-full bg-white shadow-lg mt-0 z-40 py-4 lg:hidden">
+      <li class="scroll-to-section block w-full px-0">
+        <a href="#top"
+          class="active block w-full py-3 px-6 text-center border-b border-gray-200 h-auto leading-normal font-medium text-sm text-dark capitalize transition-all duration-300 tracking-wider hover:text-pink">Home</a>
+      </li>
+      <li class="scroll-to-section block w-full px-0">
+        <a href="#features"
+          class="block w-full py-3 px-6 text-center border-b border-gray-200 h-auto leading-normal font-medium text-sm text-dark capitalize transition-all duration-300 tracking-wider hover:text-pink">Activities</a>
+      </li>
+      <li class="scroll-to-section block w-full px-0">
+        <a href="#about"
+          class="block w-full py-3 px-6 text-center border-b border-gray-200 h-auto leading-normal font-medium text-sm text-dark capitalize transition-all duration-300 tracking-wider hover:text-pink">About
+          Me</a>
+      </li>
+      <li class="scroll-to-section block w-full px-0">
+        <a href="#services"
+          class="block w-full py-3 px-6 text-center border-b border-gray-200 h-auto leading-normal font-medium text-sm text-dark capitalize transition-all duration-300 tracking-wider hover:text-pink">Services</a>
+      </li>
+      <li class="scroll-to-section block w-full px-0">
+        <a href="#contact"
+          class="block w-full py-3 px-6 text-center border-b-0 h-auto leading-normal font-medium text-sm text-dark capitalize transition-all duration-300 tracking-wider hover:text-pink">Contact
+          Me</a>
+      </li>
+    </ul>
   </header>
   <!-- ***** Header Area End ***** -->
 
-  <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="row">
-            <div class="col-lg-6 align-self-center">
-              <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
-                <div class="row">
-                  <!-- <div class="col-lg-4 col-sm-4">
-                    <div class="info-stat">
-                      <h6>Agency Status:</h6>
-                      <h4>Ready Work</h4>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-4">
-                    <div class="info-stat">
-                      <h6>Price:</h6>
-                      <h4>$720/Month</h4>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-4">
-                    <div class="info-stat">
-                      <h6>Schedules</h6>
-                      <h4>$450/Meeting</h4>
-                    </div>
-                  </div> -->
-                  <div class="col-lg-12">
-                    <h2>Quality Babysitter Services with Screen-Free Fun</h2>
-                  </div>
-                  <div class="col-lg-12">
-                    <div class="main-button scroll-to-section">
-                      <a href="#contact">Book Your Session</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                <img src="assets/images/banner-right-image.png" alt="">
-              </div>
+  <!-- ***** Banner Section Start ***** -->
+  <div class="main-banner wow !pt-20 !pb-10 md:!pt-24  bg-cream relative min-h-screen flex items-center overflow-hidden"
+    id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+
+    <!-- Decorative Background Elements -->
+    <div class="absolute inset-0 pointer-events-none">
+      <!-- Top Left Cloud Element -->
+      <div
+        class="absolute top-16 left-5 md:top-20 lg:left-10 w-20 h-20 lg:w-32 lg:h-32 xl:w-40 xl:h-40 opacity-30 animate-float-slow">
+        <img src="assets/images/elements/Elementos gráficos Titi Amanda-08.png" alt="Decorative Element"
+          class="w-full h-full object-contain">
+      </div>
+
+      <!-- Top Right Element -->
+      <div
+        class="absolute top-20 right-2 lg:top-32 lg:right-16 w-24 h-24 lg:w-40 lg:h-40 xl:w-48 xl:h-48 opacity-40 animate-float">
+        <img src="assets/images/elements/Elementos gráficos Titi Amanda-08.png" alt="Decorative Element"
+          class="w-full h-full object-contain">
+      </div>
+
+      <!-- Middle Left Element -->
+      <div
+        class="absolute top-10 left-1/2 w-20 h-20 lg:w-28 lg:h-28 xl:w-36 xl:h-36 opacity-25 transform -translate-y-1/2 animate-float-reverse">
+        <img src="assets/images/elements/Elementos gráficos Titi Amanda-09.png" alt="Decorative Element"
+          class="w-full h-full object-contain">
+      </div>
+
+      <!-- Bottom Right Element -->
+      <div
+        class="absolute bottom-80 right-8 lg:bottom-32 lg:right-20 w-16 h-16 lg:w-36 lg:h-36 xl:w-44 xl:h-44 opacity-35 animate-float-slow">
+        <img src="assets/images/elements/Elementos gráficos Titi Amanda-06.png" alt="Decorative Element"
+          class="w-full h-full object-contain">
+      </div>
+
+      <!-- Center Background Element -->
+      <!-- <div class="absolute top-1/3 right-1/4 w-28 h-28 lg:w-48 lg:h-48 xl:w-56 xl:h-56 opacity-20 animate-float">
+        <img src="assets/images/elements/Elementos gráficos Titi Amanda-10.png" alt="Decorative Element"
+          class="w-full h-full object-contain">
+      </div> -->
+
+      <!-- Small Accent Elements -->
+      <div
+        class="absolute bottom-44 md:bottom-1/4 left-1/2 w-16 h-16 lg:w-26 lg:h-26 xl:w-32 xl:h-32 opacity-30 animate-float-reverse">
+        <img src="assets/images/elements/play-element.png" alt="Decorative Element"
+          class="w-full h-full object-contain">
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container max-w-7xl mx-auto px-4 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[80vh]">
+
+        <!-- Left Content -->
+        <div class="text-center lg:text-left space-y-6 lg:space-y-8">
+          <div class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+            <!-- Optional subtitle -->
+            <!-- <h6 class="text-sm font-medium text-pink uppercase mb-4 tracking-wider">Professional Childcare Services</h6> -->
+
+            <!-- Main Title -->
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight mb-6">
+              <span class="block text-pink mb-2">Quality Babysitter</span>
+              <span class="block bg-gradient-to-r from-pink to-pink bg-clip-text text-transparent">
+                Services
+              </span>
+              <!-- <span class="block text-blue text-3xl sm:text-4xl lg:text-5xl xl:text-6xl">
+                Screen-Free Fun
+              </span> -->
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-lg lg:text-xl text-gray-dark leading-relaxed max-w-lg mx-auto lg:mx-0 mb-8">
+              Activities that promote creativity, learning, and healthy development for your children
+            </p>
+
+            <!-- CTA Button -->
+            <div class="flex justify-center lg:justify-start">
+              <a href="#contact"
+                class="inline-flex items-center bg-pink text-white text-base font-medium px-8 py-4 rounded-full tracking-wide border-2 border-pink transition-all duration-300 hover:bg-white hover:text-pink shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                <span>Book Your Session</span>
+                <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3">
+                  </path>
+                </svg>
+              </a>
             </div>
           </div>
         </div>
+
+        <!-- Right Content - Image -->
+        <div class="flex justify-center lg:justify-end">
+          <div class="wow fadeInRight relative" data-wow-duration="1s" data-wow-delay="0.5s">
+            <div class="relative">
+              <!-- <img src="assets/images/full-shot-girl-playing-home.jpg" alt="Happy Children Playing"
+                class="w-full max-w-xs lg:max-w-sm object-cover rounded-3xl drop-shadow-2xl"> -->
+
+              <!-- Floating accent elements around the image -->
+              <!-- <div class="absolute -top-4 -left-4 w-8 h-8 lg:w-12 lg:h-12 opacity-60 animate-bounce-slow">
+                <img src="assets/images/elements/Elementos gráficos Titi Amanda-02.png" alt=""
+                  class="w-full h-full object-contain">
+              </div>
+              <div class="absolute -bottom-4 -right-4 w-10 h-10 lg:w-14 lg:h-14 opacity-50 animate-pulse">
+                <img src="assets/images/elements/Elementos gráficos Titi Amanda-08.png" alt=""
+                  class="w-full h-full object-contain">
+              </div> -->
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
+  <!-- ***** Banner Section End ***** -->
 
-  <div id="features" class="features section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
+  <div id="features" class="features section pt-32">
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="row flex flex-wrap -mx-4">
+        <div class="col-lg-12 w-full px-4">
           <div class="features-content">
-            <div class="row">
-              <div class="col-lg-3">
-                <div class="features-item first-feature wow fadeInUp" data-wow-duration="1s" data-wow-delay="0s">
-                  <div class="first-number number">
-                    <h6>01</h6>
+            <div class="row flex flex-wrap gap-2">
+              <div class="col-lg-3 w-full lg:w-1/4 px-4">
+                <div
+                  class="features-item first-feature wow fadeInUp text-center p-8 pt-16 rounded-[50px] bg-white transition-all duration-500 hover:bg-light-blue group relative"
+                  data-wow-duration="1s" data-wow-delay="0s">
+                  <!-- Floating Icon -->
+                  <div class="absolute -top-8 left-1/2 transform -translate-x-1/2">
+                    <div
+                      class="w-16 h-16 bg-gradient-to-br from-white to-cream rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-500">
+                      <img src="assets/images/elements/play-element.png" alt="Creative Play Icon"
+                        class="w-16 h-16 object-contain">
+                    </div>
                   </div>
-                  <div class="icon"></div>
-                  <h4>Creative
+                  <h4
+                    class="mx-4 mt-4 text-xl leading-7 font-bold text-gray-dark relative transition-all duration-500 group-hover:text-white">
+                    Creative
                     <br />
                     Play
                   </h4>
-                  <div class="line-dec"></div>
-                  <p>Arts, crafts, drawing, and imaginative play activities that stimulate creativity and learning.
+                  <div
+                    class="line-dec w-24 h-0.5 bg-light-blue bg-opacity-30 mx-auto my-6 transition-all duration-500 group-hover:bg-cream">
+                  </div>
+                  <p class="relative mt-0 transition-all duration-500 group-hover:text-white">Arts, crafts, drawing, and
+                    imaginative play activities that stimulate creativity and learning.
                   </p>
                 </div>
               </div>
-              <div class="col-lg-3">
-                <div class="features-item second-feature wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-                  <div class="second-number number">
-                    <h6>02</h6>
+              <div class="col-lg-3 w-full lg:w-1/4 px-4">
+                <div
+                  class="features-item sencond-feature wow fadeInUp text-center p-8 pt-16 rounded-[50px] bg-white transition-all duration-500 hover:bg-light-blue group relative"
+                  data-wow-duration="1s" data-wow-delay="0s">
+                  <!-- Floating Icon -->
+                  <div class="absolute -top-8 left-1/2 transform -translate-x-1/2">
+                    <div
+                      class="w-16 h-16 bg-gradient-to-br from-white to-cream rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-500">
+                      <img src="assets/images/elements/Elementos gráficos Titi Amanda-06.png"
+                        alt="Outdoor Adventures Icon" class="w-16 h-16 object-contain">
+                    </div>
                   </div>
-                  <div class="icon"></div>
-                  <h4>Outdoor
+                  <h4
+                    class="mx-4 mt-4 text-xl leading-7 font-bold text-gray-dark relative transition-all duration-500 group-hover:text-white">
+                    Outdoor
                     <br />
                     Adventures
                   </h4>
-                  <div class="line-dec"></div>
-                  <p>Nature walks, playground fun, and outdoor games that promote physical activity and fresh air.</p>
+                  <div
+                    class="line-dec w-24 h-0.5 bg-blue bg-opacity-30 mx-auto my-6 transition-all duration-500 group-hover:bg-cream">
+                  </div>
+                  <p class="relative mt-0 transition-all duration-500 group-hover:text-white">Arts, crafts, drawing, and
+                    imaginative play activities that stimulate creativity and learning.
+                  </p>
                 </div>
               </div>
-              <div class="col-lg-3">
-                <div class="features-item third-feature wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
-                  <div class="third-number number">
-                    <h6>03</h6>
+              <!-- Third -->
+              <div class="col-lg-3 w-full lg:w-1/4 px-4">
+                <div
+                  class="features-item third-feature wow fadeInUp text-center p-8 pt-16 rounded-[50px] bg-white transition-all duration-500 hover:bg-light-blue group relative"
+                  data-wow-duration="1s" data-wow-delay="0s">
+                  <!-- Floating Icon -->
+                  <div class="absolute -top-8 left-1/2 transform -translate-x-1/2">
+                    <div
+                      class="w-16 h-16 bg-gradient-to-br from-white to-cream rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-500">
+                      <img src="assets/images/elements/Elementos gráficos Titi Amanda-04.png"
+                        alt="Outdoor Adventures Icon" class="w-16 h-16 object-contain">
+                    </div>
                   </div>
-                  <div class="icon"></div>
-                  <h4>Educational
+                  <h4
+                    class="mx-4 mt-4 text-xl leading-7 font-bold text-gray-dark relative transition-all duration-500 group-hover:text-white">
+                    Educational
                     <br />
                     Games
                   </h4>
-                  <div class="line-dec"></div>
-                  <p>Learning through play with puzzles, building blocks, and interactive educational activities.</p>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="features-item fourth-feature last-features-item wow fadeInUp" data-wow-duration="1s"
-                  data-wow-delay="0.6s">
-                  <div class="fourth-number number">
-                    <h6>04</h6>
+                  <div
+                    class="line-dec w-24 h-0.5 bg-blue bg-opacity-30 mx-auto my-6 transition-all duration-500 group-hover:bg-cream">
                   </div>
-                  <div class="icon"></div>
-                  <h4>Story
-                    <br />
-                    Time
-                  </h4>
-                  <div class="line-dec"></div>
-                  <p>Reading adventures and storytelling sessions that develop imagination and language skills.</p>
+                  <p class="relative mt-0 transition-all duration-500 group-hover:text-white">Learning through play with
+                    puzzles, building blocks, and interactive educational activities.
+                  </p>
                 </div>
               </div>
+              <!-- Fourth -->
+              <div class="col-lg-3 w-full lg:w-1/4 px-4">
+                <div
+                  class="features-item fourth-feature wow fadeInUp text-center p-8 pt-16 rounded-[50px] bg-white transition-all duration-500 hover:bg-light-blue group relative"
+                  data-wow-duration="1s" data-wow-delay="0s">
+                  <!-- Floating Icon -->
+                  <div class="absolute -top-8 left-1/2 transform -translate-x-1/2">
+                    <div
+                      class="w-16 h-16 bg-gradient-to-br from-white to-cream rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-500">
+                      <img src="assets/images/elements/Elementos gráficos Titi Amanda-10.png"
+                        alt="Outdoor Adventures Icon" class="w-16 h-16 object-contain">
+                    </div>
+                  </div>
+                  <h4
+                    class="mx-4 mt-4 text-xl leading-7 font-bold text-gray-dark relative transition-all duration-500 group-hover:text-white">
+                    Educational
+                    <br />
+                    Games
+                  </h4>
+                  <div
+                    class="line-dec w-24 h-0.5 bg-light-blue bg-opacity-30 mx-auto my-6 transition-all duration-500 group-hover:bg-cream">
+                  </div>
+                  <p class="relative mt-0 transition-all duration-500 group-hover:text-white">Reading adventures and
+                    storytelling sessions that develop imagination and language skills.
+                  </p>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
-        <!-- <div class="col-lg-12">
-          <div class="skills-content">
-            <div class="row">
-              <div class="col-lg-3">
-                <div class="skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
-                  <div class="progress" data-percentage="80">
-                    <span class="progress-left">
-                      <span class="progress-bar"></span>
-                    </span>
-                    <span class="progress-right">
-                      <span class="progress-bar"></span>
-                    </span>
-                    <div class="progress-value">
-                      <div>
-                        80%<br>
-                        <span>HTML/CSS/JS</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-                  <div class="progress" data-percentage="60">
-                    <span class="progress-left">
-                      <span class="progress-bar"></span>
-                    </span>
-                    <span class="progress-right">
-                      <span class="progress-bar"></span>
-                    </span>
-                    <div class="progress-value">
-                      <div>
-                        60%<br>
-                        <span>Wordpress</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
-                  <div class="progress" data-percentage="90">
-                    <span class="progress-left">
-                      <span class="progress-bar"></span>
-                    </span>
-                    <span class="progress-right">
-                      <span class="progress-bar"></span>
-                    </span>
-                    <div class="progress-value">
-                      <div>
-                        90%<br>
-                        <span>Marketing</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="skill-item last-skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.6s">
-                  <div class="progress" data-percentage="70">
-                    <span class="progress-left">
-                      <span class="progress-bar"></span>
-                    </span>
-                    <span class="progress-right">
-                      <span class="progress-bar"></span>
-                    </span>
-                    <div class="progress-value">
-                      <div>
-                        70%<br>
-                        <span>Photoshop</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>
 
-  <div id="about" class="about-us section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
+  <div id="about" class="about-us section pt-32">
+    <div class="container max-w-7xl mx-auto px-4">
+      <!-- Responsive Grid Layout: Single column on mobile, two columns on desktop -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+
+        <!-- Image Column (Left) -->
+        <div class="order-2 lg:order-1 flex justify-center">
           <div class="left-image wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
-            <img src="assets/images/about-left-image.png" alt="">
+            <img src="assets/images/full-shot-girl-playing-home.jpg" alt="Amanda with Children"
+              class="w-full max-w-md rounded-lg shadow-lg object-cover mx-auto">
           </div>
         </div>
-        <div class="col-lg-6 align-self-center wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-          <div class="section-heading">
-            <h6>About Me</h6>
-            <h2>Experienced <em>babysitter</em> providing quality childcare with <span>no screens</span></h2>
+
+        <!-- Content Column (Right) -->
+        <div class="order-1 lg:order-2 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+          <div class="section-heading mb-8">
+            <h6 class="text-sm font-bold text-pink uppercase mb-4">About Me</h6>
+            <h2 class="text-3xl md:text-4xl capitalize text-gray-dark font-extrabold relative z-10 leading-tight">
+              Experienced <em class="not-italic text-pink">babysitter</em> providing quality childcare.
+            </h2>
           </div>
-          <div class="row">
-            <div class="col-lg-4 col-sm-4">
-              <div class="about-item">
-                <h4>5+</h4>
-                <h6>years experience</h6>
-              </div>
+
+          <!-- Stats Grid -->
+          <div class="grid grid-cols-2 gap-6 mb-8">
+            <div class="about-item text-center lg:text-left">
+              <h4 class="text-4xl font-extrabold text-orange transition-colors duration-300">5+</h4>
+              <h6 class="text-base mt-1 font-normal text-gray-dark capitalize">years experience</h6>
             </div>
-            <div class="col-lg-4 col-sm-4">
-              <div class="about-item">
-                <h4>100+</h4>
-                <h6>happy families</h6>
-              </div>
-            </div>
-            <div class="col-lg-4 col-sm-4">
-              <div class="about-item">
-                <h4>0</h4>
-                <h6>screen time</h6>
-              </div>
+            <div class="about-item text-center lg:text-left">
+              <h4 class="text-4xl font-extrabold text-orange transition-colors duration-300">100+
+              </h4>
+              <h6 class="text-base mt-1 font-normal text-gray-dark capitalize">happy families</h6>
             </div>
           </div>
-          <p>Hi! I'm Amanda, a passionate babysitter dedicated to providing quality childcare through engaging,
+
+          <!-- Description -->
+          <p class="text-gray-600 leading-relaxed mb-8">
+            Hi! I'm Amanda, a passionate babysitter dedicated to providing quality childcare through engaging,
             screen-free activities. I believe in the power of imagination, creative play, and meaningful interactions to
             help children grow and develop. With years of experience caring for children of all ages, I focus on
-            creating a safe, fun, and nurturing environment where your little ones can thrive.</p>
-          <div class="main-green-button"><a href="#contact">Learn More About Me</a></div>
+            creating a safe, fun, and nurturing environment where your little ones can thrive.
+          </p>
+
+          <!-- CTA Button -->
+          <div class="text-center lg:text-left">
+            <a href="#contact"
+              class="inline-block bg-light-blue text-white text-sm font-normal capitalize px-6 py-3 rounded-default tracking-wide border-b-2 border-light-blue transition-all duration-300 hover:bg-blue hover:text-white hover:shadow-lg transform hover:-translate-y-1">
+              Learn More About Me
+            </a>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
 
-  <div id="services" class="our-services section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 offset-lg-3">
-          <div class="section-heading wow bounceIn" data-wow-duration="1s" data-wow-delay="0.2s">
-            <h6>My Services</h6>
-            <h2>Discover What I <span>Offer</span> For Your <em>Children</em></h2>
+  <div id="services" class="our-services section pt-32">
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="row flex flex-wrap -mx-4">
+        <div class="col-lg-6 offset-lg-3 w-full lg:w-1/2 lg:mx-auto px-4">
+          <div class="section-heading wow bounceIn text-center mx-16" data-wow-duration="1s" data-wow-delay="0.2s">
+            <h6 class="text-sm font-bold text-pink uppercase mb-4">My Services</h6>
+            <h2 class="text-3xl capitalize text-gray-dark font-extrabold relative z-10 leading-tight">Discover What I
+              <span class="text-blue">Offer</span> For Your <em class="not-italic text-pink">Children</em>
+            </h2>
           </div>
         </div>
       </div>
     </div>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="icon">
-                  <img src="assets/images/service-icon-01.png" alt="">
+    <div class="container-fluid px-20 max-w-none">
+      <div class="row flex flex-wrap -mx-4">
+        <div class="col-lg-4 w-full lg:w-1/3 px-4">
+          <div
+            class="service-item wow bounceInUp p-15 border-2 border-light-gray rounded-md transition-all duration-300 mb-8 hover:bg-white hover:border-transparent hover:shadow-lg"
+            data-wow-duration="1s" data-wow-delay="0.3s">
+            <div class="row flex flex-wrap -mx-4">
+              <div class="col-lg-4 w-full lg:w-1/3 px-4">
+                <div class="icon mt-2 w-20 h-20 inline-block text-center leading-20 bg-light-gray rounded-full">
+                  <img src="assets/images/service-icon-01.png" alt="Screen-Free Icon" class="w-10 h-10">
                 </div>
               </div>
-              <div class="col-lg-8">
+              <div class="col-lg-8 w-full lg:w-2/3 px-4">
                 <div class="right-content">
-                  <h4>Screen-Free Playtime</h4>
-                  <p>Engaging activities without tablets, phones, or TV. Focus on hands-on play, creativity, and
+                  <h4 class="text-xl font-bold text-gray-dark mb-4">Screen-Free Playtime</h4>
+                  <p class="text-sm leading-relaxed text-gray-dark">Engaging activities without tablets, phones, or TV.
+                    Focus on hands-on play, creativity, and
                     imagination building.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.4s">
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="icon">
-                  <img src="assets/images/service-icon-02.png" alt="">
+        <div class="col-lg-4 w-full lg:w-1/3 px-4">
+          <div
+            class="service-item wow bounceInUp p-15 border-2 border-light-gray rounded-md transition-all duration-300 mb-8 hover:bg-white hover:border-transparent hover:shadow-lg"
+            data-wow-duration="1s" data-wow-delay="0.4s">
+            <div class="row flex flex-wrap -mx-4">
+              <div class="col-lg-4 w-full lg:w-1/3 px-4">
+                <div class="icon mt-2 w-20 h-20 inline-block text-center leading-20 bg-light-gray rounded-full">
+                  <img src="assets/images/service-icon-02.png" alt="Arts & Crafts Icon" class="w-10 h-10">
                 </div>
               </div>
-              <div class="col-lg-8">
+              <div class="col-lg-8 w-full lg:w-2/3 px-4">
                 <div class="right-content">
-                  <h4>Arts & Crafts</h4>
-                  <p>Creative projects that develop fine motor skills, artistic expression, and provide hours of
+                  <h4 class="text-xl font-bold text-gray-dark mb-4">Arts & Crafts</h4>
+                  <p class="text-sm leading-relaxed text-gray-dark">Creative projects that develop fine motor skills,
+                    artistic expression, and provide hours of
                     engaging fun.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.5s">
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="icon">
-                  <img src="assets/images/service-icon-03.png" alt="">
+        <div class="col-lg-4 w-full lg:w-1/3 px-4">
+          <div
+            class="service-item wow bounceInUp p-15 border-2 border-light-gray rounded-md transition-all duration-300 mb-8 hover:bg-white hover:border-transparent hover:shadow-lg"
+            data-wow-duration="1s" data-wow-delay="0.5s">
+            <div class="row flex flex-wrap -mx-4">
+              <div class="col-lg-4 w-full lg:w-1/3 px-4">
+                <div class="icon mt-2 w-20 h-20 inline-block text-center leading-20 bg-light-gray rounded-full">
+                  <img src="assets/images/service-icon-03.png" alt="Educational Icon" class="w-10 h-10">
                 </div>
               </div>
-              <div class="col-lg-8">
+              <div class="col-lg-8 w-full lg:w-2/3 px-4">
                 <div class="right-content">
-                  <h4>Educational Activities</h4>
-                  <p>Learning through play with age-appropriate educational games, puzzles, and interactive activities.
+                  <h4 class="text-xl font-bold text-gray-dark mb-4">Educational Activities</h4>
+                  <p class="text-sm leading-relaxed text-gray-dark">Learning through play with age-appropriate
+                    educational games, puzzles, and interactive activities.
                   </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.6s">
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="icon">
-                  <img src="assets/images/service-icon-03.png" alt="">
+        <div class="col-lg-4 w-full lg:w-1/3 px-4">
+          <div
+            class="service-item wow bounceInUp p-15 border-2 border-light-gray rounded-md transition-all duration-300 mb-8 hover:bg-white hover:border-transparent hover:shadow-lg"
+            data-wow-duration="1s" data-wow-delay="0.6s">
+            <div class="row flex flex-wrap -mx-4">
+              <div class="col-lg-4 w-full lg:w-1/3 px-4">
+                <div class="icon mt-2 w-20 h-20 inline-block text-center leading-20 bg-light-gray rounded-full">
+                  <img src="assets/images/service-icon-03.png" alt="Outdoor Icon" class="w-10 h-10">
                 </div>
               </div>
-              <div class="col-lg-8">
+              <div class="col-lg-8 w-full lg:w-2/3 px-4">
                 <div class="right-content">
-                  <h4>Outdoor Activities</h4>
-                  <p>Fresh air adventures including nature walks, playground time, and outdoor games for physical
+                  <h4 class="text-xl font-bold text-gray-dark mb-4">Outdoor Activities</h4>
+                  <p class="text-sm leading-relaxed text-gray-dark">Fresh air adventures including nature walks,
+                    playground time, and outdoor games for physical
                     development.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.7s">
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="icon">
-                  <img src="assets/images/service-icon-01.png" alt="">
+        <div class="col-lg-4 w-full lg:w-1/3 px-4">
+          <div
+            class="service-item wow bounceInUp p-15 border-2 border-light-gray rounded-md transition-all duration-300 mb-8 hover:bg-white hover:border-transparent hover:shadow-lg"
+            data-wow-duration="1s" data-wow-delay="0.7s">
+            <div class="row flex flex-wrap -mx-4">
+              <div class="col-lg-4 w-full lg:w-1/3 px-4">
+                <div class="icon mt-2 w-20 h-20 inline-block text-center leading-20 bg-light-gray rounded-full">
+                  <img src="assets/images/service-icon-01.png" alt="Reading Icon" class="w-10 h-10">
                 </div>
               </div>
-              <div class="col-lg-8">
+              <div class="col-lg-8 w-full lg:w-2/3 px-4">
                 <div class="right-content">
-                  <h4>Reading & Storytelling</h4>
-                  <p>Building language skills and imagination through interactive reading sessions and creative
+                  <h4 class="text-xl font-bold text-gray-dark mb-4">Reading & Storytelling</h4>
+                  <p class="text-sm leading-relaxed text-gray-dark">Building language skills and imagination through
+                    interactive reading sessions and creative
                     storytelling.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.8s">
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="icon">
-                  <img src="assets/images/service-icon-02.png" alt="">
+        <div class="col-lg-4 w-full lg:w-1/3 px-4">
+          <div
+            class="service-item wow bounceInUp p-15 border-2 border-light-gray rounded-md transition-all duration-300 mb-8 hover:bg-white hover:border-transparent hover:shadow-lg"
+            data-wow-duration="1s" data-wow-delay="0.8s">
+            <div class="row flex flex-wrap -mx-4">
+              <div class="col-lg-4 w-full lg:w-1/3 px-4">
+                <div class="icon mt-2 w-20 h-20 inline-block text-center leading-20 bg-light-gray rounded-full">
+                  <img src="assets/images/service-icon-02.png" alt="Music Icon" class="w-10 h-10">
                 </div>
               </div>
-              <div class="col-lg-8">
+              <div class="col-lg-8 w-full lg:w-2/3 px-4">
                 <div class="right-content">
-                  <h4>Music & Movement</h4>
-                  <p>Dancing, singing, and rhythm activities that promote physical coordination and musical
+                  <h4 class="text-xl font-bold text-gray-dark mb-4">Music & Movement</h4>
+                  <p class="text-sm leading-relaxed text-gray-dark">Dancing, singing, and rhythm activities that promote
+                    physical coordination and musical
                     appreciation.</p>
                 </div>
               </div>
@@ -445,128 +568,153 @@ https://templatemo.com/tm-563-seo-dream
     </div>
   </div>
 
-  <div id="portfolio" class="our-portfolio section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-5">
-          <div class="section-heading wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
-            <h6>My Work</h6>
-            <h2>See Some Of My <em>Fun Activities</em> And <span>Happy Moments</span></h2>
+  <div id="portfolio" class="our-portfolio section pt-24 overflow-hidden">
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="row flex flex-wrap -mx-4">
+        <div class="col-lg-5 w-full lg:w-5/12 px-4">
+          <div class="section-heading wow fadeInLeft mb-16" data-wow-duration="1s" data-wow-delay="0.3s">
+            <h6 class="text-sm font-bold text-pink uppercase mb-4">My Work</h6>
+            <h2 class="text-3xl capitalize text-gray-dark font-extrabold relative z-10 leading-tight">See Some Of My <em
+                class="not-italic text-pink">Fun Activities</em> And <span class="text-blue">Happy Moments</span></h2>
           </div>
         </div>
       </div>
     </div>
-    <div class="container-fluid wow fadeIn" data-wow-duration="1s" data-wow-delay="0.7s">
-      <div class="row">
-        <div class="col-lg-12">
+    <div class="container-fluid wow fadeIn px-0 max-w-none" data-wow-duration="1s" data-wow-delay="0.7s">
+      <div class="row flex flex-wrap -mx-4">
+        <div class="col-lg-12 w-full px-4">
           <div class="loop owl-carousel">
             <div class="item">
-              <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="assets/images/portfolio-01.jpg" alt="">
-                  <div class="hover-content">
-                    <div class="inner-content">
+              <div class="portfolio-item mb-8 rounded-[50px] group">
+                <div class="thumb relative rounded-[50px]">
+                  <img src="assets/images/portfolio-01.jpg" alt="" class="rounded-[50px] overflow-hidden">
+                  <div
+                    class="hover-content group-hover:opacity-100 group-hover:visible absolute left-0 top-0 w-full h-full rounded-[50px] overflow-hidden opacity-0 invisible transition-all duration-500"
+                    style="background: linear-gradient(105deg, rgba(51, 204, 197, 1) 0%, rgba(8, 141, 195, 1) 100%);">
+                    <div
+                      class="inner-content absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
                       <a href="#">
-                        <h4>Arts & Crafts Day</h4>
+                        <h4 class="text-xl font-bold text-white mb-2">Arts & Crafts Day</h4>
                       </a>
-                      <span>Creative Play</span>
+                      <span class="text-sm text-white">Creative Play</span>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="assets/images/portfolio-04.jpg" alt="">
-                  <div class="hover-content">
-                    <div class="inner-content">
+              <div class="portfolio-item mb-8 rounded-[50px] group">
+                <div class="thumb relative rounded-[50px]">
+                  <img src="assets/images/portfolio-04.jpg" alt="" class="rounded-[50px] overflow-hidden">
+                  <div
+                    class="hover-content group-hover:opacity-100 group-hover:visible absolute left-0 top-0 w-full h-full rounded-[50px] overflow-hidden opacity-0 invisible transition-all duration-500"
+                    style="background: linear-gradient(105deg, rgba(51, 204, 197, 1) 0%, rgba(8, 141, 195, 1) 100%);">
+                    <div
+                      class="inner-content absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
                       <a href="#">
-                        <h4>Nature Adventure</h4>
+                        <h4 class="text-xl font-bold text-white mb-2">Nature Adventure</h4>
                       </a>
-                      <span>Outdoor Fun</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="assets/images/portfolio-02.jpg" alt="">
-                  <div class="hover-content">
-                    <div class="inner-content">
-                      <a href="#">
-                        <h4>Building Blocks Challenge</h4>
-                      </a>
-                      <span>Educational Play</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="assets/images/portfolio-05.jpg" alt="">
-                  <div class="hover-content">
-                    <div class="inner-content">
-                      <a href="#">
-                        <h4>Story Time Circle</h4>
-                      </a>
-                      <span>Reading Fun</span>
+                      <span class="text-sm text-white">Outdoor Fun</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="item">
-              <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="assets/images/portfolio-03.jpg" alt="">
-                  <div class="hover-content">
-                    <div class="inner-content">
+              <div class="portfolio-item mb-8 rounded-[50px] group">
+                <div class="thumb relative rounded-[50px]">
+                  <img src="assets/images/portfolio-02.jpg" alt="" class="rounded-[50px] overflow-hidden">
+                  <div
+                    class="hover-content group-hover:opacity-100 group-hover:visible absolute left-0 top-0 w-full h-full rounded-[50px] overflow-hidden opacity-0 invisible transition-all duration-500"
+                    style="background: linear-gradient(105deg, rgba(51, 204, 197, 1) 0%, rgba(8, 141, 195, 1) 100%);">
+                    <div
+                      class="inner-content absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
                       <a href="#">
-                        <h4>Music & Dance Time</h4>
+                        <h4 class="text-xl font-bold text-white mb-2">Building Blocks Challenge</h4>
                       </a>
-                      <span>Movement Activity</span>
+                      <span class="text-sm text-white">Educational Play</span>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="assets/images/portfolio-06.jpg" alt="">
-                  <div class="hover-content">
-                    <div class="inner-content">
+              <div class="portfolio-item mb-8 rounded-[50px] group">
+                <div class="thumb relative rounded-[50px]">
+                  <img src="assets/images/portfolio-05.jpg" alt="" class="rounded-[50px] overflow-hidden">
+                  <div
+                    class="hover-content group-hover:opacity-100 group-hover:visible absolute left-0 top-0 w-full h-full rounded-[50px] overflow-hidden opacity-0 invisible transition-all duration-500"
+                    style="background: linear-gradient(105deg, rgba(51, 204, 197, 1) 0%, rgba(8, 141, 195, 1) 100%);">
+                    <div
+                      class="inner-content absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
                       <a href="#">
-                        <h4>Garden Exploration</h4>
+                        <h4 class="text-xl font-bold text-white mb-2">Story Time Circle</h4>
                       </a>
-                      <span>Nature Learning</span>
+                      <span class="text-sm text-white">Reading Fun</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="item">
-              <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="assets/images/portfolio-04.jpg" alt="">
-                  <div class="hover-content">
-                    <div class="inner-content">
+              <div class="portfolio-item mb-8 rounded-[50px] group">
+                <div class="thumb relative rounded-[50px]">
+                  <img src="assets/images/portfolio-03.jpg" alt="" class="rounded-[50px] overflow-hidden">
+                  <div
+                    class="hover-content group-hover:opacity-100 group-hover:visible absolute left-0 top-0 w-full h-full rounded-[50px] overflow-hidden opacity-0 invisible transition-all duration-500"
+                    style="background: linear-gradient(105deg, rgba(51, 204, 197, 1) 0%, rgba(8, 141, 195, 1) 100%);">
+                    <div
+                      class="inner-content absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
                       <a href="#">
-                        <h4>Cooking Together</h4>
+                        <h4 class="text-xl font-bold text-white mb-2">Music & Dance Time</h4>
                       </a>
-                      <span>Life Skills</span>
+                      <span class="text-sm text-white">Movement Activity</span>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="assets/images/portfolio-01.jpg" alt="">
-                  <div class="hover-content">
-                    <div class="inner-content">
+              <div class="portfolio-item mb-8 rounded-[50px] group">
+                <div class="thumb relative rounded-[50px]">
+                  <img src="assets/images/portfolio-06.jpg" alt="" class="rounded-[50px] overflow-hidden">
+                  <div
+                    class="hover-content group-hover:opacity-100 group-hover:visible absolute left-0 top-0 w-full h-full rounded-[50px] overflow-hidden opacity-0 invisible transition-all duration-500"
+                    style="background: linear-gradient(105deg, rgba(51, 204, 197, 1) 0%, rgba(8, 141, 195, 1) 100%);">
+                    <div
+                      class="inner-content absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
                       <a href="#">
-                        <h4>Puzzle Time</h4>
+                        <h4 class="text-xl font-bold text-white mb-2">Garden Exploration</h4>
                       </a>
-                      <span>Problem Solving</span>
+                      <span class="text-sm text-white">Nature Learning</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="portfolio-item mb-8 rounded-[50px] group">
+                <div class="thumb relative rounded-[50px]">
+                  <img src="assets/images/portfolio-04.jpg" alt="" class="rounded-[50px] overflow-hidden">
+                  <div
+                    class="hover-content group-hover:opacity-100 group-hover:visible absolute left-0 top-0 w-full h-full rounded-[50px] overflow-hidden opacity-0 invisible transition-all duration-500"
+                    style="background: linear-gradient(105deg, rgba(51, 204, 197, 1) 0%, rgba(8, 141, 195, 1) 100%);">
+                    <div
+                      class="inner-content absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+                      <a href="#">
+                        <h4 class="text-xl font-bold text-white mb-2">Cooking Together</h4>
+                      </a>
+                      <span class="text-sm text-white">Life Skills</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="portfolio-item mb-8 rounded-[50px] group">
+                <div class="thumb relative rounded-[50px]">
+                  <img src="assets/images/portfolio-01.jpg" alt="" class="rounded-[50px] overflow-hidden">
+                  <div
+                    class="hover-content group-hover:opacity-100 group-hover:visible absolute left-0 top-0 w-full h-full rounded-[50px] overflow-hidden opacity-0 invisible transition-all duration-500"
+                    style="background: linear-gradient(105deg, rgba(51, 204, 197, 1) 0%, rgba(8, 141, 195, 1) 100%);">
+                    <div
+                      class="inner-content absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+                      <a href="#">
+                        <h4 class="text-xl font-bold text-white mb-2">Puzzle Time</h4>
+                      </a>
+                      <span class="text-sm text-white">Problem Solving</span>
                     </div>
                   </div>
                 </div>
@@ -578,77 +726,90 @@ https://templatemo.com/tm-563-seo-dream
     </div>
   </div>
 
-  <div id="contact" class="contact-us section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
-          <form id="contact" action="" method="post">
-            <div class="row">
-              <div class="col-lg-6 offset-lg-3">
-                <div class="section-heading">
-                  <h6>Contact Me</h6>
-                  <h2>Fill Out The Form Below To <span>Book</span> Your <em>Babysitting</em> Session</h2>
+  <div id="contact" class="contact-us section mt-24 py-32 bg-center bg-cover bg-no-repeat"
+    style="background-image: url('assets/images/contact-bg.jpg');">
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="row flex flex-wrap -mx-4">
+        <div class="col-lg-12 w-full px-4 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">
+          <form id="contact" action="" method="post" class="relative bg-white py-16 px-20 rounded-[50px] text-center">
+            <div class="row flex flex-wrap -mx-4">
+              <div class="col-lg-6 offset-lg-3 w-full lg:w-1/2 lg:mx-auto px-4">
+                <div class="section-heading text-center mx-5 mb-16">
+                  <h6 class="text-sm font-bold text-pink uppercase mb-4">Contact Me</h6>
+                  <h2 class="text-3xl capitalize text-gray-dark font-extrabold relative z-10 leading-tight">Fill Out The
+                    Form Below To <span class="text-blue">Book</span> Your <em
+                      class="not-italic text-pink">Babysitting</em> Session</h2>
                 </div>
               </div>
-              <div class="col-lg-9">
-                <div class="row">
-                  <div class="col-lg-6">
+              <div class="col-lg-9 w-full lg:w-3/4 px-4">
+                <div class="row flex flex-wrap -mx-4">
+                  <div class="col-lg-6 w-full lg:w-1/2 px-4">
                     <fieldset>
-                      <input type="name" name="name" id="name" placeholder="Parent's Name" autocomplete="on" required>
+                      <input type="name" name="name" id="name" placeholder="Parent's Name" autocomplete="on" required
+                        class="w-full h-12 rounded-md bg-transparent border-2 border-gray-300 outline-none text-sm font-light text-gray-dark px-5 mb-5 placeholder:text-gray-medium">
                     </fieldset>
                   </div>
-                  <div class="col-lg-6">
+                  <div class="col-lg-6 w-full lg:w-1/2 px-4">
                     <fieldset>
                       <input type="text" name="children" id="children" placeholder="Children's Names & Ages"
-                        autocomplete="on" required>
+                        autocomplete="on" required
+                        class="w-full h-12 rounded-md bg-transparent border-2 border-gray-300 outline-none text-sm font-light text-gray-dark px-5 mb-5 placeholder:text-gray-medium">
                     </fieldset>
                   </div>
-                  <div class="col-lg-6">
+                  <div class="col-lg-6 w-full lg:w-1/2 px-4">
                     <fieldset>
                       <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email"
-                        required="">
+                        required=""
+                        class="w-full h-12 rounded-md bg-transparent border-2 border-gray-300 outline-none text-sm font-light text-gray-dark px-5 mb-5 placeholder:text-gray-medium">
                     </fieldset>
                   </div>
-                  <div class="col-lg-6">
+                  <div class="col-lg-6 w-full lg:w-1/2 px-4">
                     <fieldset>
-                      <input type="text" name="phone" id="phone" placeholder="Phone Number" autocomplete="on">
+                      <input type="text" name="phone" id="phone" placeholder="Phone Number" autocomplete="on"
+                        class="w-full h-12 rounded-md bg-transparent border-2 border-gray-300 outline-none text-sm font-light text-gray-dark px-5 mb-5 placeholder:text-gray-medium">
                     </fieldset>
                   </div>
-                  <div class="col-lg-12">
+                  <div class="col-lg-12 w-full px-4">
                     <fieldset>
-                      <textarea name="message" type="text" class="form-control" id="message"
+                      <textarea name="message" type="text" id="message"
                         placeholder="Special instructions, preferred activities, or any important information about your children"
-                        required=""></textarea>
+                        required=""
+                        class="w-full min-w-full max-w-full max-h-44 min-h-36 h-36 rounded-md bg-transparent border-2 border-gray-300 outline-none text-sm font-light text-gray-dark p-5 mb-5 placeholder:text-gray-medium"></textarea>
                     </fieldset>
                   </div>
-                  <div class="col-lg-12">
+                  <div class="col-lg-12 w-full px-4">
                     <fieldset>
-                      <button type="submit" id="form-submit" class="main-button ">Book Your Session</button>
+                      <button type="submit" id="form-submit"
+                        class="inline-block bg-pink text-sm font-normal text-white mt-5 capitalize px-6 py-3 rounded-default tracking-wide border-b-2 border-orange transition-all duration-300 outline-none border-none hover:bg-white hover:text-dark hover:border-pink">Book
+                        Your Session</button>
                     </fieldset>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-3">
-                <div class="contact-info">
+              <div class="col-lg-3 w-full lg:w-1/4 px-4">
+                <div class="contact-info p-10 border-2 border-light-gray">
                   <ul>
-                    <li>
-                      <div class="icon">
-                        <span class="fa fa-2x fa-envelope" />
+                    <li class="text-center block mb-8">
+                      <div class="icon mb-2">
+                        <span class="fa fa-2x fa-envelope text-gray-medium" />
                         <!-- <img src="assets/images/contact-icon-01.png" alt="email icon"> -->
                       </div>
-                      <a href="#">titiamanda@example.com</a>
+                      <a href="#"
+                        class="text-sm text-gray-medium transition-all duration-500 hover:text-gray-dark">titiamanda@example.com</a>
                     </li>
-                    <li>
-                      <div class="icon">
-                        <span class="fa fa-2x fa-phone" />
+                    <li class="text-center block mb-8">
+                      <div class="icon mb-2">
+                        <span class="fa fa-2x fa-phone text-gray-medium" />
                       </div>
-                      <a href="#">+1 (787) 555-0123</a>
+                      <a href="#" class="text-sm text-gray-medium transition-all duration-500 hover:text-gray-dark">+1
+                        (787) 555-0123</a>
                     </li>
-                    <li>
-                      <div class="icon">
-                        <span class="fa fa-2x fa-map-marker" />
+                    <li class="text-center block mb-0">
+                      <div class="icon mb-2">
+                        <span class="fa fa-2x fa-map-marker text-gray-medium" />
                       </div>
-                      <a href="#">San Juan, Puerto Rico</a>
+                      <a href="#" class="text-sm text-gray-medium transition-all duration-500 hover:text-gray-dark">San
+                        Juan, Puerto Rico</a>
                     </li>
                   </ul>
                 </div>
@@ -661,10 +822,11 @@ https://templatemo.com/tm-563-seo-dream
   </div>
 
   <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <p>Copyright © 2025 Titi Amanda Babysitter Services. All Rights Reserved.
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="row flex flex-wrap -mx-4">
+        <div class="col-lg-12 w-full px-4">
+          <p class="text-center my-8 text-sm leading-relaxed text-gray-dark">Copyright © 2025 Titi Amanda Babysitter
+            Services. All Rights Reserved.
 
             <br>Quality childcare with love in Puerto Rico
           </p>
