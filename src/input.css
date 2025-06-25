@@ -198,20 +198,8 @@
         @apply mb-16;
     }
 
-    .section-heading h6 {
-        @apply text-sm font-bold text-pink uppercase mb-4;
-    }
-
     .section-heading h2 {
         @apply text-3xl capitalize text-gray-dark font-extrabold relative z-10 leading-tight;
-    }
-
-    .section-heading h2 em {
-        @apply not-italic text-pink;
-    }
-
-    .section-heading h2 span {
-        @apply text-blue;
     }
 
     /* Features Section */
@@ -225,19 +213,6 @@
 
     .features-item {
         @apply text-center p-8 rounded-[50px] bg-white transition-all duration-500;
-    }
-
-    .features-item:hover {
-        @apply bg-light-blue;
-    }
-
-    .features-item:hover h4,
-    .features-item:hover p {
-        @apply text-white;
-    }
-
-    .features-item:hover .line-dec {
-        @apply bg-cream;
     }
 
     .features-item .number h6 {
@@ -308,10 +283,6 @@
     /* Services Section */
     .our-services {
         @apply pt-32;
-    }
-
-    .our-services .section-heading {
-        @apply text-center mx-20;
     }
 
     .our-services .container-fluid {
@@ -415,10 +386,6 @@
         @apply max-w-8;
     }
 
-    form#contact {
-        @apply relative bg-white py-16 px-20 rounded-[50px] text-center;
-    }
-
     form#contact input {
         @apply w-full h-12 rounded-md bg-transparent border-2 border-gray-300 outline-none text-sm font-light text-gray-dark px-5 mb-5;
     }
@@ -433,14 +400,6 @@
 
     form#contact textarea::placeholder {
         @apply text-gray-medium;
-    }
-
-    form#contact button {
-        @apply inline-block bg-pink text-sm font-normal text-white mt-5 capitalize px-6 py-3 rounded-default tracking-wide border-b-2 border-orange transition-all duration-300 outline-none border-none;
-    }
-
-    form#contact button:hover {
-        @apply bg-white text-dark border-b-2 border-pink;
     }
 
     /* Footer */

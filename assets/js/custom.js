@@ -22,11 +22,24 @@
     items: 2,
     loop: true,
     nav: true,
+    dots: true,
     margin: 30,
+    navText: ['', ''], // Empty nav text since we're using CSS for arrows
     responsive: {
-
+      0: {
+        items: 1,
+        nav: false,
+        dots: true
+      },
+      768: {
+        items: 2,
+        nav: true,
+        dots: false
+      },
       992: {
-        items: 4
+        items: 4,
+        nav: true,
+        dots: false
       }
     }
   });
