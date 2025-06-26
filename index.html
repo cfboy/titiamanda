@@ -753,11 +753,32 @@
         <!-- Contact Form - Right Side -->
         <div class="lg:col-span-2 order-1 lg:order-2">
           <div class="wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.4s">
-            <form id="contact" action="" method="post"
+            <form id="contact-form" action="" method="post"
               class="bg-white p-8 md:p-10 rounded-3xl shadow-lg border border-gray-100">
 
+              <!-- Success Message (Initially Hidden) -->
+              <div id="success-message" class="hidden mb-8 p-6 rounded-2xl">
+                <div class="flex flex-col items-center text-center space-y-4">
+                  <div class="flex flex-col items-center space-x-3">
+                    <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                      <i class="fa fa-2x fa-check text-green text-lg"></i>
+                    </div>
+                    <div>
+                      <h4 class="font-bold text-green-800 text-xl">Message Sent Successfully!</h4>
+                      <p class="text-green-700 text-base">Thank you for reaching out! I'll get back to you within 24
+                        hours.</p>
+                    </div>
+                  </div>
+                  <button type="button" onclick="resetContactForm()"
+                    class="inline-flex items-center bg-green text-white text-sm font-medium px-6 py-3 rounded-full tracking-wide transition-all duration-500 hover:bg-green-700 hover:shadow-lg transform hover:-translate-y-1">
+                    <i class="fa fa-plus mr-2"></i>
+                    <span>Send Another Message</span>
+                  </button>
+                </div>
+              </div>
+
               <!-- Form Header -->
-              <div class="text-center mb-8">
+              <div id="form-header" class="text-center mb-8">
                 <h3 class="text-2xl md:text-3xl font-bold text-gray-dark mb-3">
                   Send Me a <span class="text-pink">Message</span>
                 </h3>
@@ -767,7 +788,7 @@
               </div>
 
               <!-- Form Grid -->
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6">
+              <div id="form-fields" class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6">
 
                 <!-- Parent's Name -->
                 <div class="md:col-span-1">
@@ -804,10 +825,10 @@
                   <select name="service" id="service"
                     class="w-full h-12 px-4 rounded-xl border-2 border-gray-200 bg-gray-50 outline-none text-gray-dark transition-all duration-500 focus:border-orange focus:bg-white focus:shadow-md">
                     <option value="">Select a service type</option>
-                    <option value="at-home-care">At Home Care</option>
-                    <option value="hotel-vacation">Hotel & Vacation Babysitting</option>
-                    <option value="special-needs">Special Needs Support</option>
-                    <option value="family-outing">Family Outing Support</option>
+                    <option value="At Home Care">At Home Care</option>
+                    <option value="Hotel & Vacation Babysitting">Hotel & Vacation Babysitting</option>
+                    <option value="Special Needs Support">Special Needs Support</option>
+                    <option value="Family Outing Support">Family Outing Support</option>
                   </select>
                 </div>
 
@@ -823,11 +844,12 @@
               </div>
 
               <!-- Submit Button -->
-              <div class="mt-4 md:mt-8 text-center">
+              <div id="form-submit-section" class="mt-4 md:mt-8 text-center">
                 <button type="submit" id="form-submit"
                   class="inline-flex items-center bg-gradient-to-r from-pink to-pink/90 text-white text-base font-semibold px-6 md:px-10 py-4 rounded-full tracking-wide transition-all duration-500 hover:from-pink/90 hover:to-pink hover:shadow-xl transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-pink/30">
-                  <span>Send Message</span>
-                  <i class="fa fa-paper-plane ml-3 transition-transform duration-500 group-hover:translate-x-1"></i>
+                  <span id="submit-text">Send Message</span>
+                  <i id="submit-icon"
+                    class="fa fa-paper-plane ml-3 transition-transform duration-500 group-hover:translate-x-1"></i>
                 </button>
                 <p class="text-sm text-gray-500 mt-4">
                   * Required fields. I'll respond within 24 hours.

@@ -135,15 +135,93 @@
     $('#js-preloader').addClass('loaded');
   });
 
-  // Window Resize Mobile Menu Fix
-  function mobileNav() {
-    var width = $(window).width();
-    $('.submenu').on('click', function () {
-      if (width < 767) {
-        $('.submenu ul').removeClass('active');
-        $(this).find('ul').toggleClass('active');
+
+  // Contact Form Submission
+  $(document).ready(function () {
+    $('#contact-form').on('submit', function (e) {
+      e.preventDefault();
+
+      // Get form data
+      const formData = {
+        name: $('#name').val().trim(),
+        phone: $('#phone').val().trim(),
+        email: $('#email').val().trim(),
+        children: $('#children').val().trim(),
+        service: $('#service').val(),
+        message: $('#message').val().trim()
+      };
+
+      // Basic validation
+      if (!formData.name || !formData.phone || !formData.email || !formData.children) {
+        alert('Please fill in all required fields.');
+        return;
       }
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+      // Show loading state
+      const submitBtn = $('#form-submit');
+      const submitText = $('#submit-text');
+      const submitIcon = $('#submit-icon');
+
+      submitBtn.prop('disabled', true);
+      submitText.text('Sending...');
+      submitIcon.removeClass('fa-paper-plane').addClass('fa-spinner fa-spin');
+
+      // Send data to webhook
+      $.ajax({
+        url: 'https://hook.us2.make.com/mg4r1kqxumwo6lq65r7h2cde39moc4m9',
+        method: 'POST',
+        data: formData,
+        success: function (response) {
+          // Show success message
+          $('#success-message').removeClass('hidden');
+          $('#form-header').addClass('hidden');
+          $('#form-fields').addClass('hidden');
+          $('#form-submit-section').addClass('hidden');
+
+          // Scroll to success message
+          $('html, body').animate({
+            scrollTop: $('#success-message').offset().top - 100
+          }, 500);
+
+          // Reset form fields
+          $('#contact-form').trigger('reset');
+        },
+        error: function (xhr, status, error) {
+          console.error('Form submission error:', error);
+          alert('Sorry, there was an error sending your message. Please try again or contact me directly.');
+        },
+        complete: function () {
+          // Reset button state
+          submitBtn.prop('disabled', false);
+          submitText.text('Send Message');
+          submitIcon.removeClass('fa-spinner fa-spin').addClass('fa-paper-plane');
+        }
+      });
     });
-  }
+
+    // Reset form function (if user wants to send another message)
+    window.resetContactForm = function () {
+      $('#success-message').addClass('hidden');
+      $('#form-header').removeClass('hidden');
+      $('#form-fields').removeClass('hidden');
+      $('#form-submit-section').removeClass('hidden');
+
+      // Clear all form fields
+      // $('#contact')[0].reset();
+      $("#contact-form").get(0).reset();
+
+      // Scroll back to form header
+      $('html, body').animate({
+        scrollTop: $('#form-header').offset().top - 100
+      }, 500);
+    };
+  });
 
 })(window.jQuery);
