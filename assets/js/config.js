@@ -136,30 +136,37 @@ const ComponentRenderer = {
     // Render service card
     renderServiceCard: function (service) {
         return `
-      <div
-        class="service-card group wow fadeInUp bg-white rounded-[50px] p-8 border border-gray-100 transition-all duration-500 hover:shadow-xl hover:border-transparent hover:-translate-y-2"
-        data-wow-duration="1s" data-wow-delay="${service.delay}s">
-        <div class="text-center">
-          <!-- Icon -->
-          <div
-            class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-${service.color}/10 to-${service.color}/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-            <i class="fa fa-2x ${service.icon} text-2xl text-${service.color} transition-colors duration-500"></i>
+      <div class="mb-4 md:mb-0 h-full group">
+        <!-- Invisible wrapper to contain card + floating icon -->
+        <div class="relative pt-8 h-full">
+          <!-- Floating Icon -->
+          <div class="absolute top-0 left-1/2 transform -translate-x-1/2 z-10">
+            <div
+              class="w-16 h-16 bg-gradient-to-br from-white to-cream rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500">
+              <i class="fa fa-2x ${service.icon} text-2xl text-${service.color} transition-all duration-500"></i>
+            </div>
           </div>
+          
+          <!-- Card -->
+          <div
+            class="service-card wow fadeInUp text-center p-8 pt-16 rounded-[50px] bg-white border border-gray-100 transition-all duration-500 hover:shadow-xl hover:border-transparent hover:-translate-y-2 group relative h-full"
+            data-wow-duration="1s" data-wow-delay="${service.delay}s">
+            
+            <!-- Title -->
+            <h4 class="mx-4 mt-4 text-xl font-bold text-gray-dark mb-4 group-hover:text-${service.color} transition-colors duration-500">
+              ${service.title}
+            </h4>
 
-          <!-- Title -->
-          <h4 class="text-xl font-bold text-gray-dark mb-4 group-hover:text-${service.color} transition-colors duration-500">
-            ${service.title}
-          </h4>
+            <!-- Description -->
+            <p class="text-gray-600 leading-relaxed text-base md:text-lg mb-4">
+              ${service.description}
+            </p>
 
-          <!-- Description -->
-          <p class="text-gray-600 leading-relaxed text-base md:text-lg mb-4">
-            ${service.description}
-          </p>
-
-          <!-- Ideal For -->
-          <div class="text-left text-sm text-gray-500 space-y-1">
-            <p class="font-semibold text-gray-600">Ideal for:</p>
-            ${service.idealFor.map(item => `<p>• ${item}</p>`).join('')}
+            <!-- Ideal For -->
+            <div class="text-left text-sm text-gray-500 space-y-1">
+              <p class="font-semibold text-gray-600">Ideal for:</p>
+              ${service.idealFor.map(item => `<p>• ${item}</p>`).join('')}
+            </div>
           </div>
         </div>
       </div>

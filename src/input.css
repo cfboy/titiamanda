@@ -510,16 +510,16 @@
     }
 
     .preloader-inner .dot {
-        @apply w-2 h-2 bg-pink rounded-full mx-auto mb-4;
+        @apply w-4 h-4 bg-pink rounded-full mx-auto mb-6;
         animation: preloaderDot 1.2s infinite ease-in-out;
     }
 
     .preloader-inner .dots {
-        @apply flex justify-center space-x-1;
+        @apply flex justify-center space-x-2;
     }
 
     .preloader-inner .dots span {
-        @apply w-2 h-2 bg-pink rounded-full;
+        @apply w-4 h-4 bg-pink rounded-full;
         animation: preloaderDots 1.4s infinite ease-in-out both;
     }
 
