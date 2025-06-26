@@ -2,18 +2,33 @@
 
   "use strict";
 
-  // Header Type = Fixed
-  $(window).scroll(function () {
+  // Header Type = Fixed - Enhanced approach
+  function updateHeaderBackground() {
     var scroll = $(window).scrollTop();
-    var bannerHeight = $('.main-banner').height();
-    var header = $('header').height();
 
-    // Apply sticky when scrolled past 100px or when banner is mostly out of view
     if (scroll >= 100) {
       $("header").addClass("background-header");
     } else {
       $("header").removeClass("background-header");
     }
+  }
+
+  // Apply on scroll
+  $(window).scroll(updateHeaderBackground);
+
+  // Apply on page load and resize
+  $(window).on('load resize', function () {
+    updateHeaderBackground();
+  });
+
+  // Initialize immediately when DOM is ready
+  $(document).ready(function () {
+    updateHeaderBackground();
+
+    // Also check after animations might have completed
+    setTimeout(updateHeaderBackground, 100);
+    setTimeout(updateHeaderBackground, 500);
+    setTimeout(updateHeaderBackground, 1000);
   });
 
 
@@ -22,24 +37,11 @@
     items: 2,
     loop: true,
     nav: true,
-    dots: true,
     margin: 30,
-    navText: ['', ''], // Empty nav text since we're using CSS for arrows
     responsive: {
-      0: {
-        items: 1,
-        nav: false,
-        dots: true
-      },
-      768: {
-        items: 2,
-        nav: true,
-        dots: false
-      },
+
       992: {
-        items: 4,
-        nav: true,
-        dots: false
+        items: 4
       }
     }
   });
@@ -52,11 +54,13 @@
       $('.mobile-nav').slideToggle(200);
 
       // Adjust mobile menu position based on header state
-      if ($('header').hasClass('background-header')) {
-        $('.mobile-nav').css('top', '5rem'); // 80px (h-20)
-      } else {
-        $('.mobile-nav').css('top', '6rem'); // 96px (h-24)
-      }
+      setTimeout(function () {
+        if ($('header').hasClass('background-header')) {
+          $('.mobile-nav').css('top', '5rem'); // Fixed header height
+        } else {
+          $('.mobile-nav').css('top', '6rem'); // Normal header height
+        }
+      }, 10);
     });
   }
 
@@ -97,11 +101,10 @@
       var href = $(this).attr('href');
       $('.desktop-nav a[href="' + href + '"], .mobile-nav a[href="' + href + '"]').addClass("active");
 
-      var target = this.hash,
-        menu = target;
-      var target = $(this.hash);
+      var target = this.hash;
+      var targetElement = $(this.hash);
       $('html, body').stop().animate({
-        scrollTop: (target.offset().top) + 1
+        scrollTop: (targetElement.offset().top) + 1
       }, 500, 'swing', function () {
         window.location.hash = target;
         $(document).on("scroll", onScroll);
@@ -127,16 +130,10 @@
     });
   }
 
-
-
   // Page loading animation
   $(window).on('load', function () {
-
     $('#js-preloader').addClass('loaded');
-
   });
-
-
 
   // Window Resize Mobile Menu Fix
   function mobileNav() {
@@ -148,8 +145,5 @@
       }
     });
   }
-
-
-
 
 })(window.jQuery);

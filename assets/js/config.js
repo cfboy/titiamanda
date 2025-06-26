@@ -152,12 +152,12 @@ const ComponentRenderer = {
           </h4>
 
           <!-- Description -->
-          <p class="text-gray-600 leading-relaxed text-sm mb-4">
+          <p class="text-gray-600 leading-relaxed text-base md:text-lg mb-4">
             ${service.description}
           </p>
 
           <!-- Ideal For -->
-          <div class="text-left text-xs text-gray-500 space-y-1">
+          <div class="text-left text-sm text-gray-500 space-y-1">
             <p class="font-semibold text-gray-600">Ideal for:</p>
             ${service.idealFor.map(item => `<p>• ${item}</p>`).join('')}
           </div>
@@ -193,7 +193,7 @@ const ComponentRenderer = {
             <div
               class="line-dec w-24 h-0.5 bg-${feature.color} bg-opacity-30 mx-auto my-6 transition-all duration-500 group-hover:bg-blue">
             </div>
-            <p class="relative mt-0 transition-all duration-500 ">
+            <p class="text-base md:text-lg relative mt-0 transition-all duration-500">
               ${feature.description}
             </p>
           </div>
