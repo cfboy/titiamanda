@@ -258,19 +258,6 @@
         @apply relative mt-0 transition-all duration-500;
     }
 
-    /* About Section */
-    .about-us {
-        @apply pt-32;
-    }
-
-    .about-us .section-heading {
-        @apply mb-10;
-    }
-
-    .about-us p {
-        @apply my-10;
-    }
-
     /* Services Section */
     .our-services {
         @apply pt-32;

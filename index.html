@@ -50,10 +50,10 @@
                 class="text-3xl font-extrabold capitalize text-gray-dark leading-6 transition-all duration-500 lg:leading-none flex items-center h-full">
                 <!-- Desktop Logo -->
                 <img src="assets/images/logo/logo-no-description.png" alt="Titi Amanda Logo"
-                  class="!max-w-40 !mt-0 ml-1 object-contain hidden lg:block">
+                  class="!max-w-40 !mt-0 ml-1 object-contain hidden md:block">
                 <!-- Mobile Logo -->
                 <img src="assets/images/logo/mini-logo.png" alt="Titi Amanda Logo"
-                  class="!max-w-24 !mt-0 ml-1 object-contain block lg:hidden">
+                  class="!max-w-24 !mt-0 ml-1 object-contain block md:hidden">
               </h4>
             </a>
             <!-- ***** Logo End ***** -->
@@ -177,14 +177,19 @@
           <div class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
             <!-- Optional subtitle -->
             <!-- <h6 class="text-sm font-medium text-pink uppercase mb-4 tracking-wider">Professional Childcare Services</h6> -->
-
+            <div class="w-full flex justify-center mx-auto">
+              <img src="assets/images/logo/logo-no-description.png" alt="Happy Children Playing"
+                class="rounded-3xl drop-shadow-2xl -mt-[80px] block md:hidden">
+            </div>
             <!-- Main Title -->
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight mb-6">
+            <h1
+              class="text-2xl sm:text-2xl md:text-6xl xl:text-7xl font-extrabold leading-tight mb-6 -mt-12 md:mt-12 lg:mt-0">
               <span class="block text-pink mb-2">Quality Babysitter</span>
               <span class="block bg-gradient-to-r from-pink to-pink bg-clip-text text-transparent">
                 Services
               </span>
             </h1>
+
 
             <!-- Subtitle -->
             <p class="text-lg lg:text-xl text-gray-dark leading-relaxed max-w-lg mx-auto lg:mx-0 mb-8">
@@ -210,9 +215,9 @@
         <!-- Right Content - Image -->
         <div class="flex justify-center w-full">
           <div class="wow fadeInRight relative w-full" data-wow-duration="1s" data-wow-delay="0.5s">
-            <div class="relative">
+            <div class="flex justify-center relative">
               <img src="assets/images/reading-book.png" alt="Happy Children Playing"
-                class="w-full max-w-full object-cover rounded-3xl drop-shadow-2xl">
+                class="w-full max-w-sm md:max-w-md lg:max-w-lg object-cover rounded-3xl drop-shadow-2xl">
             </div>
           </div>
         </div>
@@ -236,7 +241,7 @@
         <img src="assets/images/elements/star-element.png" alt="" class="w-full h-full object-contain">
       </div>
       <div
-        class="absolute top-16 right-0 md:right-10 w-20 h-20 md:w-32 md:h-32 opacity-30 animate-float-slow decorative-bg">
+        class="absolute top-16 md:top-10 lg:top-16 right-0 md:right-10 w-20 h-20 md:w-32 md:h-32 opacity-30 animate-float-slow decorative-bg">
         <img src="assets/images/elements/play-element.png" alt="" class="w-full h-full object-contain">
       </div>
       <div
@@ -257,7 +262,8 @@
       </div>
 
       <!-- Services Grid -->
-      <div id="services-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 p-2 md:p-6 mb-2 md:mb-8">
+      <div id="services-container"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 p-2 md:p-6 mb-2 md:mb-8">
         <!-- Services will be dynamically rendered here by config.js -->
       </div>
     </div>
@@ -269,11 +275,11 @@
     <div class="absolute inset-0 pointer-events-none z-0">
       <!-- Small elements for features section -->
       <div
-        class="absolute top-56 md:top-10 right-2 md:right-20 w-20 h-20 md:w-32 md:h-32 opacity-30 animate-float decorative-bg">
+        class="absolute top-56 md:top-40 lg:top-10 right-2 md:right-20 w-20 h-20 md:w-32 md:h-32 opacity-30 animate-float decorative-bg">
         <img src="assets/images/elements/element-house.png" alt="" class="w-full h-full object-contain">
       </div>
       <div
-        class="absolute top-16 md:top-20 md:left-32 w-20 h-20 md:w-32 md:h-32 opacity-30 animate-float-reverse decorative-bg">
+        class="absolute top-16 md:top-4 lg:top-20 md:left-32 w-20 h-20 md:w-32 md:h-32 opacity-30 animate-float-reverse decorative-bg">
         <img src="assets/images/elements/balloon-element.png" alt="" class="w-full h-full object-contain">
       </div>
       <div
@@ -295,7 +301,7 @@
         </div>
       </div>
       <div id="features-container"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch mb-2 md:mb-8">
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch mb-2 md:mb-8">
         <!-- Features will be dynamically rendered here by config.js -->
       </div>
     </div>
@@ -308,98 +314,139 @@
     <div class="absolute inset-0 pointer-events-none z-0">
       <!-- About section elements -->
       <div
-        class="absolute top-0 md:op-4 left-6 md:left-1/3 w-20 h-20 md:w-32 md:h-32 opacity-30 animate-float-reverse decorative-bg">
+        class="absolute top-0 md:top-0 lg:top-4 left-6 md:left-16 lg:left-20 w-20 h-20 md:w-32 md:h-32 opacity-30 animate-float-reverse decorative-bg">
         <img src="assets/images/elements/heart-element.png" alt="" class="w-full h-full object-contain">
       </div>
       <div
-        class="absolute top-96 md:top-0 right-12 md:right-24 w-20 h-20 md:w-32 md:h-32 opacity-30 animate-float decorative-bg">
+        class="absolute top-96 lg:top-0 right-12 md:right-24 w-20 h-20 md:w-32 md:h-32 opacity-30 animate-float decorative-bg">
         <img src="assets/images/elements/sun-element.png" alt="" class="w-full h-full object-contain">
       </div>
-      <div class="absolute top-32 right-8 w-24 h-24 md:w-32 md:h-32 opacity-30 animate-float-slow decorative-bg">
+      <div
+        class="absolute top-[980px] md:top-32 left-0 md:left-36 w-24 h-24 md:w-32 md:h-32 opacity-30 animate-float-slow decorative-bg">
         <img src="assets/images/elements/cloud-element.png" alt="" class="w-full h-full object-contain">
       </div>
     </div>
 
-    <div class="container max-w-7xl mx-auto px-4 relative z-10">
-      <!-- Responsive Grid Layout: Single column on mobile, two columns on desktop -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+    <div class="container max-w-3xl mx-auto px-4 relative z-10">
+      <!-- Single Column Layout -->
+      <div class="text-center">
 
-        <!-- Image Column (Left) -->
-        <div class="order-2 lg:order-1 flex justify-center">
-          <div class="left-image wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
-            <img src="assets/images/full-shot-girl-playing-home.jpg" alt="Amanda with Children"
-              class="w-full max-w-sm rounded-lg shadow-lg object-cover mx-auto">
+        <!-- Section Header -->
+        <div class="section-heading mb-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+          <h6 class="text-base font-bold text-pink uppercase mb-3">About Me</h6>
+          <h2 class="text-2xl md:text-3xl capitalize text-gray-dark font-extrabold relative z-10 leading-tight">
+            Experienced <em class="not-italic text-pink">babysitter</em> providing quality childcare.
+          </h2>
+        </div>
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-2 gap-4 mb-6 max-w-sm md:max-w-xl mx-auto">
+          <div
+            class="bg-gradient-to-br from-blue/5 to-blue/10 p-4 rounded-xl border border-blue/20 hover:shadow-md transition-shadow duration-300">
+            <div class="text-center">
+              <!-- <div
+                class="w-10 h-10 mx-auto mb-2 bg-gradient-to-br from-blue to-blue/80 rounded-full flex items-center justify-center">
+                <i class="fa fa-calendar text-white text-sm"></i>
+              </div> -->
+              <h4 class="text-2xl font-extrabold text-blue mb-1">8+</h4>
+              <h6 class="text-xs font-medium text-gray-dark capitalize">years experience</h6>
+            </div>
+          </div>
+
+          <div
+            class="bg-gradient-to-br from-pink/5 to-pink/10 p-4 rounded-xl border border-pink/20 hover:shadow-md transition-shadow duration-300">
+            <div class="text-center">
+              <!-- <div
+                class="w-10 h-10 mx-auto mb-2 bg-gradient-to-br from-pink to-pink/80 rounded-full flex items-center justify-center">
+                <i class="fa fa-heart text-white text-sm"></i>
+              </div> -->
+              <h4 class="text-2xl font-extrabold text-pink mb-1">100+</h4>
+              <h6 class="text-xs font-medium text-gray-dark capitalize">happy families</h6>
+            </div>
           </div>
         </div>
 
-        <!-- Content Column (Right) -->
-        <div class="order-1 lg:order-2">
-          <div class="section-heading mb-8 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-            <h6 class="text-lg font-bold text-pink uppercase mb-4">About Me</h6>
-            <h2 class="text-3xl md:text-4xl capitalize text-gray-dark font-extrabold relative z-10 leading-tight">
-              Experienced <em class="not-italic text-pink">babysitter</em> providing quality childcare.
-            </h2>
-          </div>
+        <!-- Spacer Layer to prevent overlap with floating profile -->
+        <div class="h-8"></div>
 
-          <!-- Stats Grid -->
-          <div class="grid grid-cols-2 gap-6 mb-8">
-            <div class="about-item text-center lg:text-left wow fadeInLeft" data-wow-duration="1s"
-              data-wow-delay="0.5s">
-              <h4 class="text-4xl font-extrabold text-blue transition-colors duration-500">7+</h4>
-              <h6 class="text-base mt-1 font-normal text-gray-dark capitalize">years experience</h6>
-            </div>
-            <div class="about-item text-center lg:text-left wow fadeInRight" data-wow-duration="1s"
-              data-wow-delay="0.7s">
-              <h4 class="text-4xl font-extrabold text-blue transition-colors duration-500">100+
-              </h4>
-              <h6 class="text-base mt-1 font-normal text-gray-dark capitalize">happy families</h6>
+        <!-- Conversation Style Q&A -->
+        <div class="border max-w-xl mb-6 mt-8 mx-auto rounded-2xl shadow-sm relative">
+          <!-- Floating Profile Picture in Header -->
+          <div class="absolute -top-12 left-1/2 transform -translate-x-1/2 z-10">
+            <div
+              class="w-20 h-20 bg-gradient-to-br from-pink to-blue rounded-full border-2 border-white shadow-lg flex items-center justify-center">
+              <i class="fa fa-2x fa-user text-white text-sm"></i>
             </div>
           </div>
 
-          <!-- Description -->
-          <p class="text-lg text-gray-600 leading-relaxed mb-8 wow fadeInUp" data-wow-duration="1s"
-            data-wow-delay="0.9s">
-            Hi! 🧡
-            <br />
-            My name is Amanda, and I'm a babysitter with over 8 years of experience caring for young children in homes
-            and hotels across Puerto Rico.
-            <br />
-            <br />
-            🧡 I hold a bachelor's degree in Speech and Language Therapy, a master's in Special Education and Autism,
-            and a second master's in Psychological Counseling. I've also spent several years working as a preschool
-            special education teacher, supporting children's development through play, routines, and language-rich
-            activities.
-            <br />
-            <br />
-            🧡 I specialize in working with toddlers and preschoolers using fun, engaging, and creative approaches —
-            always with love, patience, and structure. I'm warm, reliable, and full of energy! I'd love to care for
-            your little ones and create meaningful, joyful experiences together.
-          </p>
+          <!-- Conversation Content -->
+          <div class="pt-8 p-4 space-y-3 text-left">
 
-          <!-- CTA Button -->
-          <div class="text-center lg:text-left wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.1s">
-            <!-- <a href="#contact"
-              class="inline-block bg-light-blue text-white text-sm font-normal capitalize px-6 py-3 rounded-default tracking-wide border-b-2 border-light-blue transition-all duration-500 hover:bg-white hover:text-light-blue hover:shadow-lg transform hover:-translate-y-1">
-              Learn More About Me
-            </a> -->
-            <a href="#contact"
-              class="inline-flex items-center bg-blue text-white text-base font-medium px-8 py-4 rounded-full tracking-wide border-2 border-blue transition-all duration-500 hover:bg-white hover:text-blue shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-              <span>Learn More About Me</span>
-              <i
-                class="fa fa-arrow-right ml-2 text-base transition-transform duration-500 group-hover:translate-x-1"></i>
-            </a>
+            <!-- Question 1 -->
+            <div class="flex justify-start">
+              <div class="max-w-xs bg-gray-100 rounded-xl rounded-bl-sm px-3 py-2 shadow-sm">
+                <p class="text-sm text-gray-700 font-medium">Tell me about yourself, Amanda!</p>
+              </div>
+            </div>
+
+            <!-- Answer 1 -->
+            <div class="flex justify-end">
+              <div class="max-w-sm bg-gradient-to-br from-blue to-blue/90 rounded-xl rounded-br-sm px-3 py-2 shadow-sm">
+                <p class="text-sm text-white">Hi! I'm Amanda, with 8+ years of experience caring for children in homes
+                  and hotels across Puerto Rico.</p>
+              </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="flex justify-start">
+              <div class="max-w-xs bg-gray-100 rounded-xl rounded-bl-sm px-3 py-2 shadow-sm">
+                <p class="text-sm text-gray-700 font-medium">What's your educational background?</p>
+              </div>
+            </div>
+
+            <!-- Answer 2 -->
+            <div class="flex justify-end">
+              <div class="max-w-sm bg-gradient-to-br from-blue to-blue/90 rounded-xl rounded-br-sm px-3 py-2 shadow-sm">
+                <p class="text-sm text-white"> Bachelor's in Speech Therapy, Master's in Special Education & Autism, and
+                  Master's in Psychological Counseling.</p>
+              </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="flex justify-start">
+              <div class="max-w-xs bg-gray-100 rounded-xl rounded-bl-sm px-3 py-2 shadow-sm">
+                <p class="text-sm text-gray-700 font-medium">What makes you special?</p>
+              </div>
+            </div>
+
+            <!-- Answer 3 -->
+            <div class="flex justify-end">
+              <div class="max-w-sm bg-gradient-to-br from-blue to-blue/90 rounded-xl rounded-br-sm px-3 py-2 shadow-sm">
+                <p class="text-sm text-white">I specialize in toddlers & preschoolers with fun, creative approaches —
+                  always with love, patience & structure!</p>
+              </div>
+            </div>
+
           </div>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="flex justify-end text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.1s">
+          <a href="#contact"
+            class="inline-flex items-center mb-4 bg-blue text-white text-sm font-medium px-6 py-3 rounded-full tracking-wide border-2 border-blue transition-all duration-500 hover:bg-white hover:text-blue shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+            <span>Let's Chat More!</span>
+            <i class="fa fa-arrow-right ml-2 text-sm transition-transform duration-500 group-hover:translate-x-1"></i>
+          </a>
         </div>
 
       </div>
     </div>
   </div>
 
-  <!-- Portfolio Section -->
+  <!-- Portfolio Section
   <div id="portfolio" class="our-portfolio section pt-16 overflow-hidden relative">
-    <!-- Decorative Background Elements -->
+    Decorative Background Elements
     <div class="absolute inset-0 pointer-events-none z-0">
-      <!-- Portfolio section elements -->
+      Portfolio section elements
       <div
         class="absolute top-0 left-12 md:left-24 w-24 h-24 md:w-32 md:h-32 opacity-30 animate-float-reverse decorative-bg">
         <img src="assets/images/elements/cloud-element.png" alt="" class="w-full h-full object-contain">
@@ -566,7 +613,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div id="contact"
     class="contact-us section py-20 bg-gradient-to-br from-light-blue/10 to-blue/10 relative overflow-hidden">
@@ -584,7 +631,8 @@
         class="absolute top-1/3 right-0 md:left-1/4 w-20 h-20 md:w-32 md:h-32 opacity-30 animate-float-slow decorative-bg">
         <img src="assets/images/elements/play-element.png" alt="" class="w-full h-full object-contain">
       </div>
-      <div class="absolute bottom-0 right-0 w-24 h-24 md:w-32 md:h-32 opacity-30 animate-float decorative-bg">
+      <div
+        class="absolute bottom-0 md:-bottom-10 right-0 w-24 h-24 md:w-32 md:h-32 opacity-30 animate-float decorative-bg">
         <img src="assets/images/elements/element-house.png" alt="" class="w-full h-full object-contain">
       </div>
     </div>
@@ -611,7 +659,7 @@
         <div class="lg:col-span-1 space-y-8 order-2 lg:order-1">
           <div class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
             <h3 class="text-2xl font-bold text-gray-dark mb-6">Get In Touch</h3>
-            <div class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4 lg:gap-6">
 
               <!-- Email -->
               <div class="flex items-center space-x-4 group">
@@ -623,7 +671,7 @@
                   <h4 class="font-semibold text-gray-dark">Email</h4>
                   <a href="mailto:titiamanda@gmail.com"
                     class="text-gray-600 hover:text-pink transition-colors duration-500">
-                    titiamanda@gmail.com
+                    titiamandababysitter@gmail.com
                   </a>
                 </div>
               </div>
