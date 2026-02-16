@@ -33,7 +33,7 @@ export default function ActivityCard({ feature }: ActivityCardProps) {
         )}
       >
         {/* Icon */}
-        <div className="mb-5">
+        <div className="mb-5 self-end">
           {IconComponent && (
             <IconComponent
               size={40}
@@ -44,9 +44,10 @@ export default function ActivityCard({ feature }: ActivityCardProps) {
         </div>
 
         {/* Title */}
-        <h4 className="mb-4 text-xl leading-snug font-bold text-white">
-          {feature.title}
-        </h4>
+        <h2
+          className="font-secondary mb-4 leading-snug font-bold text-white"
+          dangerouslySetInnerHTML={{ __html: feature.title }}
+        />
 
         {/* Description */}
         <p className="mt-auto text-sm leading-relaxed text-white/80">
