@@ -51,17 +51,17 @@ export default function Header() {
               e.preventDefault()
               handleNavClick('#top')
             }}
-            className="flex h-full items-center"
+            className="flex h-full items-center px-3 py-4"
           >
             <img
-              src="/assets/images/logo/logo-no-description.png"
+              src="/assets/images/logo/full-logo.svg"
               alt="Titi Amanda Logo"
-              className="hidden h-auto max-w-36 object-contain md:block"
+              className="hidden h-32 w-auto object-contain md:block"
             />
             <img
-              src="/assets/images/logo/mini-logo.png"
+              src="/assets/images/logo/logo-icon.svg"
               alt="Titi Amanda Logo"
-              className="block h-auto max-w-20 object-contain md:hidden"
+              className="block h-12 w-auto object-contain md:hidden"
             />
           </a>
 

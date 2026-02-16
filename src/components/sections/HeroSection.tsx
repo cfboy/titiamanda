@@ -8,7 +8,7 @@ export default function HeroSection() {
   return (
     <section
       id="top"
-      className="bg-cream relative flex items-center overflow-hidden px-4 pt-20 md:pt-32 md:pb-12"
+      className="bg-cream relative flex items-center overflow-hidden px-4 pt-30 md:pt-32 md:pb-12"
     >
       <div className="relative z-10 mx-auto w-full max-w-6xl">
         <div className="grid min-h-[80vh] grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-16">

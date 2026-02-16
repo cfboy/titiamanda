@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-8">
         <div className="flex flex-col items-center gap-4">
           <img
-            src="/assets/images/logo/full-logo.png"
+            src="/assets/images/logo/full-logo.svg"
             alt="Titi Amanda"
             className="h-auto max-w-44 object-contain opacity-80"
           />
