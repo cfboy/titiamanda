@@ -15,7 +15,6 @@ export interface Service {
 export interface Feature {
   id: string
   icon: string
-  emoji: string
   title: string
   description: string
   color: FeatureColor
@@ -26,7 +25,7 @@ export const SERVICES: Service[] = [
   {
     id: 'at-home-care',
     icon: 'House',
-    image: '/assets/images/kids-babysitting.jpg',
+    image: '/assets/images/children-coloring.png',
     title: 'At Home Care',
     description:
       "Personalized childcare in the comfort of your home. I provide a safe, engaging, and nurturing environment tailored to your child's routine.",
@@ -41,7 +40,7 @@ export const SERVICES: Service[] = [
   {
     id: 'hotel-vacation',
     icon: 'Luggage',
-    image: '/assets/images/portfolio-02.jpg',
+    image: '/assets/images/children-playing.png',
     title: 'Hotel & Vacation Babysitting',
     description:
       'Trusted babysitting while you enjoy your vacation or a night out. I bring age-appropriate activities and ensure your little ones feel safe and entertained.',
@@ -70,7 +69,7 @@ export const SERVICES: Service[] = [
   {
     id: 'family-outing',
     icon: 'Users',
-    image: '/assets/images/portfolio-04.jpg',
+    image: '/assets/images/close-up-child-enjoying-didactic-game.jpg',
     title: 'Family Outing Support',
     description:
       "Extra hands and heart while you're out and about. I accompany families during outings to provide calm, professional assistance.",
@@ -88,8 +87,7 @@ export const FEATURES: Feature[] = [
   {
     id: 'reading-time',
     icon: 'BookOpen',
-    emoji: '📚',
-    title: 'Reading Time',
+    title: 'Reading<br />Time',
     description:
       'We explore books together to build language skills, spark imagination, and create calm moments.',
     color: 'blue',
@@ -98,38 +96,34 @@ export const FEATURES: Feature[] = [
   {
     id: 'arts-crafts',
     icon: 'Paintbrush',
-    emoji: '🎨',
-    title: 'Arts & Crafts',
+    title: 'Arts &<br />Crafts',
     description:
       'Creative time using age-appropriate materials to support fine motor skills and self-expression.',
-    color: 'orange',
+    color: 'green',
     delay: 0.2,
   },
   {
     id: 'sensory-playtime',
     icon: 'Puzzle',
-    emoji: '🧩',
-    title: 'Sensory & Playtime',
+    title: 'Sensory &<br />Playtime',
     description:
       'Structured and free play using toys, music, sensory bins, or imaginative games to support learning.',
-    color: 'green',
+    color: 'dark',
     delay: 0.3,
   },
   {
     id: 'meal-support',
     icon: 'UtensilsCrossed',
-    emoji: '🍎',
-    title: 'Meal & Snack Support',
+    title: 'Meal & Snack<br />Support',
     description:
       'I help with feeding routines, encourage independence, and ensure safe, clean, and enjoyable mealtimes.',
-    color: 'pink',
+    color: 'orange',
     delay: 0.4,
   },
   {
     id: 'routines-transitions',
     icon: 'Clock',
-    emoji: '🚿',
-    title: 'Routines & Transitions',
+    title: 'Routines &<br />Transitions',
     description:
       'Support with daily routines such as hand washing, diapering, clean-up, naptime, or bedtime.',
     color: 'blue',
@@ -138,8 +132,7 @@ export const FEATURES: Feature[] = [
   {
     id: 'outdoor-play',
     icon: 'TreePine',
-    emoji: '🌳',
-    title: 'Outdoor Play',
+    title: 'Outdoor<br />Play',
     description:
       'Time outside in fresh air for movement, exploration, and physical activity—when space and weather allow.',
     color: 'green',
@@ -148,21 +141,19 @@ export const FEATURES: Feature[] = [
   {
     id: 'emotional-support',
     icon: 'HandHeart',
-    emoji: '🤝',
-    title: 'Emotional Support',
+    title: 'Emotional<br />Support',
     description:
       'Gentle guidance to help children feel safe, regulated, and confident during activities and transitions.',
-    color: 'pink',
+    color: 'dark',
     delay: 0.7,
   },
   {
     id: 'safety-supervision',
     icon: 'ShieldCheck',
-    emoji: '🧡',
-    title: 'Safety & Supervision',
+    title: 'Safety &<br />Supervision',
     description:
       "I prioritize your child's well-being at all times with close supervision, clear boundaries, and safe environments.",
-    color: 'blue',
+    color: 'orange',
     delay: 0.8,
   },
 ]

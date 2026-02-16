@@ -130,16 +130,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="bg-dark relative overflow-hidden py-20">
-      {/* Decorative cloud */}
-      <div className="pointer-events-none absolute top-10 right-10 hidden h-20 w-20 opacity-15 lg:block">
-        <img
-          src="/assets/images/elements/cloud-element.png"
-          alt=""
-          className="h-full w-full object-contain"
-        />
-      </div>
-
+    <section id="contact" className="bg-light relative overflow-hidden py-20">
       <div className="relative z-10 mx-auto max-w-6xl px-4">
         <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-5">
           {/* Left: Section Header + Contact Info */}
@@ -153,13 +144,13 @@ export default function ContactSection() {
           >
             {/* Section label + heading */}
             <div>
-              <p className="font-secondary mb-3 text-base font-bold tracking-[0.2em] text-white/70">
+              <h2 className="font-secondary mb-3 font-bold tracking-[0.2em] text-black/70">
                 Contact me
-              </p>
-              <h2 className="mb-4 text-3xl leading-tight font-extrabold text-white md:text-4xl">
-                Ready to Book Your Babysitting Session?
               </h2>
-              <p className="text-sm leading-relaxed text-white/70">
+              <h1 className="mb-4 text-3xl leading-tight font-extrabold text-black">
+                Ready to Book Your Babysitting Session?
+              </h1>
+              <p className="text-sm leading-relaxed text-black/70">
                 Fill out the this form and I&apos;ll get back to you within 24
                 hours to discuss your childcare needs.
               </p>
@@ -178,7 +169,7 @@ export default function ContactSection() {
                     <item.icon size={16} className="text-white" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold tracking-wide text-white/50 uppercase">
+                    <p className="text-xs font-bold tracking-wide text-black/50 uppercase">
                       {item.label}
                     </p>
                     {item.href ? (
@@ -186,12 +177,12 @@ export default function ContactSection() {
                         href={item.href}
                         target={item.target}
                         rel={item.target ? 'noopener noreferrer' : undefined}
-                        className="text-sm text-white transition-colors duration-300 hover:text-white/70"
+                        className="text-sm text-black transition-colors duration-300 hover:text-black/70"
                       >
                         {item.display}
                       </a>
                     ) : (
-                      <p className="text-sm text-white">{item.display}</p>
+                      <p className="text-sm text-black">{item.display}</p>
                     )}
                   </div>
                 </div>
@@ -218,10 +209,10 @@ export default function ContactSection() {
                   <div className="bg-green/10 flex h-16 w-16 items-center justify-center rounded-full">
                     <CheckCircle size={32} className="text-green" />
                   </div>
-                  <h4 className="text-gray-dark text-xl font-bold">
+                  <h4 className="text-xl font-bold text-black">
                     Message Sent Successfully!
                   </h4>
-                  <p className="text-gray-dark text-sm">
+                  <p className="text-sm leading-relaxed text-black/70">
                     Thank you for reaching out! I&apos;ll get back to you within
                     24 hours.
                   </p>
@@ -445,7 +436,7 @@ export default function ContactSection() {
                     <Button
                       type="submit"
                       disabled={formState === 'submitting'}
-                      className="bg-coral hover:bg-coral/90 h-auto gap-2 rounded-full px-8 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                      className="bg-blue hover:bg-blue/90 h-auto gap-2 rounded-full px-8 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
                     >
                       {formState === 'submitting' ? (
                         <>

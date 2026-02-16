@@ -8,6 +8,7 @@ import { slideInDown } from '@/lib/animations'
 import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
+  { label: 'Home', href: '#top' },
   { label: 'Services', href: '#services' },
   { label: 'Activities', href: '#features' },
   { label: 'About me', href: '#about' },
