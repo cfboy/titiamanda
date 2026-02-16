@@ -1,10 +1,12 @@
+import logoPrimary from '@/assets/images/logo/full-logo.svg'
+
 export default function Footer() {
   return (
     <footer className="border-t border-gray-100 bg-white">
       <div className="mx-auto max-w-7xl px-4 py-8">
         <div className="flex flex-col items-center gap-4">
           <img
-            src="/assets/images/logo/full-logo.svg"
+            src={logoPrimary}
             alt="Titi Amanda"
             className="h-auto max-w-44 object-contain opacity-80"
           />

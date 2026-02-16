@@ -2,6 +2,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 
+import logoPrimary from '@/assets/images/logo/full-logo.svg'
+import logoIcon from '@/assets/images/logo/logo-icon.svg'
 import { useScrollSpy } from '@/hooks/useScrollSpy'
 import { useStickyHeader } from '@/hooks/useStickyHeader'
 import { slideInDown } from '@/lib/animations'
@@ -54,12 +56,12 @@ export default function Header() {
             className="flex h-full items-center px-3 py-4"
           >
             <img
-              src="/assets/images/logo/full-logo.svg"
+              src={logoPrimary}
               alt="Titi Amanda Logo"
               className="hidden h-32 w-auto object-contain md:block"
             />
             <img
-              src="/assets/images/logo/logo-icon.svg"
+              src={logoIcon}
               alt="Titi Amanda Logo"
               className="block h-12 w-auto object-contain md:hidden"
             />
