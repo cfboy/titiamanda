@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+  --color-pink: #f99898;
+  --color-cream: #fff3eb;
+  --color-dark: #1e1e1e;
+  --color-blue: #0580eb;
+  --color-green: #31915a;
+  --color-red: #f42a2a;
+  --color-orange: #fc7e38;
+  --color-light-blue: #83c5f2;
+  --color-light-gray: #f7f7f7;
+  --color-gray-dark: #2a2a2a;
+  --color-gray-medium: #afafaf;
+  --color-coral: #fd6a54;
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --font-primary: 'REM', sans-serif;
+  --font-secondary: 'Gaegu', cursive;
+
+  --radius: 23px;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --shadow-light: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  --shadow-medium: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 8s ease-in-out infinite;
+  --animate-float-reverse: floatReverse 7s ease-in-out infinite;
+  --animate-bounce-slow: bounceSlow 4s ease-in-out infinite;
+  --animate-fade-in-up: fadeInUp 0.6s ease-out;
+
+  --keyframes-float: {
+    0%, 100%: { transform: translateY(0px) },
+    50%: { transform: translateY(-20px) }
+  };
+  --keyframes-floatReverse: {
+    0%, 100%: { transform: translateY(-10px) },
+    50%: { transform: translateY(10px) }
+  };
+  --keyframes-bounceSlow: {
+    0%, 100%: { transform: translateY(0) },
+    50%: { transform: translateY(-15px) }
+  };
+  --keyframes-fadeInUp: {
+    from: { opacity: 0, transform: translateY(30px) },
+    to: { opacity: 1, transform: translateY(0) }
+  };
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 210 97% 47%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 85% 78%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 30 100% 96%;
+    --muted-foreground: 0 0% 42%;
+    --accent: 30 100% 96%;
+    --accent-foreground: 0 0% 10%;
+    --destructive: 0 72% 56%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
+    --ring: 210 97% 47%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-cream text-dark font-primary antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply m-0;
+  }
+  h1 {
+    @apply text-4xl;
+  }
+  h2 {
+    @apply text-3xl;
+  }
+  h3 {
+    @apply text-2xl;
+  }
+  h4 {
+    @apply text-xl;
+  }
+  h5 {
+    @apply text-lg;
+  }
+  h6 {
+    @apply text-base;
+  }
+  a {
+    @apply no-underline;
+  }
+}
