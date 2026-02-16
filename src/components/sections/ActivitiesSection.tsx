@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useState, useRef } from 'react'
 
 import ActivityCard from '@/components/cards/ActivityCard'
 import {
@@ -7,11 +8,16 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from '@/components/ui/carousel'
 import { FEATURES } from '@/data/config'
 import { fadeInUp, staggerContainer, viewportConfig } from '@/lib/animations'
+import { cn } from '@/lib/utils'
 
 export default function ActivitiesSection() {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const carouselRef = useRef<CarouselApi | undefined>(undefined)
+
   return (
     <section
       id="features"
@@ -41,11 +47,22 @@ export default function ActivitiesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
+          className="px-4"
         >
           <Carousel
             opts={{
               align: 'start',
               loop: true,
+              dragFree: true,
+              containScroll: 'trimSnaps',
+            }}
+            setApi={api => {
+              carouselRef.current = api
+              if (api) {
+                api.on('select', () => {
+                  setActiveIndex(api.selectedScrollSnap())
+                })
+              }
             }}
             className="w-full"
           >
@@ -61,9 +78,30 @@ export default function ActivitiesSection() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="text-gray-medium hover:text-gray-dark -left-6 border-gray-200 bg-white/85 hover:bg-white" />
-            <CarouselNext className="text-gray-medium hover:text-gray-dark -right-6 border-gray-200 bg-white/85 hover:bg-white" />
+            <CarouselPrevious className="text-gray-medium hover:text-gray-dark -left-6 hidden border-gray-200 bg-white/85 hover:bg-white sm:flex" />
+            <CarouselNext className="text-gray-medium hover:text-gray-dark -right-6 hidden border-gray-200 bg-white/85 hover:bg-white sm:flex" />
           </Carousel>
+
+          {/* Dot Indicators - visible on mobile */}
+          <div className="mt-8 flex justify-center space-x-2 sm:hidden">
+            {FEATURES.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  if (carouselRef.current) {
+                    carouselRef.current.scrollTo(index)
+                  }
+                }}
+                className={cn(
+                  'h-2 w-2 rounded-full transition-all duration-300',
+                  activeIndex === index
+                    ? 'bg-pink scale-125'
+                    : 'bg-gray-300 hover:bg-gray-400'
+                )}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

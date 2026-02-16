@@ -62,7 +62,7 @@ export default function ServicesSection() {
         </motion.div>
 
         {/* Service Content Carousel */}
-        <div className="relative">
+        <div className="relative px-4">
           {/* Counter badge - positioned outside carousel */}
           <div className="mb-4 flex items-center justify-end">
             <div className="text-gray-medium text-sm font-semibold">
@@ -183,9 +183,30 @@ export default function ServicesSection() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="text-gray-medium hover:text-gray-dark -left-4 border-gray-200 bg-white/85 hover:bg-white" />
-            <CarouselNext className="text-gray-medium hover:text-gray-dark -right-4 border-gray-200 bg-white/85 hover:bg-white" />
+            <CarouselPrevious className="text-gray-medium hover:text-gray-dark -left-4 hidden border-gray-200 bg-white/85 hover:bg-white sm:flex" />
+            <CarouselNext className="text-gray-medium hover:text-gray-dark -right-4 hidden border-gray-200 bg-white/85 hover:bg-white sm:flex" />
           </Carousel>
+
+          {/* Dot Indicators - visible on mobile */}
+          <div className="mt-8 flex justify-center space-x-2 sm:hidden">
+            {SERVICES.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  if (carouselRef.current) {
+                    carouselRef.current.scrollTo(index)
+                  }
+                }}
+                className={cn(
+                  'h-2 w-2 rounded-full transition-all duration-300',
+                  activeIndex === index
+                    ? 'bg-pink scale-125'
+                    : 'bg-gray-300 hover:bg-gray-400'
+                )}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
