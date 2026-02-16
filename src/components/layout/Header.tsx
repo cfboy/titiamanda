@@ -8,11 +8,10 @@ import { slideInDown } from '@/lib/animations'
 import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
-  { label: 'Home', href: '#top' },
   { label: 'Services', href: '#services' },
   { label: 'Activities', href: '#features' },
-  { label: 'About Me', href: '#about' },
-  { label: 'Contact Me', href: '#contact' },
+  { label: 'About me', href: '#about' },
+  { label: 'Contact me', href: '#contact' },
 ]
 
 function scrollTo(id: string) {

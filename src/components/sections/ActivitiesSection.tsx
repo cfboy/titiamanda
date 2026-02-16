@@ -6,10 +6,7 @@ import { fadeInUp, staggerContainer, viewportConfig } from '@/lib/animations'
 
 export default function ActivitiesSection() {
   return (
-    <section
-      id="features"
-      className="relative overflow-hidden bg-[#d0e8f5] py-20"
-    >
+    <section id="features" className="relative overflow-hidden py-20">
       <div className="relative z-10 mx-auto max-w-7xl px-4">
         {/* Section Header */}
         <motion.div
@@ -18,13 +15,13 @@ export default function ActivitiesSection() {
           whileInView="visible"
           viewport={viewportConfig}
           custom={0.2}
-          className="mb-14 text-center text-start"
+          className="mb-14"
         >
-          <h2 className="text-gray-dark font-secondary mb-3 text-base font-bold">
+          <p className="font-secondary text-gray-dark mb-3 text-base font-bold tracking-[0.2em]">
             Activities
-          </h2>
-          <h2 className="text-gray-dark mx-auto max-w-3xl text-3xl leading-tight font-extrabold capitalize md:text-4xl">
-            Here&apos;s What&apos;s <span className="text-blue"> Included</span>{' '}
+          </p>
+          <h2 className="text-gray-dark max-w-lg text-3xl leading-tight font-extrabold md:text-4xl">
+            Here&apos;s What&apos;s <span className="text-blue">Included</span>{' '}
             During Babysitting Time:
           </h2>
         </motion.div>
@@ -44,8 +41,8 @@ export default function ActivitiesSection() {
 
         {/* Pagination dots */}
         <div className="mt-10 flex justify-center gap-2">
-          <span className="bg-blue h-3 w-3 rounded-full" />
-          <span className="h-3 w-3 rounded-full bg-white/60" />
+          <span className="bg-dark h-3 w-3 rounded-full" />
+          <span className="bg-dark/20 h-3 w-3 rounded-full" />
         </div>
       </div>
     </section>

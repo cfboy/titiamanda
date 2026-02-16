@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { GraduationCap, ArrowRight } from 'lucide-react'
 
 import {
   fadeInLeft,
@@ -7,21 +6,6 @@ import {
   fadeInUp,
   viewportConfig,
 } from '@/lib/animations'
-
-const STATS = [
-  { value: '8+', label: 'Years of\nExperience', color: 'blue' },
-  { value: '100+', label: 'Happy\nFamilies', color: 'pink' },
-]
-
-const CREDENTIALS = [
-  "Bachelor's in Speech Therapy",
-  "Master's in Special Education & Autism",
-  "Master's in Psychological Counseling",
-]
-
-function scrollToContact() {
-  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-}
 
 export default function AboutSection() {
   return (
@@ -61,18 +45,19 @@ export default function AboutSection() {
           custom={0.2}
           className="mb-14 text-center"
         >
-          <h6 className="text-pink mb-3 text-base font-bold tracking-wider uppercase">
+          <p className="font-secondary text-gray-dark mb-3 text-base font-bold tracking-[0.2em]">
             About Me
-          </h6>
-          <h2 className="text-gray-dark mx-auto max-w-3xl text-3xl leading-tight font-extrabold capitalize md:text-4xl">
-            Experienced <em className="text-pink not-italic">babysitter</em>{' '}
+          </p>
+          <h2 className="text-gray-dark mx-auto max-w-3xl text-3xl leading-tight font-extrabold md:text-4xl">
+            Experienced babysitter
+            <br />
             providing quality childcare.
           </h2>
         </motion.div>
 
         {/* 2-Column Layout */}
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Left: Profile Photo with colorful decorations */}
+          {/* Left: Profile Photo */}
           <motion.div
             variants={fadeInLeft}
             initial="hidden"
@@ -101,65 +86,43 @@ export default function AboutSection() {
           >
             {/* Stats row */}
             <div className="grid grid-cols-2 gap-6">
-              {STATS.map(stat => (
-                <div key={stat.label}>
-                  <p
-                    className={`text-5xl font-extrabold text-${stat.color} md:text-6xl`}
-                  >
-                    {stat.value}
-                  </p>
-                  <p className="text-gray-dark mt-2 text-sm font-medium whitespace-pre-line">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
+              <div>
+                <p className="text-gray-dark text-5xl font-extrabold md:text-6xl">
+                  8+
+                </p>
+                <p className="text-gray-dark mt-2 text-sm font-medium">
+                  Years of
+                  <br />
+                  Experience
+                </p>
+              </div>
+              <div>
+                <p className="text-gray-dark text-5xl font-extrabold md:text-6xl">
+                  100+
+                </p>
+                <p className="text-gray-dark mt-2 text-sm font-medium">
+                  Happy
+                  <br />
+                  Families :)
+                </p>
+              </div>
             </div>
 
             <div className="space-y-4">
               <p className="text-gray-dark text-base leading-relaxed md:text-lg">
-                Hi! I&apos;m Amanda, a professional babysitter with over{' '}
-                <span className="text-blue font-bold">
-                  8 years of experience
-                </span>{' '}
-                caring for children in homes and hotels across Puerto Rico.
+                Hi! I&apos;m Amanda, with 8+ years of experience caring for
+                children in homes and hotels across Puerto Rico.
               </p>
               <p className="text-gray-dark text-base leading-relaxed md:text-lg">
-                I specialize in toddlers & preschoolers with fun, creative
-                approaches — always with{' '}
-                <span className="text-pink font-bold">love</span>,{' '}
-                <span className="text-pink font-bold">patience</span> &{' '}
-                <span className="text-pink font-bold">structure</span>!
+                Bachelor&apos;s in Speech Therapy, Master&apos;s in Special
+                Education &amp; Autism, and Master&apos;s in Psychological
+                Counseling.
+              </p>
+              <p className="text-gray-dark text-base leading-relaxed md:text-lg">
+                I specialize in toddlers &amp; preschoolers with fun, creative
+                approaches, always with love, patience &amp; structure!
               </p>
             </div>
-
-            {/* Credentials */}
-            <div className="space-y-3">
-              <div className="mb-3 flex items-center gap-2">
-                <GraduationCap size={18} className="text-blue" />
-                <h5 className="text-gray-dark text-sm font-bold tracking-wider uppercase">
-                  Education
-                </h5>
-              </div>
-              <ul className="space-y-2">
-                {CREDENTIALS.map(cred => (
-                  <li
-                    key={cred}
-                    className="text-gray-dark flex items-start gap-2 text-sm"
-                  >
-                    <span className="bg-blue mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full" />
-                    {cred}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <button
-              onClick={scrollToContact}
-              className="bg-blue border-blue hover:text-blue inline-flex items-center gap-2 rounded-full border-2 px-7 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:shadow-lg"
-            >
-              Book a Session
-              <ArrowRight size={16} />
-            </button>
           </motion.div>
         </div>
       </div>

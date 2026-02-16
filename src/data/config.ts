@@ -102,7 +102,7 @@ export const FEATURES: Feature[] = [
     title: 'Arts & Crafts',
     description:
       'Creative time using age-appropriate materials to support fine motor skills and self-expression.',
-    color: 'green',
+    color: 'orange',
     delay: 0.2,
   },
   {
@@ -112,7 +112,7 @@ export const FEATURES: Feature[] = [
     title: 'Sensory & Playtime',
     description:
       'Structured and free play using toys, music, sensory bins, or imaginative games to support learning.',
-    color: 'dark',
+    color: 'green',
     delay: 0.3,
   },
   {
@@ -122,7 +122,7 @@ export const FEATURES: Feature[] = [
     title: 'Meal & Snack Support',
     description:
       'I help with feeding routines, encourage independence, and ensure safe, clean, and enjoyable mealtimes.',
-    color: 'orange',
+    color: 'pink',
     delay: 0.4,
   },
   {

@@ -40,7 +40,7 @@ export default function HeroSection() {
                 onClick={scrollToContact}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.97 }}
-                className="bg-blue hover:bg-blue/90 inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-lg transition-colors duration-200"
+                className="bg-dark hover:bg-dark/90 inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-lg transition-colors duration-200"
               >
                 Book a session
               </motion.button>
