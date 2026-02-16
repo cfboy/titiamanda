@@ -64,7 +64,7 @@ export default function AboutSection() {
           >
             {/* Stats row */}
             <div className="grid grid-cols-2 gap-2">
-              <div>
+              <div className="flex flex-col items-center">
                 <p className="text-blue font-secondary text-5xl font-extrabold md:text-6xl">
                   8+
                 </p>
@@ -74,7 +74,7 @@ export default function AboutSection() {
                   Experience
                 </p>
               </div>
-              <div>
+              <div className="flex flex-col items-center">
                 <p className="text-blue font-secondary text-5xl font-extrabold md:text-6xl">
                   100+
                 </p>

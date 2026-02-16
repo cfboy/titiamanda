@@ -140,7 +140,7 @@ export default function ContactSection() {
             whileInView="visible"
             viewport={viewportConfig}
             custom={0.2}
-            className="order-2 space-y-8 lg:order-1 lg:col-span-2"
+            className="order-1 space-y-8 lg:col-span-2"
           >
             {/* Section label + heading */}
             <div>

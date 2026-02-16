@@ -53,7 +53,7 @@ export default function ActivitiesSection() {
             opts={{
               align: 'start',
               loop: true,
-              dragFree: true,
+              // dragFree: true,
               containScroll: 'trimSnaps',
             }}
             setApi={api => {
