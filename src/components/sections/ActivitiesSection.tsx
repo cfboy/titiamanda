@@ -43,13 +43,27 @@ export default function ActivitiesSection() {
           </h2>
         </motion.div>
 
-        {/* Activities Carousel */}
+        {/* Desktop: all 8 activities visible at once — the safety/supervision
+            cards must never hide behind a carousel */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="px-4"
+          className="hidden gap-4 lg:grid lg:grid-cols-4"
+        >
+          {FEATURES.map(feature => (
+            <ActivityCard key={feature.id} feature={feature} />
+          ))}
+        </motion.div>
+
+        {/* Mobile/tablet: carousel */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          className="px-4 lg:hidden"
         >
           <Carousel
             opts={{
@@ -84,8 +98,8 @@ export default function ActivitiesSection() {
             <CarouselNext className="text-gray-medium hover:text-gray-dark -right-6 hidden border-gray-200 bg-white/85 hover:bg-white sm:flex" />
           </Carousel>
 
-          {/* Dot Indicators - visible on mobile */}
-          <div className="mt-8 flex justify-center space-x-2 sm:hidden">
+          {/* Dot Indicators */}
+          <div className="mt-8 flex justify-center">
             {FEATURES.map((_, index) => (
               <button
                 key={index}
@@ -94,14 +108,19 @@ export default function ActivitiesSection() {
                     carouselRef.current.scrollTo(index)
                   }
                 }}
-                className={cn(
-                  'h-2 w-2 rounded-full transition-all duration-300',
-                  activeIndex === index
-                    ? 'bg-pink scale-125'
-                    : 'bg-gray-300 hover:bg-gray-400'
-                )}
+                className="flex h-11 w-8 items-center justify-center"
                 aria-label={t('a11y.goToSlide', { n: index + 1 })}
-              />
+                aria-current={activeIndex === index ? 'true' : undefined}
+              >
+                <span
+                  className={cn(
+                    'h-2 w-2 rounded-full transition-all duration-300',
+                    activeIndex === index
+                      ? 'bg-pink-deep scale-125'
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  )}
+                />
+              </button>
             ))}
           </div>
         </motion.div>

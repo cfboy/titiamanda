@@ -1,3 +1,5 @@
+import { MotionConfig } from 'framer-motion'
+
 import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
 import AboutSection from '@/components/sections/AboutSection'
@@ -11,16 +13,18 @@ export default function App() {
   useDocumentMeta()
 
   return (
-    <div className="bg-cream min-h-screen">
-      <Header />
-      <main>
-        <HeroSection />
-        <ServicesSection />
-        <ActivitiesSection />
-        <AboutSection />
-        <ContactSection />
-      </main>
-      <Footer />
-    </div>
+    <MotionConfig reducedMotion="user">
+      <div className="bg-cream min-h-screen">
+        <Header />
+        <main>
+          <HeroSection />
+          <ServicesSection />
+          <ActivitiesSection />
+          <AboutSection />
+          <ContactSection />
+        </main>
+        <Footer />
+      </div>
+    </MotionConfig>
   )
 }

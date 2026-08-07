@@ -14,7 +14,7 @@
   "hero": {
     "title": "Servicios de Niñera\nde Calidad",
     "subtitle": "Cuido personalizado en hogares y hoteles, brindando <comfort>comodidad</comfort>, <safety>seguridad</safety> y <joy>aprendizaje divertido</joy> a cada niño.",
-    "cta": "Reserva una sesión",
+    "cta": "Solicita disponibilidad",
     "imageAlt": "Niños felices con Titi Amanda"
   },
   "services": {
@@ -111,7 +111,7 @@
   },
   "contact": {
     "label": "Contáctame",
-    "heading": "¿Quieres Reservar tu Sesión de Cuido?",
+    "heading": "Solicita Disponibilidad para tu Sesión de Cuido",
     "intro": "Completa este formulario y te responderé dentro de 24 horas para hablar sobre las necesidades de cuido de tus hijos.",
     "items": {
       "email": "Correo",
@@ -129,7 +129,7 @@
       "phonePlaceholder": "Número de teléfono",
       "children": "Información de los Niños*",
       "childrenPlaceholder": "Nombres y edades (ej. Emma 5, Lucas 3)",
-      "serviceType": "Tipo de Servicio*",
+      "serviceType": "Tipo de Servicio",
       "servicePlaceholder": "Selecciona un tipo de servicio",
       "message": "Información Adicional",
       "messagePlaceholder": "Cuéntame sobre los intereses de tus hijos, necesidades especiales, actividades preferidas o preferencias de horario.",
@@ -147,7 +147,8 @@
         "body": "¡Gracias por escribirme! Te responderé dentro de 24 horas.",
         "again": "Enviar Otro Mensaje"
       },
-      "error": "Lo siento, hubo un error al enviar tu mensaje. Intenta de nuevo o contáctame directamente."
+      "error": "Lo siento, hubo un error al enviar tu mensaje. Intenta de nuevo o contáctame directamente.",
+      "errorWhatsapp": "Escríbeme por WhatsApp"
     },
     "validation": {
       "nameMin": "El nombre debe tener al menos 2 caracteres",

@@ -14,7 +14,7 @@
   "hero": {
     "title": "Quality Babysitter\nServices",
     "subtitle": "Personalized care in homes and hotels, bringing <comfort>comfort</comfort>, <safety>safety</safety>, and <joy>joyful learning</joy> to every child.",
-    "cta": "Book a session",
+    "cta": "Check availability",
     "imageAlt": "Happy children with Titi Amanda"
   },
   "services": {
@@ -111,7 +111,7 @@
   },
   "contact": {
     "label": "Contact me",
-    "heading": "Ready to Book Your Babysitting Session?",
+    "heading": "Check Availability for Your Babysitting Session",
     "intro": "Fill out this form and I'll get back to you within 24 hours to discuss your childcare needs.",
     "items": {
       "email": "Email",
@@ -129,7 +129,7 @@
       "phonePlaceholder": "Phone number",
       "children": "Children info*",
       "childrenPlaceholder": "Names and Ages (e.g. Emma 5, Lucas 3)",
-      "serviceType": "Service Type*",
+      "serviceType": "Service Type",
       "servicePlaceholder": "Select a service type",
       "message": "Additional Information",
       "messagePlaceholder": "Tell me about your children's interests, any special needs, preferred activities, or scheduling preferences.",
@@ -147,7 +147,8 @@
         "body": "Thank you for reaching out! I'll get back to you within 24 hours.",
         "again": "Send Another Message"
       },
-      "error": "Sorry, there was an error sending your message. Please try again or contact me directly."
+      "error": "Sorry, there was an error sending your message. Please try again or contact me directly.",
+      "errorWhatsapp": "Message me on WhatsApp"
     },
     "validation": {
       "nameMin": "Name must be at least 2 characters",

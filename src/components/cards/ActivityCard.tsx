@@ -12,12 +12,13 @@ interface ActivityCardProps {
   feature: Feature
 }
 
+// Deep variants: white body text on these fills must hold 4.5:1
 const CARD_BG: Record<string, string> = {
-  blue: 'bg-blue',
-  green: 'bg-green',
+  blue: 'bg-blue-deep',
+  green: 'bg-green-deep',
   dark: 'bg-[#1a1a1a]',
-  orange: 'bg-orange',
-  pink: 'bg-pink',
+  orange: 'bg-orange-deep',
+  pink: 'bg-pink-deep',
 }
 
 export default function ActivityCard({ feature }: ActivityCardProps) {

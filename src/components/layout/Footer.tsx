@@ -14,7 +14,7 @@ export default function Footer() {
             alt={t('a11y.logoAlt')}
             className="h-auto max-w-44 object-contain opacity-80"
           />
-          <p className="text-gray-medium text-center text-sm leading-relaxed">
+          <p className="text-gray-text text-center text-sm leading-relaxed">
             {t('footer.copyright', { year: new Date().getFullYear() })}
           </p>
           <p className="text-gray-dark text-center text-sm font-bold">

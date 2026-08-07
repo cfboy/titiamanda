@@ -69,7 +69,7 @@ function LanguageSwitcher({ className }: { className?: string }) {
             'focus-visible:outline-pink rounded-full px-2.5 py-1 text-xs font-bold tracking-wider uppercase transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-solid',
             lang === current
               ? 'text-gray-dark bg-white shadow-sm'
-              : 'text-gray-dark/70 hover:text-pink'
+              : 'text-gray-dark/70 hover:text-pink-deep'
           )}
         >
           {lang}
@@ -89,6 +89,8 @@ export default function Header() {
 
   const handleNavClick = (href: string) => {
     setMobileOpen(false)
+    // Keep the hash current so the language switcher can preserve position
+    history.replaceState(null, '', href)
     scrollTo(href.replace('#', ''))
   }
 
@@ -148,8 +150,8 @@ export default function Header() {
                     className={cn(
                       'rounded-full px-4 py-2 text-sm font-medium tracking-wider capitalize transition-colors duration-300',
                       isActive
-                        ? 'text-pink bg-pink/10'
-                        : 'text-gray-dark hover:text-pink'
+                        ? 'text-pink-deep bg-pink/10'
+                        : 'text-gray-dark hover:text-pink-deep'
                     )}
                   >
                     {t(`nav.${link.key}`)}
@@ -248,8 +250,8 @@ export default function Header() {
                           className={cn(
                             'block w-full rounded-2xl px-6 py-4 text-center text-lg font-semibold capitalize transition-colors duration-200',
                             isActive
-                              ? 'bg-pink/10 text-pink'
-                              : 'text-gray-dark hover:bg-pink/5 hover:text-pink'
+                              ? 'bg-pink/10 text-pink-deep'
+                              : 'text-gray-dark hover:bg-pink/5 hover:text-pink-deep'
                           )}
                         >
                           {t(`nav.${link.key}`)}

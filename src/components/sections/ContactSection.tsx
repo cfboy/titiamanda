@@ -113,7 +113,15 @@ export default function ContactSection() {
     },
     onSubmit: async ({ value }) => {
       const result = contactSchema.safeParse(value)
-      if (!result.success) return
+      if (!result.success) {
+        const firstInvalid = result.error.issues[0]?.path?.[0]
+        if (typeof firstInvalid === 'string') {
+          const el = document.getElementById(firstInvalid)
+          el?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+          el?.focus({ preventScroll: true })
+        }
+        return
+      }
 
       setFormState('submitting')
       try {
@@ -226,7 +234,7 @@ export default function ContactSection() {
                   </p>
                   <Button
                     onClick={handleReset}
-                    className="bg-green hover:bg-green/90 mt-2 gap-2 rounded-full px-6 text-white"
+                    className="bg-green-deep hover:bg-green-deep/90 mt-2 gap-2 rounded-full px-6 text-white"
                   >
                     <Plus size={15} />
                     {t('contact.form.success.again')}
@@ -292,6 +300,7 @@ export default function ContactSection() {
                         <Input
                           id="email"
                           type="email"
+                          autoComplete="email"
                           placeholder={t('contact.form.emailPlaceholder')}
                           value={field.state.value}
                           onBlur={field.handleBlur}
@@ -441,18 +450,27 @@ export default function ContactSection() {
                       <p className="text-red text-sm">
                         {t('contact.form.error')}
                       </p>
+                      <a
+                        href={CONTACT_INFO.whatsapp}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-green-deep mt-1.5 inline-flex items-center gap-1.5 text-sm font-semibold underline underline-offset-2"
+                      >
+                        <MessageCircle size={15} />
+                        {t('contact.form.errorWhatsapp')}
+                      </a>
                     </div>
                   )}
 
                   {/* Submit */}
                   <div className="mt-2 flex items-center justify-between md:col-span-2">
-                    <p className="text-gray-medium text-xs">
+                    <p className="text-gray-text text-xs">
                       {t('contact.form.requiredNote')}
                     </p>
                     <Button
                       type="submit"
                       disabled={formState === 'submitting'}
-                      className="bg-blue hover:bg-blue/90 h-auto gap-2 rounded-full px-8 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                      className="bg-blue-deep hover:bg-blue-deep/90 h-auto gap-2 rounded-full px-8 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
                     >
                       {formState === 'submitting' ? (
                         <>

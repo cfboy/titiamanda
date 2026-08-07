@@ -11,9 +11,9 @@ function HeroSubtitle({ className }: { className: string }) {
       <Trans
         i18nKey="hero.subtitle"
         components={{
-          comfort: <strong className="text-orange font-semibold" />,
-          safety: <strong className="text-blue font-semibold" />,
-          joy: <strong className="text-green font-semibold" />,
+          comfort: <strong className="text-orange-deep font-semibold" />,
+          safety: <strong className="text-blue-deep font-semibold" />,
+          joy: <strong className="text-green-deep font-semibold" />,
         }}
       />
     </p>
@@ -27,7 +27,7 @@ function HeroCta() {
       onClick={scrollToContact}
       whileHover={{ y: -2 }}
       whileTap={{ scale: 0.97 }}
-      className="inline-flex items-center gap-2 rounded-full bg-blue-500 px-8 py-3.5 text-sm font-semibold text-white shadow-lg transition-colors duration-200 hover:bg-blue-600"
+      className="bg-blue-deep hover:bg-blue-deep/90 inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-lg transition-colors duration-200"
     >
       {t('hero.cta')}
     </motion.button>

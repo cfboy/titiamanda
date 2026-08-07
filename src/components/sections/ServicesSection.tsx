@@ -65,7 +65,7 @@ export default function ServicesSection() {
         <div className="relative px-4">
           {/* Counter badge - positioned outside carousel */}
           <div className="mb-4 flex items-center justify-end">
-            <div className="text-gray-medium text-sm font-semibold">
+            <div className="text-gray-text text-sm font-semibold">
               {activeIndex + 1}/{SERVICES.length}
             </div>
           </div>
@@ -87,9 +87,12 @@ export default function ServicesSection() {
           >
             <CarouselContent className="-ml-0">
               {SERVICES.map((service, index) => (
-                <CarouselItem key={index} className="pl-0">
+                <CarouselItem
+                  key={index}
+                  className="basis-[92%] pl-0 sm:basis-full"
+                >
                   {/* Service Content — 2-column layout */}
-                  <div className="grid min-h-105 grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+                  <div className="grid grid-cols-1 items-center gap-10 lg:min-h-105 lg:grid-cols-2 lg:gap-16">
                     {/* Left: Service Image with blob */}
                     <motion.div
                       variants={fadeInLeft}
@@ -192,8 +195,8 @@ export default function ServicesSection() {
             <CarouselNext className="text-gray-medium hover:text-gray-dark -right-4 hidden border-gray-200 bg-white/85 hover:bg-white sm:flex" />
           </Carousel>
 
-          {/* Dot Indicators - visible on mobile */}
-          <div className="mt-8 flex justify-center space-x-2 sm:hidden">
+          {/* Dot Indicators — position cue on every viewport */}
+          <div className="mt-8 flex justify-center">
             {SERVICES.map((_, index) => (
               <button
                 key={index}
@@ -202,14 +205,19 @@ export default function ServicesSection() {
                     carouselRef.current.scrollTo(index)
                   }
                 }}
-                className={cn(
-                  'h-2 w-2 rounded-full transition-all duration-300',
-                  activeIndex === index
-                    ? 'bg-pink scale-125'
-                    : 'bg-gray-300 hover:bg-gray-400'
-                )}
+                className="flex h-11 w-8 items-center justify-center"
                 aria-label={t('a11y.goToSlide', { n: index + 1 })}
-              />
+                aria-current={activeIndex === index ? 'true' : undefined}
+              >
+                <span
+                  className={cn(
+                    'h-2 w-2 rounded-full transition-all duration-300',
+                    activeIndex === index
+                      ? 'bg-pink-deep scale-125'
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  )}
+                />
+              </button>
             ))}
           </div>
         </div>
