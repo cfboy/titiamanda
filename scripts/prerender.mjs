@@ -67,12 +67,6 @@ const LOCALES = [
   },
 ]
 
-const HREFLANG_LINKS = [
-  `<link rel="alternate" hreflang="es" href="${SITE}/" />`,
-  `<link rel="alternate" hreflang="en" href="${SITE}/en/" />`,
-  `<link rel="alternate" hreflang="x-default" href="${SITE}/" />`,
-].join('\n  ')
-
 // First-visit language redirect (Spanish root only). Skips crawlers so
 // Googlebot's en-US renderer never gets bounced off the Spanish page, and
 // skips anyone with a stored preference (set by the switcher or a prior visit).
@@ -104,28 +98,22 @@ function jsonLd({ lng, url, meta }) {
   }
 }
 
+// Canonical, hreflang, and the OG/Twitter block live statically in index.html
+// (Spanish defaults) so crawlers of the raw template still find them; only
+// locale-specific values are swapped in below.
 function headTags(locale) {
-  const { meta, url, ogLocale, ogLocaleAlt } = locale
+  const { ogLocaleAlt } = locale
   return [
-    `<link rel="canonical" href="${url}" />`,
-    HREFLANG_LINKS,
-    `<meta property="og:type" content="website" />`,
-    `<meta property="og:url" content="${url}" />`,
-    `<meta property="og:title" content="${meta.title}" />`,
-    `<meta property="og:description" content="${meta.description}" />`,
-    `<meta property="og:image" content="${OG_IMAGE}" />`,
-    `<meta property="og:image:width" content="1200" />`,
-    `<meta property="og:image:height" content="630" />`,
-    `<meta property="og:image:alt" content="${meta.ogImageAlt}" />`,
-    `<meta property="og:site_name" content="Titi Amanda" />`,
-    `<meta property="og:locale" content="${ogLocale}" />`,
     `<meta property="og:locale:alternate" content="${ogLocaleAlt}" />`,
-    `<meta name="twitter:card" content="summary_large_image" />`,
-    `<meta name="twitter:title" content="${meta.title}" />`,
-    `<meta name="twitter:description" content="${meta.description}" />`,
-    `<meta name="twitter:image" content="${OG_IMAGE}" />`,
     `<script type="application/ld+json">${JSON.stringify(jsonLd(locale))}</script>`,
   ].join('\n  ')
+}
+
+function swapMetaContent(html, attr, name, value) {
+  return html.replace(
+    new RegExp(`(<meta ${attr}="${name}" content=")[^"]*(")`),
+    (_, pre, post) => pre + value + post
+  )
 }
 
 // --- Render -----------------------------------------------------------------
@@ -145,6 +133,18 @@ for (const locale of LOCALES) {
     )
     .replace('<!--head-seo-->', () => headTags(locale))
     .replace('<!--app-html-->', () => appHtml)
+
+  html = html.replace(
+    /(<link rel="canonical" href=")[^"]*(")/,
+    (_, pre, post) => pre + locale.url + post
+  )
+  html = swapMetaContent(html, 'property', 'og:url', locale.url)
+  html = swapMetaContent(html, 'property', 'og:title', locale.meta.title)
+  html = swapMetaContent(html, 'property', 'og:description', locale.meta.description)
+  html = swapMetaContent(html, 'property', 'og:image:alt', locale.meta.ogImageAlt)
+  html = swapMetaContent(html, 'property', 'og:locale', locale.ogLocale)
+  html = swapMetaContent(html, 'name', 'twitter:title', locale.meta.title)
+  html = swapMetaContent(html, 'name', 'twitter:description', locale.meta.description)
 
   if (locale.lng === 'es') {
     html = html.replace('</head>', `${REDIRECT_SNIPPET}\n</head>`)
