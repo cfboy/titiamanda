@@ -46,13 +46,16 @@ export default function AboutSection() {
             className="flex justify-center lg:justify-end"
           >
             <div className="relative">
-              {/* Photo has a baked-in white background; the bottom fade melts
-                  the cutout edge into the white section */}
+              {/* Brand blob behind the transparent cutout — same motif as the
+                  services slides; bottom fade melts the torso edge away */}
+              <div className="pointer-events-none absolute inset-x-[-8%] top-[14%] bottom-[4%]">
+                <div className="from-pink/40 to-light-blue/30 h-full w-full rounded-[60%_40%_55%_45%/45%_60%_40%_55%] bg-linear-to-br blur-sm" />
+              </div>
               <img
                 src="/assets/images/titiamanda-profile.webp"
                 alt={t('about.photoAlt')}
                 loading="lazy"
-                className="h-auto w-56 mask-[linear-gradient(to_bottom,black_86%,transparent)] object-contain md:w-72 lg:w-80"
+                className="relative z-10 h-auto w-56 mask-[linear-gradient(to_bottom,black_88%,transparent)] object-contain md:w-72 lg:w-80"
               />
             </div>
           </motion.div>
