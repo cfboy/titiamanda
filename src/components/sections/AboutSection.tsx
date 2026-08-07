@@ -46,11 +46,13 @@ export default function AboutSection() {
             className="flex justify-center lg:justify-end"
           >
             <div className="relative">
+              {/* Photo has a baked-in white background; the bottom fade melts
+                  the cutout edge into the white section */}
               <img
-                src="/assets/images/titiamanda.webp"
+                src="/assets/images/titiamanda-profile.webp"
                 alt={t('about.photoAlt')}
                 loading="lazy"
-                className="relative z-10 h-auto w-60 rounded-lg object-contain md:w-80 lg:w-87.5"
+                className="h-auto w-56 mask-[linear-gradient(to_bottom,black_86%,transparent)] object-contain md:w-72 lg:w-80"
               />
             </div>
           </motion.div>

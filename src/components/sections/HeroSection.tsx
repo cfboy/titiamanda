@@ -27,7 +27,7 @@ function HeroCta() {
       onClick={scrollToContact}
       whileHover={{ y: -2 }}
       whileTap={{ scale: 0.97 }}
-      className="bg-blue-deep hover:bg-blue-deep/90 inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-lg transition-colors duration-200"
+      className="bg-blue-deep hover:bg-blue-deep/90 inline-flex items-center gap-2 rounded-full px-9 py-4 text-base font-semibold text-white shadow-lg transition-colors duration-200"
     >
       {t('hero.cta')}
     </motion.button>
@@ -49,7 +49,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
-            className="text-3xl leading-tight font-extrabold whitespace-pre-line text-black"
+            className="text-3xl leading-tight font-extrabold text-balance whitespace-pre-line text-black"
           >
             {t('hero.title')}
           </motion.h1>
@@ -85,7 +85,7 @@ export default function HeroSection() {
             transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
             className="space-y-6 text-left"
           >
-            <h1 className="mb-4 text-6xl leading-tight font-extrabold whitespace-pre-line text-black">
+            <h1 className="mb-4 text-6xl leading-tight font-extrabold text-balance whitespace-pre-line text-black">
               {t('hero.title')}
             </h1>
             <HeroSubtitle className="max-w-md text-xl leading-relaxed text-black/70" />

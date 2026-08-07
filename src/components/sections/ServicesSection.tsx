@@ -27,6 +27,13 @@ const BLOB_COLORS: Record<string, string> = {
   green: 'from-green/30 to-green/10',
 }
 
+const DOT_COLORS: Record<string, string> = {
+  pink: 'bg-pink',
+  blue: 'bg-blue',
+  orange: 'bg-orange',
+  green: 'bg-green',
+}
+
 export default function ServicesSection() {
   const { t } = useTranslation()
   const [activeIndex, setActiveIndex] = useState(0)
@@ -63,13 +70,6 @@ export default function ServicesSection() {
 
         {/* Service Content Carousel */}
         <div className="relative px-4">
-          {/* Counter badge - positioned outside carousel */}
-          <div className="mb-4 flex items-center justify-end">
-            <div className="text-gray-text text-sm font-semibold">
-              {activeIndex + 1}/{SERVICES.length}
-            </div>
-          </div>
-
           <Carousel
             opts={{
               align: 'start',
@@ -85,7 +85,7 @@ export default function ServicesSection() {
             }}
             className="w-full"
           >
-            <CarouselContent className="-ml-0">
+            <CarouselContent className="ml-0">
               {SERVICES.map((service, index) => (
                 <CarouselItem
                   key={index}
@@ -177,8 +177,15 @@ export default function ServicesSection() {
                               ).map(item => (
                                 <li
                                   key={item}
-                                  className="text-gray-dark text-sm md:text-base"
+                                  className="text-gray-dark flex items-center gap-2.5 text-sm md:text-base"
                                 >
+                                  <span
+                                    aria-hidden="true"
+                                    className={cn(
+                                      'h-1.5 w-1.5 shrink-0 rounded-full',
+                                      DOT_COLORS[service.color]
+                                    )}
+                                  />
                                   {item}
                                 </li>
                               ))}
