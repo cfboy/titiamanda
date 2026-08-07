@@ -1,0 +1,180 @@
+{
+  "meta": {
+    "title": "Titi Amanda — Niñera Profesional en San Juan, Puerto Rico | Cuido de Niños",
+    "description": "Niñera profesional en San Juan, Puerto Rico. Cuido de niños a domicilio y en hoteles, con juego sin pantallas y aprendizaje divertido.",
+    "keywords": "niñera, niñera San Juan, cuido de niños, cuido de niños Puerto Rico, niñera en hoteles, niñera a domicilio, cuido para niños con autismo, babysitter Puerto Rico",
+    "ogImageAlt": "Titi Amanda — Servicios de Niñera de Calidad en Puerto Rico"
+  },
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "activities": "Actividades",
+    "about": "Sobre mí",
+    "contact": "Contáctame"
+  },
+  "hero": {
+    "title": "Servicios de Niñera\nde Calidad",
+    "subtitle": "Cuido personalizado en hogares y hoteles, brindando <comfort>comodidad</comfort>, <safety>seguridad</safety> y <joy>aprendizaje divertido</joy> a cada niño.",
+    "cta": "Solicita disponibilidad",
+    "imageAlt": "Niños felices con Titi Amanda"
+  },
+  "services": {
+    "label": "Nuestros Servicios",
+    "heading": "Descubre Lo Que Ofrezco\nPara Tus Hijos",
+    "idealForLabel": "Ideal para:",
+    "items": {
+      "at-home-care": {
+        "title": "Cuido en el Hogar",
+        "description": "Cuido de niños personalizado en la comodidad de tu hogar. Ofrezco un ambiente seguro, acogedor y lleno de actividades, adaptado a la rutina de tu hijo.",
+        "idealFor": [
+          "Familias que viven en Puerto Rico",
+          "Padres que trabajan desde casa",
+          "Noches de cita o eventos especiales"
+        ]
+      },
+      "hotel-vacation": {
+        "title": "Niñera en Hoteles y Vacaciones",
+        "description": "Cuido confiable mientras disfrutas tus vacaciones o una salida nocturna. Llevo actividades apropiadas para cada edad y me aseguro de que tus pequeños se sientan seguros y entretenidos.",
+        "idealFor": [
+          "Turistas y viajeros",
+          "Bodas de destino o eventos",
+          "Estadías en resorts y hoteles"
+        ]
+      },
+      "special-needs": {
+        "title": "Apoyo a Necesidades Especiales",
+        "description": "Cuido compasivo y adaptado para niños con autismo y otras necesidades del desarrollo, incorporando apoyos visuales y actividades sensoriales.",
+        "idealFor": [
+          "Niños con autismo o necesidades del desarrollo",
+          "Familias que buscan cuido con experiencia y preparación"
+        ]
+      },
+      "family-outing": {
+        "title": "Acompañamiento en Salidas Familiares",
+        "description": "Manos y corazón extra mientras están fuera de casa. Acompaño a las familias durante sus salidas para brindar asistencia profesional y tranquila.",
+        "idealFor": [
+          "Familias con varios niños",
+          "Padres que asisten a eventos",
+          "Diligencias o planes especiales"
+        ]
+      }
+    }
+  },
+  "activities": {
+    "label": "Actividades",
+    "heading": "Esto Es Lo Que Incluye el Tiempo de Cuido:",
+    "items": {
+      "reading-time": {
+        "title": "Tiempo de Lectura",
+        "description": "Exploramos libros juntos para desarrollar el lenguaje, despertar la imaginación y crear momentos de calma."
+      },
+      "arts-crafts": {
+        "title": "Arte y Manualidades",
+        "description": "Tiempo creativo con materiales apropiados para cada edad, que apoyan la motricidad fina y la expresión."
+      },
+      "sensory-playtime": {
+        "title": "Juego Sensorial",
+        "description": "Juego estructurado y libre con juguetes, música, bandejas sensoriales o juegos imaginativos que apoyan el aprendizaje."
+      },
+      "meal-support": {
+        "title": "Apoyo en Comidas y Meriendas",
+        "description": "Ayudo con las rutinas de alimentación, fomento la independencia y aseguro comidas seguras, limpias y agradables."
+      },
+      "routines-transitions": {
+        "title": "Rutinas y Transiciones",
+        "description": "Apoyo con rutinas diarias como lavado de manos, cambio de pañal, recogido, siesta u hora de dormir."
+      },
+      "outdoor-play": {
+        "title": "Juego al Aire Libre",
+        "description": "Tiempo al aire libre para moverse, explorar y hacer actividad física, cuando el espacio y el clima lo permiten."
+      },
+      "emotional-support": {
+        "title": "Apoyo Emocional",
+        "description": "Guía gentil para que los niños se sientan seguros, regulados y confiados durante actividades y transiciones."
+      },
+      "safety-supervision": {
+        "title": "Seguridad y Supervisión",
+        "description": "Priorizo el bienestar de tu hijo en todo momento con supervisión cercana, límites claros y ambientes seguros."
+      }
+    }
+  },
+  "about": {
+    "label": "Sobre Mí",
+    "heading": "Niñera con experiencia\nofreciendo cuido de calidad.",
+    "stats": {
+      "years": "Años de\nExperiencia",
+      "families": "Familias\nFelices :)"
+    },
+    "bio1": "¡Hola! Soy Amanda, con más de 8 años de experiencia cuidando niños en hogares y hoteles por todo Puerto Rico.",
+    "bio2": "Bachillerato en Terapia del Habla, Maestría en Educación Especial y Autismo, y Maestría en Consejería Psicológica.",
+    "bio3": "Me especializo en infantes y preescolares con enfoques divertidos y creativos, ¡siempre con amor, paciencia y estructura!",
+    "photoAlt": "Titi Amanda — Niñera Profesional"
+  },
+  "contact": {
+    "label": "Contáctame",
+    "heading": "Solicita Disponibilidad para tu Sesión de Cuido",
+    "intro": "Completa este formulario y te responderé dentro de 24 horas para hablar sobre las necesidades de cuido de tus hijos.",
+    "items": {
+      "email": "Correo",
+      "phone": "Teléfono",
+      "whatsapp": "WhatsApp",
+      "instagram": "Instagram",
+      "location": "Ubicación"
+    },
+    "form": {
+      "name": "Nombre Completo*",
+      "namePlaceholder": "Nombre completo",
+      "email": "Correo Electrónico*",
+      "emailPlaceholder": "Correo electrónico",
+      "phone": "Número de Teléfono*",
+      "phonePlaceholder": "Número de teléfono",
+      "children": "Información de los Niños*",
+      "childrenPlaceholder": "Nombres y edades (ej. Emma 5, Lucas 3)",
+      "serviceType": "Tipo de Servicio",
+      "servicePlaceholder": "Selecciona un tipo de servicio",
+      "message": "Información Adicional",
+      "messagePlaceholder": "Cuéntame sobre los intereses de tus hijos, necesidades especiales, actividades preferidas o preferencias de horario.",
+      "serviceOptions": {
+        "at-home-care": "Cuido en el Hogar",
+        "hotel-vacation": "Niñera en Hoteles y Vacaciones",
+        "special-needs": "Apoyo a Necesidades Especiales",
+        "family-outing": "Acompañamiento en Salidas Familiares"
+      },
+      "requiredNote": "*Campos requeridos. Te responderé dentro de 24 horas.",
+      "submit": "Enviar mensaje",
+      "submitting": "Enviando...",
+      "success": {
+        "title": "¡Mensaje Enviado con Éxito!",
+        "body": "¡Gracias por escribirme! Te responderé dentro de 24 horas.",
+        "again": "Enviar Otro Mensaje"
+      },
+      "error": "Lo siento, hubo un error al enviar tu mensaje. Intenta de nuevo o contáctame directamente.",
+      "errorWhatsapp": "Escríbeme por WhatsApp"
+    },
+    "validation": {
+      "nameMin": "El nombre debe tener al menos 2 caracteres",
+      "nameMax": "El nombre es muy largo",
+      "phoneMin": "El teléfono debe tener al menos 7 dígitos",
+      "phoneInvalid": "Ingresa un número de teléfono válido",
+      "emailInvalid": "Ingresa un correo electrónico válido",
+      "childrenMin": "Describe a tus niños (ej. 'Emma 5, Lucas 3')",
+      "childrenMax": "La descripción es muy larga",
+      "messageMax": "El mensaje es muy largo",
+      "invalid": "Valor inválido"
+    }
+  },
+  "footer": {
+    "copyright": "Copyright © {{year}} Titi Amanda Babysitter Services. Todos los derechos reservados.",
+    "tagline": "Cuido de niños con amor en Puerto Rico. ❤️"
+  },
+  "a11y": {
+    "prevSlide": "Diapositiva anterior",
+    "nextSlide": "Siguiente diapositiva",
+    "goToSlide": "Ir a la diapositiva {{n}}",
+    "toggleMenu": "Abrir o cerrar menú",
+    "instagram": "Instagram",
+    "logoAlt": "Logo de Titi Amanda",
+    "switchToSpanish": "Cambiar a español",
+    "switchToEnglish": "Switch to English"
+  }
+}

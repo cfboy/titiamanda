@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import * as LucideIcons from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 import type { Feature } from '@/data/config'
 import type { LucideIcon } from 'lucide-react'
@@ -11,15 +12,17 @@ interface ActivityCardProps {
   feature: Feature
 }
 
+// Deep variants: white body text on these fills must hold 4.5:1
 const CARD_BG: Record<string, string> = {
-  blue: 'bg-blue',
-  green: 'bg-green',
+  blue: 'bg-blue-deep',
+  green: 'bg-green-deep',
   dark: 'bg-[#1a1a1a]',
-  orange: 'bg-orange',
-  pink: 'bg-pink',
+  orange: 'bg-orange-deep',
+  pink: 'bg-pink-deep',
 }
 
 export default function ActivityCard({ feature }: ActivityCardProps) {
+  const { t } = useTranslation()
   const IconComponent = (LucideIcons as unknown as Record<string, LucideIcon>)[
     feature.icon
   ]
@@ -28,7 +31,7 @@ export default function ActivityCard({ feature }: ActivityCardProps) {
     <motion.div variants={cardFadeInUp} className="h-full">
       <div
         className={cn(
-          'flex h-full min-h-[300px] flex-col rounded-3xl p-7',
+          'flex h-full min-h-75 flex-col rounded-3xl p-7',
           CARD_BG[feature.color]
         )}
       >
@@ -44,14 +47,13 @@ export default function ActivityCard({ feature }: ActivityCardProps) {
         </div>
 
         {/* Title */}
-        <h2
-          className="font-secondary mb-4 leading-snug font-bold text-white"
-          dangerouslySetInnerHTML={{ __html: feature.title }}
-        />
+        <h3 className="font-secondary mb-4 max-w-[8em] leading-snug font-bold text-balance text-white">
+          {t(`activities.items.${feature.id}.title`)}
+        </h3>
 
         {/* Description */}
-        <p className="mt-auto text-sm leading-relaxed text-white/80">
-          {feature.description}
+        <p className="mt-auto text-sm leading-relaxed text-white">
+          {t(`activities.items.${feature.id}.description`)}
         </p>
       </div>
     </motion.div>

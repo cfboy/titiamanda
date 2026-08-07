@@ -3,6 +3,7 @@
 import useEmblaCarousel from 'embla-carousel-react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import * as React from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -72,6 +73,7 @@ const CarouselPrevious = React.forwardRef<
   React.ComponentProps<typeof Button>
 >(({ className, variant = 'outline', size = 'icon', ...props }, ref) => {
   const context = React.useContext(CarouselContext)
+  const { t } = useTranslation()
 
   return (
     <Button
@@ -84,7 +86,7 @@ const CarouselPrevious = React.forwardRef<
       {...props}
     >
       <ChevronLeft className="h-4 w-4" />
-      <span className="sr-only">Previous slide</span>
+      <span className="sr-only">{t('a11y.prevSlide')}</span>
     </Button>
   )
 })
@@ -95,6 +97,7 @@ const CarouselNext = React.forwardRef<
   React.ComponentProps<typeof Button>
 >(({ className, variant = 'outline', size = 'icon', ...props }, ref) => {
   const context = React.useContext(CarouselContext)
+  const { t } = useTranslation()
 
   return (
     <Button
@@ -107,7 +110,7 @@ const CarouselNext = React.forwardRef<
       {...props}
     >
       <ChevronRight className="h-4 w-4" />
-      <span className="sr-only">Next slide</span>
+      <span className="sr-only">{t('a11y.nextSlide')}</span>
     </Button>
   )
 })

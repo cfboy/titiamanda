@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import ActivityCard from '@/components/cards/ActivityCard'
 import {
@@ -15,6 +16,7 @@ import { fadeInUp, staggerContainer, viewportConfig } from '@/lib/animations'
 import { cn } from '@/lib/utils'
 
 export default function ActivitiesSection() {
+  const { t } = useTranslation()
   const [activeIndex, setActiveIndex] = useState(0)
   const carouselRef = useRef<CarouselApi | undefined>(undefined)
 
@@ -33,21 +35,35 @@ export default function ActivitiesSection() {
           custom={0.2}
           className="mb-14"
         >
-          <h2 className="font-secondary mb-3 font-bold tracking-[0.2em] text-black/70">
-            Activities
+          <p className="font-secondary mb-3 font-bold tracking-[0.2em] text-black/70">
+            {t('activities.label')}
+          </p>
+          <h2 className="mb-4 max-w-lg text-3xl leading-tight font-extrabold text-black md:text-4xl">
+            {t('activities.heading')}
           </h2>
-          <h1 className="mb-4 max-w-lg text-3xl leading-tight font-extrabold text-black md:text-4xl">
-            Here&apos;s What&apos;s Included During Babysitting Time:
-          </h1>
         </motion.div>
 
-        {/* Activities Carousel */}
+        {/* Desktop: all 8 activities visible at once — the safety/supervision
+            cards must never hide behind a carousel */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="px-4"
+          className="hidden gap-4 lg:grid lg:grid-cols-4"
+        >
+          {FEATURES.map(feature => (
+            <ActivityCard key={feature.id} feature={feature} />
+          ))}
+        </motion.div>
+
+        {/* Mobile/tablet: carousel */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          className="px-4 lg:hidden"
         >
           <Carousel
             opts={{
@@ -82,8 +98,8 @@ export default function ActivitiesSection() {
             <CarouselNext className="text-gray-medium hover:text-gray-dark -right-6 hidden border-gray-200 bg-white/85 hover:bg-white sm:flex" />
           </Carousel>
 
-          {/* Dot Indicators - visible on mobile */}
-          <div className="mt-8 flex justify-center space-x-2 sm:hidden">
+          {/* Dot Indicators */}
+          <div className="mt-8 flex justify-center">
             {FEATURES.map((_, index) => (
               <button
                 key={index}
@@ -92,14 +108,19 @@ export default function ActivitiesSection() {
                     carouselRef.current.scrollTo(index)
                   }
                 }}
-                className={cn(
-                  'h-2 w-2 rounded-full transition-all duration-300',
-                  activeIndex === index
-                    ? 'bg-pink scale-125'
-                    : 'bg-gray-300 hover:bg-gray-400'
-                )}
-                aria-label={`Go to slide ${index + 1}`}
-              />
+                className="flex h-11 w-8 items-center justify-center"
+                aria-label={t('a11y.goToSlide', { n: index + 1 })}
+                aria-current={activeIndex === index ? 'true' : undefined}
+              >
+                <span
+                  className={cn(
+                    'h-2 w-2 rounded-full transition-all duration-300',
+                    activeIndex === index
+                      ? 'bg-pink-deep scale-125'
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  )}
+                />
+              </button>
             ))}
           </div>
         </motion.div>

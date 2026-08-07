@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import {
   Carousel,
@@ -26,7 +27,15 @@ const BLOB_COLORS: Record<string, string> = {
   green: 'from-green/30 to-green/10',
 }
 
+const DOT_COLORS: Record<string, string> = {
+  pink: 'bg-pink',
+  blue: 'bg-blue',
+  orange: 'bg-orange',
+  green: 'bg-green',
+}
+
 export default function ServicesSection() {
+  const { t } = useTranslation()
   const [activeIndex, setActiveIndex] = useState(0)
   const carouselRef = useRef<CarouselApi | undefined>(undefined)
 
@@ -35,7 +44,7 @@ export default function ServicesSection() {
       {/* Decorative cloud */}
       <div className="pointer-events-none absolute top-12 right-32 hidden h-64 w-64 opacity-40 lg:block">
         <img
-          src="/assets/images/elements/cloud-element.png"
+          src="/assets/images/elements/cloud-element.webp"
           alt=""
           className="h-full w-full object-contain"
         />
@@ -51,25 +60,16 @@ export default function ServicesSection() {
           custom={0.2}
           className="mb-14 text-center"
         >
-          <h2 className="font-secondary mb-3 font-bold tracking-[0.2em] text-black/70">
-            Our Services
+          <p className="font-secondary mb-3 font-bold tracking-[0.2em] text-black/70">
+            {t('services.label')}
+          </p>
+          <h2 className="mx-auto mb-4 max-w-xl text-3xl leading-tight font-extrabold whitespace-pre-line text-black md:text-4xl">
+            {t('services.heading')}
           </h2>
-          <h1 className="mx-auto mb-4 max-w-xl text-3xl leading-tight font-extrabold text-black md:text-4xl">
-            Discover What I Offer
-            <br />
-            For Your Children
-          </h1>
         </motion.div>
 
         {/* Service Content Carousel */}
         <div className="relative px-4">
-          {/* Counter badge - positioned outside carousel */}
-          <div className="mb-4 flex items-center justify-end">
-            <div className="text-gray-medium text-sm font-semibold">
-              {activeIndex + 1}/{SERVICES.length}
-            </div>
-          </div>
-
           <Carousel
             opts={{
               align: 'start',
@@ -85,11 +85,14 @@ export default function ServicesSection() {
             }}
             className="w-full"
           >
-            <CarouselContent className="-ml-0">
+            <CarouselContent className="ml-0">
               {SERVICES.map((service, index) => (
-                <CarouselItem key={index} className="pl-0">
+                <CarouselItem
+                  key={index}
+                  className="basis-[92%] pl-0 sm:basis-full"
+                >
                   {/* Service Content — 2-column layout */}
-                  <div className="grid min-h-[420px] grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+                  <div className="grid grid-cols-1 items-center gap-10 lg:min-h-105 lg:grid-cols-2 lg:gap-16">
                     {/* Left: Service Image with blob */}
                     <motion.div
                       variants={fadeInLeft}
@@ -111,7 +114,7 @@ export default function ServicesSection() {
                         >
                           <div
                             className={cn(
-                              'h-[88%] w-[88%] rounded-[60%_40%_55%_45%/45%_60%_40%_55%] bg-gradient-to-br blur-sm transition-all duration-500',
+                              'h-[88%] w-[88%] rounded-[60%_40%_55%_45%/45%_60%_40%_55%] bg-linear-to-br blur-sm transition-all duration-500',
                               BLOB_COLORS[service.color]
                             )}
                           />
@@ -122,12 +125,13 @@ export default function ServicesSection() {
                         <motion.img
                           key={`img-${index}`}
                           src={service.image}
-                          alt={service.title}
+                          alt={t(`services.items.${service.id}.title`)}
                           variants={serviceContentVariants}
                           initial="hidden"
                           animate="visible"
                           exit="exit"
-                          className="relative z-10 aspect-[4/3] w-full max-w-md rounded-3xl object-cover shadow-xl"
+                          loading="lazy"
+                          className="relative z-10 aspect-4/3 w-full max-w-md rounded-3xl object-cover shadow-xl"
                         />
                       </AnimatePresence>
                     </motion.div>
@@ -152,25 +156,36 @@ export default function ServicesSection() {
                         >
                           {/* Title */}
                           <h3 className="text-gray-dark text-2xl leading-tight font-extrabold md:text-3xl">
-                            {service.title}
+                            {t(`services.items.${service.id}.title`)}
                           </h3>
 
                           {/* Description */}
                           <p className="text-gray-dark text-base leading-relaxed md:text-lg">
-                            {service.description}
+                            {t(`services.items.${service.id}.description`)}
                           </p>
 
                           {/* Ideal For */}
                           <div className="space-y-2">
-                            <h5 className="text-gray-dark text-sm font-bold">
-                              Ideal for:
-                            </h5>
+                            <p className="text-gray-dark text-sm font-bold">
+                              {t('services.idealForLabel')}
+                            </p>
                             <ul className="space-y-1.5">
-                              {service.idealFor.map(item => (
+                              {(
+                                t(`services.items.${service.id}.idealFor`, {
+                                  returnObjects: true,
+                                }) as string[]
+                              ).map(item => (
                                 <li
                                   key={item}
-                                  className="text-gray-dark text-sm md:text-base"
+                                  className="text-gray-dark flex items-center gap-2.5 text-sm md:text-base"
                                 >
+                                  <span
+                                    aria-hidden="true"
+                                    className={cn(
+                                      'h-1.5 w-1.5 shrink-0 rounded-full',
+                                      DOT_COLORS[service.color]
+                                    )}
+                                  />
                                   {item}
                                 </li>
                               ))}
@@ -187,8 +202,8 @@ export default function ServicesSection() {
             <CarouselNext className="text-gray-medium hover:text-gray-dark -right-4 hidden border-gray-200 bg-white/85 hover:bg-white sm:flex" />
           </Carousel>
 
-          {/* Dot Indicators - visible on mobile */}
-          <div className="mt-8 flex justify-center space-x-2 sm:hidden">
+          {/* Dot Indicators — position cue on every viewport */}
+          <div className="mt-8 flex justify-center">
             {SERVICES.map((_, index) => (
               <button
                 key={index}
@@ -197,14 +212,19 @@ export default function ServicesSection() {
                     carouselRef.current.scrollTo(index)
                   }
                 }}
-                className={cn(
-                  'h-2 w-2 rounded-full transition-all duration-300',
-                  activeIndex === index
-                    ? 'bg-pink scale-125'
-                    : 'bg-gray-300 hover:bg-gray-400'
-                )}
-                aria-label={`Go to slide ${index + 1}`}
-              />
+                className="flex h-11 w-8 items-center justify-center"
+                aria-label={t('a11y.goToSlide', { n: index + 1 })}
+                aria-current={activeIndex === index ? 'true' : undefined}
+              >
+                <span
+                  className={cn(
+                    'h-2 w-2 rounded-full transition-all duration-300',
+                    activeIndex === index
+                      ? 'bg-pink-deep scale-125'
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  )}
+                />
+              </button>
             ))}
           </div>
         </div>

@@ -13,6 +13,13 @@
   --color-gray-dark: #2a2a2a;
   --color-gray-medium: #afafaf;
   --color-coral: #fd6a54;
+  /* Accessible "deep" variants of the brand hues — for text and small-text
+     surfaces only (WCAG 4.5:1 on cream/white); bright originals stay on shapes */
+  --color-pink-deep: #c73e3e;
+  --color-blue-deep: #0966c2;
+  --color-green-deep: #2a8151;
+  --color-orange-deep: #c2410c;
+  --color-gray-text: #6b6b6b;
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
