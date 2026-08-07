@@ -11,7 +11,8 @@ import {
   Plus,
   Loader2,
 } from 'lucide-react'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -26,12 +27,12 @@ import {
 import { Textarea } from '@/components/ui/textarea'
 import { CONTACT_INFO, SERVICE_OPTIONS } from '@/data/config'
 import { fadeInLeft, fadeInRight, viewportConfig } from '@/lib/animations'
-import { contactSchema } from '@/lib/contactSchema'
+import { createContactSchema } from '@/lib/contactSchema'
 import { cn } from '@/lib/utils'
 
 interface ContactItem {
   icon: React.ComponentType<{ size?: number; className?: string }>
-  label: string
+  labelKey: string
   display: string
   href: string | null
   bgColor: string
@@ -41,21 +42,21 @@ interface ContactItem {
 const CONTACT_ITEMS: ContactItem[] = [
   {
     icon: Mail,
-    label: 'Email',
+    labelKey: 'contact.items.email',
     display: CONTACT_INFO.email,
     href: `mailto:${CONTACT_INFO.email}`,
     bgColor: 'bg-pink',
   },
   {
     icon: Phone,
-    label: 'Phone',
+    labelKey: 'contact.items.phone',
     display: CONTACT_INFO.phone,
     href: `tel:${CONTACT_INFO.phoneRaw}`,
     bgColor: 'bg-blue',
   },
   {
     icon: MessageCircle,
-    label: 'Whatsapp',
+    labelKey: 'contact.items.whatsapp',
     display: CONTACT_INFO.phone,
     href: CONTACT_INFO.whatsapp,
     bgColor: 'bg-green',
@@ -63,7 +64,7 @@ const CONTACT_ITEMS: ContactItem[] = [
   },
   {
     icon: Instagram,
-    label: 'Instagram',
+    labelKey: 'contact.items.instagram',
     display: CONTACT_INFO.instagramHandle,
     href: CONTACT_INFO.instagram,
     bgColor: 'bg-pink',
@@ -71,7 +72,7 @@ const CONTACT_ITEMS: ContactItem[] = [
   },
   {
     icon: MapPin,
-    label: 'Location',
+    labelKey: 'contact.items.location',
     display: CONTACT_INFO.location,
     href: null,
     bgColor: 'bg-coral',
@@ -80,20 +81,26 @@ const CONTACT_ITEMS: ContactItem[] = [
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error'
 
-function validateField(
-  value: string,
-  fieldName: 'name' | 'phone' | 'email' | 'children'
-) {
-  const shape = contactSchema.shape[fieldName]
-  const result = shape.safeParse(value)
-  if (!result.success) {
-    return result.error.issues[0]?.message ?? 'Invalid value'
-  }
-  return undefined
-}
-
 export default function ContactSection() {
+  const { t, i18n } = useTranslation()
   const [formState, setFormState] = useState<FormState>('idle')
+
+  const contactSchema = useMemo(
+    () => createContactSchema(t),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [i18n.language]
+  )
+
+  const validateField = (
+    value: string,
+    fieldName: 'name' | 'phone' | 'email' | 'children'
+  ) => {
+    const result = contactSchema.shape[fieldName].safeParse(value)
+    if (!result.success) {
+      return result.error.issues[0]?.message ?? t('contact.validation.invalid')
+    }
+    return undefined
+  }
 
   const form = useForm({
     defaultValues: {
@@ -144,25 +151,27 @@ export default function ContactSection() {
           >
             {/* Section label + heading */}
             <div>
-              <h2 className="font-secondary mb-3 font-bold tracking-[0.2em] text-black/70">
-                Contact me
+              <p className="font-secondary mb-3 font-bold tracking-[0.2em] text-black/70">
+                {t('contact.label')}
+              </p>
+              <h2 className="mb-4 text-3xl leading-tight font-extrabold text-black">
+                {t('contact.heading')}
               </h2>
-              <h1 className="mb-4 text-3xl leading-tight font-extrabold text-black">
-                Ready to Book Your Babysitting Session?
-              </h1>
               <p className="text-sm leading-relaxed text-black/70">
-                Fill out the this form and I&apos;ll get back to you within 24
-                hours to discuss your childcare needs.
+                {t('contact.intro')}
               </p>
             </div>
 
             {/* Contact items */}
             <div className="space-y-4">
               {CONTACT_ITEMS.map(item => (
-                <div key={item.label} className="group flex items-center gap-3">
+                <div
+                  key={item.labelKey}
+                  className="group flex items-center gap-3"
+                >
                   <div
                     className={cn(
-                      'flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full',
+                      'flex h-10 w-10 shrink-0 items-center justify-center rounded-full',
                       item.bgColor
                     )}
                   >
@@ -170,7 +179,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <p className="text-xs font-bold tracking-wide text-black/50 uppercase">
-                      {item.label}
+                      {t(item.labelKey)}
                     </p>
                     {item.href ? (
                       <a
@@ -209,19 +218,18 @@ export default function ContactSection() {
                   <div className="bg-green/10 flex h-16 w-16 items-center justify-center rounded-full">
                     <CheckCircle size={32} className="text-green" />
                   </div>
-                  <h4 className="text-xl font-bold text-black">
-                    Message Sent Successfully!
-                  </h4>
+                  <h3 className="text-xl font-bold text-black">
+                    {t('contact.form.success.title')}
+                  </h3>
                   <p className="text-sm leading-relaxed text-black/70">
-                    Thank you for reaching out! I&apos;ll get back to you within
-                    24 hours.
+                    {t('contact.form.success.body')}
                   </p>
                   <Button
                     onClick={handleReset}
                     className="bg-green hover:bg-green/90 mt-2 gap-2 rounded-full px-6 text-white"
                   >
                     <Plus size={15} />
-                    Send Another Message
+                    {t('contact.form.success.again')}
                   </Button>
                 </motion.div>
               ) : (
@@ -245,11 +253,11 @@ export default function ContactSection() {
                           htmlFor="name"
                           className="text-gray-dark mb-1.5 block text-sm font-semibold"
                         >
-                          Full Name*
+                          {t('contact.form.name')}
                         </Label>
                         <Input
                           id="name"
-                          placeholder="Full Name"
+                          placeholder={t('contact.form.namePlaceholder')}
                           autoComplete="name"
                           value={field.state.value}
                           onBlur={field.handleBlur}
@@ -279,12 +287,12 @@ export default function ContactSection() {
                           htmlFor="email"
                           className="text-gray-dark mb-1.5 block text-sm font-semibold"
                         >
-                          Email*
+                          {t('contact.form.email')}
                         </Label>
                         <Input
                           id="email"
                           type="email"
-                          placeholder="Email"
+                          placeholder={t('contact.form.emailPlaceholder')}
                           value={field.state.value}
                           onBlur={field.handleBlur}
                           onChange={e => field.handleChange(e.target.value)}
@@ -313,12 +321,12 @@ export default function ContactSection() {
                           htmlFor="phone"
                           className="text-gray-dark mb-1.5 block text-sm font-semibold"
                         >
-                          Phone number*
+                          {t('contact.form.phone')}
                         </Label>
                         <Input
                           id="phone"
                           type="tel"
-                          placeholder="Phone number"
+                          placeholder={t('contact.form.phonePlaceholder')}
                           autoComplete="tel"
                           value={field.state.value}
                           onBlur={field.handleBlur}
@@ -348,11 +356,11 @@ export default function ContactSection() {
                           htmlFor="children"
                           className="text-gray-dark mb-1.5 block text-sm font-semibold"
                         >
-                          Children info*
+                          {t('contact.form.children')}
                         </Label>
                         <Input
                           id="children"
-                          placeholder="Names and Ages (e.g. Emma 5, Lucas 3)"
+                          placeholder={t('contact.form.childrenPlaceholder')}
                           autoComplete="off"
                           value={field.state.value}
                           onBlur={field.handleBlur}
@@ -373,20 +381,29 @@ export default function ContactSection() {
                   <form.Field name="service">
                     {field => (
                       <div className="md:col-span-2">
-                        <Label className="text-gray-dark mb-1.5 block text-sm font-semibold">
-                          Service Type*
+                        <Label
+                          htmlFor="service"
+                          className="text-gray-dark mb-1.5 block text-sm font-semibold"
+                        >
+                          {t('contact.form.serviceType')}
                         </Label>
                         <Select
                           value={field.state.value}
                           onValueChange={field.handleChange}
                         >
-                          <SelectTrigger className="focus:border-orange h-11 rounded-xl border border-gray-200 bg-gray-50 focus:ring-0">
-                            <SelectValue placeholder="Select a service type" />
+                          <SelectTrigger
+                            id="service"
+                            className="focus:border-orange h-11 rounded-xl border border-gray-200 bg-gray-50 focus:ring-0"
+                          >
+                            <SelectValue
+                              placeholder={t('contact.form.servicePlaceholder')}
+                            />
                           </SelectTrigger>
                           <SelectContent>
+                            {/* opt.value stays English — it's what the webhook receives */}
                             {SERVICE_OPTIONS.map(opt => (
-                              <SelectItem key={opt.value} value={opt.value}>
-                                {opt.label}
+                              <SelectItem key={opt.id} value={opt.value}>
+                                {t(`contact.form.serviceOptions.${opt.id}`)}
                               </SelectItem>
                             ))}
                           </SelectContent>
@@ -403,12 +420,12 @@ export default function ContactSection() {
                           htmlFor="message"
                           className="text-gray-dark mb-1.5 block text-sm font-semibold"
                         >
-                          Additional Information
+                          {t('contact.form.message')}
                         </Label>
                         <Textarea
                           id="message"
                           rows={4}
-                          placeholder="Tell me about your children's interests, any special needs, preferred activities, or scheduling preferences."
+                          placeholder={t('contact.form.messagePlaceholder')}
                           value={field.state.value}
                           onBlur={field.handleBlur}
                           onChange={e => field.handleChange(e.target.value)}
@@ -422,8 +439,7 @@ export default function ContactSection() {
                   {formState === 'error' && (
                     <div className="bg-red/10 border-red/20 rounded-xl border p-3 md:col-span-2">
                       <p className="text-red text-sm">
-                        Sorry, there was an error sending your message. Please
-                        try again or contact me directly.
+                        {t('contact.form.error')}
                       </p>
                     </div>
                   )}
@@ -431,7 +447,7 @@ export default function ContactSection() {
                   {/* Submit */}
                   <div className="mt-2 flex items-center justify-between md:col-span-2">
                     <p className="text-gray-medium text-xs">
-                      *Required fields. I&apos;ll respond within 24 hours.
+                      {t('contact.form.requiredNote')}
                     </p>
                     <Button
                       type="submit"
@@ -441,11 +457,11 @@ export default function ContactSection() {
                       {formState === 'submitting' ? (
                         <>
                           <Loader2 size={17} className="animate-spin" />
-                          Sending...
+                          {t('contact.form.submitting')}
                         </>
                       ) : (
                         <>
-                          Send message
+                          {t('contact.form.submit')}
                           <Send size={15} />
                         </>
                       )}

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import ActivityCard from '@/components/cards/ActivityCard'
 import {
@@ -15,6 +16,7 @@ import { fadeInUp, staggerContainer, viewportConfig } from '@/lib/animations'
 import { cn } from '@/lib/utils'
 
 export default function ActivitiesSection() {
+  const { t } = useTranslation()
   const [activeIndex, setActiveIndex] = useState(0)
   const carouselRef = useRef<CarouselApi | undefined>(undefined)
 
@@ -33,12 +35,12 @@ export default function ActivitiesSection() {
           custom={0.2}
           className="mb-14"
         >
-          <h2 className="font-secondary mb-3 font-bold tracking-[0.2em] text-black/70">
-            Activities
+          <p className="font-secondary mb-3 font-bold tracking-[0.2em] text-black/70">
+            {t('activities.label')}
+          </p>
+          <h2 className="mb-4 max-w-lg text-3xl leading-tight font-extrabold text-black md:text-4xl">
+            {t('activities.heading')}
           </h2>
-          <h1 className="mb-4 max-w-lg text-3xl leading-tight font-extrabold text-black md:text-4xl">
-            Here&apos;s What&apos;s Included During Babysitting Time:
-          </h1>
         </motion.div>
 
         {/* Activities Carousel */}
@@ -98,7 +100,7 @@ export default function ActivitiesSection() {
                     ? 'bg-pink scale-125'
                     : 'bg-gray-300 hover:bg-gray-400'
                 )}
-                aria-label={`Go to slide ${index + 1}`}
+                aria-label={t('a11y.goToSlide', { n: index + 1 })}
               />
             ))}
           </div>

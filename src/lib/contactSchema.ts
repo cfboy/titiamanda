@@ -1,21 +1,30 @@
 import { z } from 'zod'
 
-export const contactSchema = z.object({
-  name: z
-    .string()
-    .min(2, 'Name must be at least 2 characters')
-    .max(100, 'Name is too long'),
-  phone: z
-    .string()
-    .min(7, 'Phone number must be at least 7 digits')
-    .regex(/^[\d\s\-+()]+$/, 'Please enter a valid phone number'),
-  email: z.string().email('Please enter a valid email address'),
-  children: z
-    .string()
-    .min(2, "Please describe your children (e.g., 'Emma 5, Lucas 3')")
-    .max(200, 'Description is too long'),
-  service: z.string().optional(),
-  message: z.string().max(1000, 'Message is too long').optional(),
-})
+import type { TFunction } from 'i18next'
 
-export type ContactFormData = z.infer<typeof contactSchema>
+// Factory so validation messages follow the active language — a module-level
+// schema would freeze them at import time.
+export function createContactSchema(t: TFunction) {
+  return z.object({
+    name: z
+      .string()
+      .min(2, t('contact.validation.nameMin'))
+      .max(100, t('contact.validation.nameMax')),
+    phone: z
+      .string()
+      .min(7, t('contact.validation.phoneMin'))
+      .regex(/^[\d\s\-+()]+$/, t('contact.validation.phoneInvalid')),
+    email: z.string().email(t('contact.validation.emailInvalid')),
+    children: z
+      .string()
+      .min(2, t('contact.validation.childrenMin'))
+      .max(200, t('contact.validation.childrenMax')),
+    service: z.string().optional(),
+    message: z
+      .string()
+      .max(1000, t('contact.validation.messageMax'))
+      .optional(),
+  })
+}
+
+export type ContactFormData = z.infer<ReturnType<typeof createContactSchema>>

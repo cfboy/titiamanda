@@ -1,0 +1,178 @@
+{
+  "meta": {
+    "title": "Titi Amanda — Professional Babysitter in San Juan, Puerto Rico | Quality Childcare",
+    "description": "Professional babysitting services in San Juan, Puerto Rico. In-home and hotel childcare with screen-free play, quality care, and joyful learning for your children.",
+    "ogImageAlt": "Titi Amanda — Quality Babysitter Services in Puerto Rico"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "activities": "Activities",
+    "about": "About me",
+    "contact": "Contact me"
+  },
+  "hero": {
+    "title": "Quality Babysitter\nServices",
+    "subtitle": "Personalized care in homes and hotels, bringing <comfort>comfort</comfort>, <safety>safety</safety>, and <joy>joyful learning</joy> to every child.",
+    "cta": "Book a session",
+    "imageAlt": "Happy children with Titi Amanda"
+  },
+  "services": {
+    "label": "Our Services",
+    "heading": "Discover What I Offer\nFor Your Children",
+    "idealForLabel": "Ideal for:",
+    "items": {
+      "at-home-care": {
+        "title": "At Home Care",
+        "description": "Personalized childcare in the comfort of your home. I provide a safe, engaging, and nurturing environment tailored to your child's routine.",
+        "idealFor": [
+          "Families living in Puerto Rico",
+          "Parents who work from home",
+          "Date nights or special events"
+        ]
+      },
+      "hotel-vacation": {
+        "title": "Hotel & Vacation Babysitting",
+        "description": "Trusted babysitting while you enjoy your vacation or a night out. I bring age-appropriate activities and ensure your little ones feel safe and entertained.",
+        "idealFor": [
+          "Tourists and travelers",
+          "Destination weddings or events",
+          "Resort and hotel stays"
+        ]
+      },
+      "special-needs": {
+        "title": "Special Needs Support",
+        "description": "Compassionate care tailored to children with autism and other developmental needs, incorporating visual supports and sensory-friendly activities.",
+        "idealFor": [
+          "Children with autism or developmental needs",
+          "Families needing experienced, trained care"
+        ]
+      },
+      "family-outing": {
+        "title": "Family Outing Support",
+        "description": "Extra hands and heart while you're out and about. I accompany families during outings to provide calm, professional assistance.",
+        "idealFor": [
+          "Families with multiple children",
+          "Parents attending events",
+          "Errands or special plans"
+        ]
+      }
+    }
+  },
+  "activities": {
+    "label": "Activities",
+    "heading": "Here's What's Included During Babysitting Time:",
+    "items": {
+      "reading-time": {
+        "title": "Reading Time",
+        "description": "We explore books together to build language skills, spark imagination, and create calm moments."
+      },
+      "arts-crafts": {
+        "title": "Arts & Crafts",
+        "description": "Creative time using age-appropriate materials to support fine motor skills and self-expression."
+      },
+      "sensory-playtime": {
+        "title": "Sensory & Playtime",
+        "description": "Structured and free play using toys, music, sensory bins, or imaginative games to support learning."
+      },
+      "meal-support": {
+        "title": "Meal & Snack Support",
+        "description": "I help with feeding routines, encourage independence, and ensure safe, clean, and enjoyable mealtimes."
+      },
+      "routines-transitions": {
+        "title": "Routines & Transitions",
+        "description": "Support with daily routines such as hand washing, diapering, clean-up, naptime, or bedtime."
+      },
+      "outdoor-play": {
+        "title": "Outdoor Play",
+        "description": "Time outside in fresh air for movement, exploration, and physical activity—when space and weather allow."
+      },
+      "emotional-support": {
+        "title": "Emotional Support",
+        "description": "Gentle guidance to help children feel safe, regulated, and confident during activities and transitions."
+      },
+      "safety-supervision": {
+        "title": "Safety & Supervision",
+        "description": "I prioritize your child's well-being at all times with close supervision, clear boundaries, and safe environments."
+      }
+    }
+  },
+  "about": {
+    "label": "About Me",
+    "heading": "Experienced babysitter\nproviding quality childcare.",
+    "stats": {
+      "years": "Years of\nExperience",
+      "families": "Happy\nFamilies :)"
+    },
+    "bio1": "Hi! I'm Amanda, with 8+ years of experience caring for children in homes and hotels across Puerto Rico.",
+    "bio2": "Bachelor's in Speech Therapy, Master's in Special Education & Autism, and Master's in Psychological Counseling.",
+    "bio3": "I specialize in toddlers & preschoolers with fun, creative approaches, always with love, patience & structure!",
+    "photoAlt": "Titi Amanda — Professional Babysitter"
+  },
+  "contact": {
+    "label": "Contact me",
+    "heading": "Ready to Book Your Babysitting Session?",
+    "intro": "Fill out this form and I'll get back to you within 24 hours to discuss your childcare needs.",
+    "items": {
+      "email": "Email",
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "instagram": "Instagram",
+      "location": "Location"
+    },
+    "form": {
+      "name": "Full Name*",
+      "namePlaceholder": "Full Name",
+      "email": "Email*",
+      "emailPlaceholder": "Email",
+      "phone": "Phone number*",
+      "phonePlaceholder": "Phone number",
+      "children": "Children info*",
+      "childrenPlaceholder": "Names and Ages (e.g. Emma 5, Lucas 3)",
+      "serviceType": "Service Type*",
+      "servicePlaceholder": "Select a service type",
+      "message": "Additional Information",
+      "messagePlaceholder": "Tell me about your children's interests, any special needs, preferred activities, or scheduling preferences.",
+      "serviceOptions": {
+        "at-home-care": "At Home Care",
+        "hotel-vacation": "Hotel & Vacation Babysitting",
+        "special-needs": "Special Needs Support",
+        "family-outing": "Family Outing Support"
+      },
+      "requiredNote": "*Required fields. I'll respond within 24 hours.",
+      "submit": "Send message",
+      "submitting": "Sending...",
+      "success": {
+        "title": "Message Sent Successfully!",
+        "body": "Thank you for reaching out! I'll get back to you within 24 hours.",
+        "again": "Send Another Message"
+      },
+      "error": "Sorry, there was an error sending your message. Please try again or contact me directly."
+    },
+    "validation": {
+      "nameMin": "Name must be at least 2 characters",
+      "nameMax": "Name is too long",
+      "phoneMin": "Phone number must be at least 7 digits",
+      "phoneInvalid": "Please enter a valid phone number",
+      "emailInvalid": "Please enter a valid email address",
+      "childrenMin": "Please describe your children (e.g., 'Emma 5, Lucas 3')",
+      "childrenMax": "Description is too long",
+      "messageMax": "Message is too long",
+      "invalid": "Invalid value"
+    }
+  },
+  "footer": {
+    "copyright": "Copyright © {{year}} Titi Amanda Babysitter Services. All Rights Reserved.",
+    "tagline": "Quality childcare with love in Puerto Rico. ❤️"
+  },
+  "a11y": {
+    "prevSlide": "Previous slide",
+    "nextSlide": "Next slide",
+    "goToSlide": "Go to slide {{n}}",
+    "toggleMenu": "Toggle menu",
+    "instagram": "Instagram",
+    "logoAlt": "Titi Amanda Logo",
+    "switchToSpanish": "Cambiar a español",
+    "switchToEnglish": "Switch to English"
+  }
+}

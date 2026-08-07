@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
 import {
   fadeInLeft,
@@ -8,6 +9,8 @@ import {
 } from '@/lib/animations'
 
 export default function AboutSection() {
+  const { t } = useTranslation()
+
   return (
     <section
       id="about"
@@ -23,14 +26,12 @@ export default function AboutSection() {
           custom={0.2}
           className="mb-14 text-center"
         >
-          <h2 className="font-secondary mb-3 font-bold tracking-[0.2em] text-black/70">
-            About Me
+          <p className="font-secondary mb-3 font-bold tracking-[0.2em] text-black/70">
+            {t('about.label')}
+          </p>
+          <h2 className="mx-auto mb-4 max-w-3xl text-3xl leading-tight font-extrabold whitespace-pre-line text-black">
+            {t('about.heading')}
           </h2>
-          <h1 className="mx-auto mb-4 max-w-3xl text-3xl leading-tight font-extrabold text-black">
-            Experienced babysitter
-            <br />
-            providing quality childcare.
-          </h1>
         </motion.div>
 
         {/* 2-Column Layout */}
@@ -46,9 +47,10 @@ export default function AboutSection() {
           >
             <div className="relative">
               <img
-                src="/assets/images/titiamanda.png"
-                alt="Titi Amanda — Professional Babysitter"
-                className="relative z-10 h-auto w-60 rounded-lg object-contain md:w-80 lg:w-[350px]"
+                src="/assets/images/titiamanda.webp"
+                alt={t('about.photoAlt')}
+                loading="lazy"
+                className="relative z-10 h-auto w-60 rounded-lg object-contain md:w-80 lg:w-87.5"
               />
             </div>
           </motion.div>
@@ -68,37 +70,29 @@ export default function AboutSection() {
                 <p className="text-blue font-secondary text-5xl font-extrabold md:text-6xl">
                   8+
                 </p>
-                <p className="text-gray-dark mt-2 text-lg font-medium">
-                  Years of
-                  <br />
-                  Experience
+                <p className="text-gray-dark mt-2 text-center text-lg font-medium whitespace-pre-line">
+                  {t('about.stats.years')}
                 </p>
               </div>
               <div className="flex flex-col items-center">
                 <p className="text-blue font-secondary text-5xl font-extrabold md:text-6xl">
                   100+
                 </p>
-                <p className="text-gray-dark mt-2 text-lg font-medium">
-                  Happy
-                  <br />
-                  Families :)
+                <p className="text-gray-dark mt-2 text-center text-lg font-medium whitespace-pre-line">
+                  {t('about.stats.families')}
                 </p>
               </div>
             </div>
 
             <div className="space-y-4">
               <p className="text-gray-dark text-base leading-relaxed md:text-lg">
-                Hi! I&apos;m Amanda, with 8+ years of experience caring for
-                children in homes and hotels across Puerto Rico.
+                {t('about.bio1')}
               </p>
               <p className="text-gray-dark text-base leading-relaxed md:text-lg">
-                Bachelor&apos;s in Speech Therapy, Master&apos;s in Special
-                Education &amp; Autism, and Master&apos;s in Psychological
-                Counseling.
+                {t('about.bio2')}
               </p>
               <p className="text-gray-dark text-base leading-relaxed md:text-lg">
-                I specialize in toddlers &amp; preschoolers with fun, creative
-                approaches, always with love, patience &amp; structure!
+                {t('about.bio3')}
               </p>
             </div>
           </motion.div>
