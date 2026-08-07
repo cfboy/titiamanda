@@ -138,6 +138,7 @@ for (const locale of LOCALES) {
     /(<link rel="canonical" href=")[^"]*(")/,
     (_, pre, post) => pre + locale.url + post
   )
+  html = swapMetaContent(html, 'name', 'keywords', locale.meta.keywords)
   html = swapMetaContent(html, 'property', 'og:url', locale.url)
   html = swapMetaContent(html, 'property', 'og:title', locale.meta.title)
   html = swapMetaContent(html, 'property', 'og:description', locale.meta.description)
