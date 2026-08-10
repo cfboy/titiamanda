@@ -5,12 +5,17 @@ import { I18nextProvider } from 'react-i18next'
 import './index.css'
 import App from './App.tsx'
 import { initI18n } from './i18n'
+import { resolveRoute } from './routes'
+
+// La ruta se deriva del pathname y debe coincidir con la que usó el prerender,
+// o la hidratación falla.
+const route = resolveRoute(window.location.pathname)
 
 const rootEl = document.getElementById('root')!
 const app = (
   <StrictMode>
-    <I18nextProvider i18n={initI18n()}>
-      <App />
+    <I18nextProvider i18n={initI18n(route.lng)}>
+      <App route={route} />
     </I18nextProvider>
   </StrictMode>
 )

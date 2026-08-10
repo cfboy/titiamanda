@@ -5,12 +5,214 @@
     "keywords": "niñera, niñera San Juan, cuido de niños, cuido de niños Puerto Rico, niñera en hoteles, niñera a domicilio, cuido para niños con autismo, babysitter Puerto Rico",
     "ogImageAlt": "Titi Amanda — Servicios de Niñera de Calidad en Puerto Rico"
   },
+  "pages": {
+    "common": {
+      "breadcrumbHome": "Inicio",
+      "breadcrumbServices": "Servicios",
+      "includesTitle": "Qué incluye",
+      "idealForTitle": "Ideal para",
+      "howTitle": "Cómo funciona",
+      "faqTitle": "Preguntas frecuentes",
+      "otherServices": "Otros servicios",
+      "ctaTitle": "¿Necesitas cuido para esta fecha?",
+      "ctaText": "Escríbeme y te confirmo disponibilidad dentro de 24 horas. Sin compromiso.",
+      "ctaButton": "Solicita disponibilidad",
+      "ctaWhatsapp": "Escríbeme por WhatsApp"
+    },
+    "services": {
+      "at-home-care": {
+        "title": "Niñera a Domicilio en San Juan, PR | Titi Amanda",
+        "description": "Cuido de niños en tu hogar en San Juan y área metro. Rutinas respetadas, juego sin pantallas y una niñera con 8+ años de experiencia.",
+        "h1": "Cuido de niños a domicilio en San Juan",
+        "intro": [
+          "Cuidar a tu hijo en su propia casa tiene una ventaja que ningún otro arreglo iguala: el niño se queda en su ambiente, con sus juguetes, su cama y su rutina intacta. Eso reduce muchísimo la ansiedad de separación, sobre todo en infantes y preescolares.",
+          "Llego a tu hogar en San Juan o el área metro con actividades preparadas según la edad de tu hijo, y sigo la rutina que ya tienen establecida en vez de imponer una nueva. Si tu hijo duerme siesta a las 2:00, duerme siesta a las 2:00."
+        ],
+        "includes": [
+          "Actividades preparadas y adaptadas a la edad, sin pantallas",
+          "Respeto a las rutinas de comida, siesta y hora de dormir que ya tienen",
+          "Apoyo con meriendas y comidas ya preparadas por la familia",
+          "Recogido de los espacios usados antes de irme",
+          "Reporte al terminar: qué comió, cuánto durmió, cómo estuvo el ánimo"
+        ],
+        "how": [
+          "Me escribes con las fechas, horas y edades de los niños",
+          "Confirmo disponibilidad dentro de 24 horas",
+          "Antes del primer servicio hablamos de rutinas, alergias y cualquier detalle importante",
+          "Llego 10 minutos antes para que puedas salir con calma"
+        ],
+        "faq": [
+          {
+            "q": "¿Cuál es el tiempo mínimo de servicio?",
+            "a": "El mínimo es de cuatro horas. Para fechas y horarios específicos, escríbeme y lo coordinamos."
+          },
+          {
+            "q": "¿Cuidas varios niños a la vez?",
+            "a": "Sí. La cantidad depende de las edades: no es lo mismo dos preescolares que un infante y un recién nacido. Cuéntame las edades y te digo con franqueza si puedo darles atención de calidad a todos."
+          },
+          {
+            "q": "¿Trabajas de noche o fines de semana?",
+            "a": "Sí, incluyendo noches de cita y eventos. Las fechas de temporada alta y días feriados se llenan con semanas de antelación, así que mientras más temprano escribas, mejor."
+          }
+        ]
+      },
+      "hotel-vacation": {
+        "title": "Niñera en Hoteles de San Juan y Condado | Titi Amanda",
+        "description": "Niñera bilingüe para hoteles y resorts en San Juan, Condado e Isla Verde. Ideal para turistas, bodas de destino y noches libres.",
+        "h1": "Niñera en hoteles y vacaciones en Puerto Rico",
+        "intro": [
+          "Viajar con niños y no poder disfrutar una cena o una excursión de adultos es la frustración más común de las familias que visitan Puerto Rico. Voy a tu hotel o resort en San Juan, Condado, Isla Verde o Dorado para que puedan salir tranquilos.",
+          "Llevo mis propios materiales y actividades, porque una habitación de hotel no tiene con qué entretener a un niño. Hablo español e inglés con fluidez, así que la comunicación con la familia y con el personal del hotel nunca es un obstáculo."
+        ],
+        "includes": [
+          "Servicio en la habitación, el área de piscina o el lobby, según prefiera la familia",
+          "Materiales y actividades que llevo yo: libros, arte, juegos de mesa",
+          "Servicio bilingüe completo en español e inglés",
+          "Coordinación con el personal del hotel si hace falta",
+          "Disponibilidad para bodas de destino y eventos con horario extendido"
+        ],
+        "how": [
+          "Escríbeme con el nombre del hotel, las fechas y las edades de los niños",
+          "Confirmo disponibilidad dentro de 24 horas",
+          "Coordinamos punto de encuentro y cualquier requisito del hotel",
+          "Recibes un mensaje durante el servicio para que estés tranquilo"
+        ],
+        "faq": [
+          {
+            "q": "¿A qué hoteles vas?",
+            "a": "A los de San Juan, Condado, Isla Verde, Old San Juan, Carolina y Dorado. Si tu hotel queda fuera de esa zona, escríbeme igual y te digo si puedo llegar."
+          },
+          {
+            "q": "¿Con cuánta antelación debo reservar?",
+            "a": "Para temporada alta, bodas y días feriados, lo antes posible: esas fechas se llenan semanas antes. Fuera de temporada, unos días suelen bastar."
+          },
+          {
+            "q": "¿Puedes cuidar durante una boda o evento?",
+            "a": "Sí, es uno de los servicios que más me piden las familias que viajan. Para bodas conviene coordinar con anticipación porque suelen ser varios niños de familias distintas."
+          }
+        ]
+      },
+      "special-needs": {
+        "title": "Cuido de Niños con Autismo en San Juan | Titi Amanda",
+        "description": "Cuido especializado para niños con autismo y necesidades del desarrollo en San Juan. Maestría en Educación Especial y Autismo.",
+        "h1": "Cuido para niños con autismo y necesidades del desarrollo",
+        "intro": [
+          "Encontrar a alguien preparado para cuidar a un niño con autismo es difícil, y dejarlo con alguien que no entiende sus necesidades no es una opción. Tengo maestría en Educación Especial y Autismo, y maestría en Consejería Psicológica, además de bachillerato en Terapia del Habla.",
+          "Eso significa que no estoy improvisando: trabajo con apoyos visuales, anticipo las transiciones, reconozco señales de sobrecarga sensorial antes de que escalen, y respeto los sistemas de comunicación que tu hijo ya use, sea lenguaje oral, señas o un dispositivo."
+        ],
+        "includes": [
+          "Apoyos visuales y anticipación de transiciones para reducir la ansiedad",
+          "Actividades sensoriales adaptadas al perfil de tu hijo",
+          "Reconocimiento temprano de señales de sobrecarga y estrategias de regulación",
+          "Respeto y uso del sistema de comunicación que tu hijo ya utiliza",
+          "Continuidad con las estrategias que usan en casa y en terapia"
+        ],
+        "how": [
+          "Me cuentas el diagnóstico, los apoyos que usa y qué le funciona",
+          "Coordinamos una primera visita más corta para que se conozcan sin presión",
+          "Sigo las estrategias que ya usan en casa, no invento unas nuevas",
+          "Te comparto cómo estuvo la sesión y qué funcionó mejor"
+        ],
+        "faq": [
+          {
+            "q": "¿Qué formación específica tienes?",
+            "a": "Bachillerato en Terapia del Habla, maestría en Educación Especial y Autismo, y maestría en Consejería Psicológica, más 8+ años de experiencia directa con niños."
+          },
+          {
+            "q": "¿Puedes seguir el plan de terapia de mi hijo?",
+            "a": "Sí. No sustituyo a sus terapeutas, pero sí doy continuidad a las estrategias que ya usan para que no pierda avances entre sesiones."
+          },
+          {
+            "q": "¿Y si mi hijo no habla?",
+            "a": "Trabajo con el sistema de comunicación que ya use: señas, pictogramas, dispositivo o gestos propios. Lo importante es que se sienta entendido, no que hable."
+          }
+        ]
+      },
+      "family-outing": {
+        "title": "Acompañamiento en Salidas Familiares | Titi Amanda",
+        "description": "Manos extra durante salidas, eventos y diligencias con los niños en San Juan. Acompañamiento profesional para familias.",
+        "h1": "Acompañamiento en salidas familiares",
+        "intro": [
+          "A veces no necesitas dejar a los niños en casa, necesitas otro par de manos mientras están contigo. Playa, restaurante, evento familiar, una diligencia larga: los acompaño para que la salida sea disfrutable en vez de agotadora.",
+          "Es el servicio ideal para familias con varios niños de edades distintas, cuando atender a uno significa perder de vista al otro. Yo me ocupo de la logística menuda para que ustedes estén presentes con sus hijos."
+        ],
+        "includes": [
+          "Acompañamiento durante toda la salida, no solo supervisión puntual",
+          "Atención especial al niño más pequeño mientras atienden a los mayores",
+          "Ayuda con meriendas, cambios de ropa y todo el equipaje de niños",
+          "Supervisión cercana en lugares con riesgo: playa, piscina, áreas abiertas",
+          "Actividades para los tiempos de espera en restaurantes y eventos"
+        ],
+        "how": [
+          "Me cuentas el plan: a dónde van, cuánto dura y cuántos niños",
+          "Confirmo disponibilidad dentro de 24 horas",
+          "Acordamos punto de encuentro y qué necesitan que lleve",
+          "Los acompaño durante la salida completa"
+        ],
+        "faq": [
+          {
+            "q": "¿Puedes acompañarnos a la playa o la piscina?",
+            "a": "Sí, y en esos lugares la supervisión es más estricta por el riesgo del agua. Te pido que acordemos de antemano las reglas que quieres que siga."
+          },
+          {
+            "q": "¿Vas a eventos y bodas familiares?",
+            "a": "Sí. En eventos suelo atender a varios niños de la misma familia para que los adultos puedan participar del evento."
+          },
+          {
+            "q": "¿Uso mi transporte o el de ustedes?",
+            "a": "Lo coordinamos según la salida. Normalmente los encuentro en el lugar, pero podemos acordar otra cosa si les conviene más."
+          }
+        ]
+      }
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes | Titi Amanda Niñera en San Juan",
+      "description": "Respuestas sobre tarifas, horarios, zonas de servicio, experiencia y cómo reservar cuido de niños con Titi Amanda en San Juan, PR.",
+      "h1": "Preguntas frecuentes",
+      "intro": "Lo que más me preguntan las familias antes de reservar. Si tu pregunta no está aquí, escríbeme por WhatsApp y te contesto directamente.",
+      "items": [
+        {
+          "q": "¿En qué pueblos ofreces servicio?",
+          "a": "San Juan, Condado, Isla Verde, Santurce, Miramar, Old San Juan, Carolina, Guaynabo, Bayamón y Dorado. Si estás fuera de esa zona, escríbeme igual y te digo con franqueza si puedo llegar."
+        },
+        {
+          "q": "¿Cuánto cuesta el servicio?",
+          "a": "Depende de la cantidad de niños, sus edades, la duración y el tipo de servicio. Escríbeme con esos detalles y te doy un precio claro, sin cargos sorpresa."
+        },
+        {
+          "q": "¿Cuál es el tiempo mínimo de servicio?",
+          "a": "El mínimo es de cuatro horas. Para necesidades específicas, escríbeme y lo coordinamos."
+        },
+        {
+          "q": "¿Qué experiencia y formación tienes?",
+          "a": "Más de 8 años cuidando niños en hogares y hoteles por todo Puerto Rico. Bachillerato en Terapia del Habla, maestría en Educación Especial y Autismo, y maestría en Consejería Psicológica."
+        },
+        {
+          "q": "¿Qué edades cuidas?",
+          "a": "Me especializo en infantes y preescolares, y también cuido niños de edad escolar. Cuéntame las edades y te digo con honestidad si es un buen encaje."
+        },
+        {
+          "q": "¿Con cuánta antelación debo reservar?",
+          "a": "Mientras antes, mejor. Las fechas de temporada alta, días feriados y fines de semana se llenan con semanas de antelación."
+        },
+        {
+          "q": "¿Usas pantallas durante el cuido?",
+          "a": "No como entretenimiento por defecto. Llevo libros, arte y juegos porque el tiempo de cuido da para mucho más. Si tu familia permite pantallas en ciertos momentos, respeto esa regla."
+        },
+        {
+          "q": "¿Cómo reservo?",
+          "a": "Completa el formulario del sitio o escríbeme por WhatsApp con las fechas, horas y edades de los niños. Te confirmo disponibilidad dentro de 24 horas."
+        }
+      ]
+    }
+  },
   "nav": {
     "home": "Inicio",
     "services": "Servicios",
     "activities": "Actividades",
     "about": "Sobre mí",
-    "contact": "Contáctame"
+    "contact": "Contáctame",
+    "faq": "Preguntas"
   },
   "hero": {
     "title": "Servicios de Niñera\nde Calidad",
@@ -58,7 +260,8 @@
           "Diligencias o planes especiales"
         ]
       }
-    }
+    },
+    "readMore": "Ver detalles del servicio"
   },
   "activities": {
     "label": "Actividades",

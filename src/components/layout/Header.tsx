@@ -7,11 +7,13 @@ import { useTranslation } from 'react-i18next'
 import logoPrimary from '@/assets/images/logo/full-logo.svg'
 import logoIcon from '@/assets/images/logo/logo-icon.svg'
 import { CONTACT_INFO } from '@/data/config'
+import { useRoute } from '@/hooks/useRoute'
 import { useScrollSpy } from '@/hooks/useScrollSpy'
 import { useStickyHeader } from '@/hooks/useStickyHeader'
-import { SUPPORTED_LANGS, langPath, type SupportedLang } from '@/i18n'
+import { SUPPORTED_LANGS, type SupportedLang } from '@/i18n'
 import { slideInDown } from '@/lib/animations'
 import { cn } from '@/lib/utils'
+import { faqPath, homePath, translateRoute } from '@/routes'
 
 const NAV_LINKS = [
   { key: 'home', href: '#top' },
@@ -41,10 +43,9 @@ function useMounted() {
 // navigates instead of swapping resources in place. Storing the choice first
 // keeps the root's auto-redirect from overriding an explicit selection.
 function LanguageSwitcher({ className }: { className?: string }) {
-  const { i18n, t } = useTranslation()
-  const current = (
-    i18n.language?.startsWith('en') ? 'en' : 'es'
-  ) as SupportedLang
+  const { t } = useTranslation()
+  const route = useRoute()
+  const current: SupportedLang = route.lng
 
   return (
     <div
@@ -56,8 +57,9 @@ function LanguageSwitcher({ className }: { className?: string }) {
       {SUPPORTED_LANGS.map(lang => (
         <a
           key={lang}
+          // Lleva a la misma página en el otro idioma, no siempre al home
           href={
-            langPath(lang) +
+            translateRoute(route, lang) +
             (typeof window !== 'undefined' ? window.location.hash : '')
           }
           onClick={() => localStorage.setItem('i18nextLng', lang)}
@@ -86,12 +88,21 @@ export default function Header() {
   const isSticky = useStickyHeader()
   const activeSection = useScrollSpy()
   const { t } = useTranslation()
+  const route = useRoute()
+  const isHome = route.kind === 'home'
 
-  const handleNavClick = (href: string) => {
+  // En el home las anclas existen y hacemos scroll suave; en páginas internas
+  // el enlace debe navegar al home primero.
+  const navHref = (hash: string) =>
+    isHome ? hash : `${homePath(route.lng)}${hash}`
+
+  const handleNavClick = (e: React.MouseEvent, hash: string) => {
+    if (!isHome) return // deja que el enlace navegue
+    e.preventDefault()
     setMobileOpen(false)
     // Keep the hash current so the language switcher can preserve position
-    history.replaceState(null, '', href)
-    scrollTo(href.replace('#', ''))
+    history.replaceState(null, '', hash)
+    scrollTo(hash.replace('#', ''))
   }
 
   return (
@@ -110,11 +121,8 @@ export default function Header() {
         <nav className="flex h-full items-center justify-between">
           {/* Logo */}
           <a
-            href="#top"
-            onClick={e => {
-              e.preventDefault()
-              handleNavClick('#top')
-            }}
+            href={navHref('#top')}
+            onClick={e => handleNavClick(e, '#top')}
             className="flex h-full items-center px-3 py-2"
           >
             <img
@@ -138,15 +146,13 @@ export default function Header() {
           {/* Desktop Nav */}
           <ul className="hidden items-center gap-1 lg:flex">
             {NAV_LINKS.map(link => {
-              const isActive = activeSection === link.href.replace('#', '')
+              const isActive =
+                isHome && activeSection === link.href.replace('#', '')
               return (
                 <li key={link.href}>
                   <a
-                    href={link.href}
-                    onClick={e => {
-                      e.preventDefault()
-                      handleNavClick(link.href)
-                    }}
+                    href={navHref(link.href)}
+                    onClick={e => handleNavClick(e, link.href)}
                     className={cn(
                       'rounded-full px-4 py-2 text-sm font-medium tracking-wider capitalize transition-colors duration-300',
                       isActive
@@ -159,6 +165,19 @@ export default function Header() {
                 </li>
               )
             })}
+            <li>
+              <a
+                href={faqPath(route.lng)}
+                className={cn(
+                  'rounded-full px-4 py-2 text-sm font-medium tracking-wider capitalize transition-colors duration-300',
+                  route.kind === 'faq'
+                    ? 'text-pink-deep bg-pink/10'
+                    : 'text-gray-dark hover:text-pink-deep'
+                )}
+              >
+                {t('nav.faq')}
+              </a>
+            </li>
             <li>
               <LanguageSwitcher className="ml-2" />
             </li>
@@ -231,7 +250,7 @@ export default function Header() {
                 <nav className="flex flex-1 flex-col items-center justify-center gap-2 px-6">
                   {NAV_LINKS.map((link, i) => {
                     const isActive =
-                      activeSection === link.href.replace('#', '')
+                      isHome && activeSection === link.href.replace('#', '')
                     return (
                       <motion.div
                         key={link.href}
@@ -242,11 +261,8 @@ export default function Header() {
                         className="w-full max-w-xs"
                       >
                         <a
-                          href={link.href}
-                          onClick={e => {
-                            e.preventDefault()
-                            handleNavClick(link.href)
-                          }}
+                          href={navHref(link.href)}
+                          onClick={e => handleNavClick(e, link.href)}
                           className={cn(
                             'block w-full rounded-2xl px-6 py-4 text-center text-lg font-semibold capitalize transition-colors duration-200',
                             isActive
@@ -259,6 +275,28 @@ export default function Header() {
                       </motion.div>
                     )
                   })}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{
+                      delay: 0.1 + NAV_LINKS.length * 0.06,
+                      duration: 0.3,
+                    }}
+                    className="w-full max-w-xs"
+                  >
+                    <a
+                      href={faqPath(route.lng)}
+                      className={cn(
+                        'block w-full rounded-2xl px-6 py-4 text-center text-lg font-semibold capitalize transition-colors duration-200',
+                        route.kind === 'faq'
+                          ? 'bg-pink/10 text-pink-deep'
+                          : 'text-gray-dark hover:bg-pink/5 hover:text-pink-deep'
+                      )}
+                    >
+                      {t('nav.faq')}
+                    </a>
+                  </motion.div>
                 </nav>
 
                 {/* Bottom decoration */}
