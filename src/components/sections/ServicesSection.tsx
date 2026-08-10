@@ -11,6 +11,7 @@ import {
   type CarouselApi,
 } from '@/components/ui/carousel'
 import { SERVICES } from '@/data/config'
+import { useLang } from '@/hooks/useRoute'
 import {
   fadeInUp,
   fadeInLeft,
@@ -19,6 +20,7 @@ import {
   viewportConfig,
 } from '@/lib/animations'
 import { cn } from '@/lib/utils'
+import { servicePath } from '@/routes'
 
 const BLOB_COLORS: Record<string, string> = {
   pink: 'from-pink/30 to-pink/10',
@@ -36,13 +38,14 @@ const DOT_COLORS: Record<string, string> = {
 
 export default function ServicesSection() {
   const { t } = useTranslation()
+  const lng = useLang()
   const [activeIndex, setActiveIndex] = useState(0)
   const carouselRef = useRef<CarouselApi | undefined>(undefined)
 
   return (
     <section id="services" className="relative overflow-hidden pt-8 pb-16">
-      {/* Nube decorativa: background-image en vez de <img> para que quede
-          fuera del árbol de accesibilidad y de las auditorías de imágenes */}
+      {/* Decorative cloud: background-image instead of <img> so it stays out
+          of the accessibility tree and image audits */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute top-12 right-32 hidden h-64 w-64 bg-contain bg-no-repeat opacity-40 lg:block"
@@ -192,6 +195,14 @@ export default function ServicesSection() {
                               ))}
                             </ul>
                           </div>
+
+                          <a
+                            href={servicePath(lng, service.id)}
+                            className="text-blue-deep hover:text-blue-deep/80 inline-flex items-center gap-1.5 text-sm font-semibold underline underline-offset-4 transition-colors"
+                          >
+                            {t('services.readMore')}
+                            <span aria-hidden="true">→</span>
+                          </a>
                         </motion.div>
                       </AnimatePresence>
                     </motion.div>

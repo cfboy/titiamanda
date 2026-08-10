@@ -5,12 +5,25 @@ import { I18nextProvider } from 'react-i18next'
 import './index.css'
 import App from './App.tsx'
 import { initI18n } from './i18n'
+import { resolveRoute } from './routes'
+
+// The route derives from the pathname and must match what the prerender used,
+// or hydration fails.
+const route = resolveRoute(window.location.pathname)
+
+// Cache for the root redirect script: remembers the visited language so later
+// visits are not redirected by browser language.
+try {
+  localStorage.setItem('i18nextLng', route.lng)
+} catch {
+  // localStorage may be unavailable (e.g. cookies blocked)
+}
 
 const rootEl = document.getElementById('root')!
 const app = (
   <StrictMode>
-    <I18nextProvider i18n={initI18n()}>
-      <App />
+    <I18nextProvider i18n={initI18n(route.lng)}>
+      <App route={route} />
     </I18nextProvider>
   </StrictMode>
 )

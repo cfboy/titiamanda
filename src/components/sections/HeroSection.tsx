@@ -1,9 +1,7 @@
 import { motion } from 'framer-motion'
 import { Trans, useTranslation } from 'react-i18next'
 
-function scrollToContact() {
-  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-}
+import { useContactDrawer } from '@/hooks/useContactDrawer'
 
 function HeroSubtitle({ className }: { className: string }) {
   return (
@@ -22,15 +20,21 @@ function HeroSubtitle({ className }: { className: string }) {
 
 function HeroCta() {
   const { t } = useTranslation()
+  const contactDrawer = useContactDrawer()
   return (
-    <motion.button
-      onClick={scrollToContact}
+    // Real anchor to the form as a no-JavaScript fallback; with JS it opens the drawer.
+    <motion.a
+      href="#contact"
+      onClick={e => {
+        e.preventDefault()
+        contactDrawer.open()
+      }}
       whileHover={{ y: -2 }}
       whileTap={{ scale: 0.97 }}
       className="bg-blue-deep hover:bg-blue-deep/90 inline-flex items-center gap-2 rounded-full px-9 py-4 text-base font-semibold text-white shadow-lg transition-colors duration-200"
     >
       {t('hero.cta')}
-    </motion.button>
+    </motion.a>
   )
 }
 

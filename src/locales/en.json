@@ -5,12 +5,214 @@
     "keywords": "babysitter, babysitter San Juan, childcare Puerto Rico, hotel babysitting, vacation babysitter, in-home childcare, special needs babysitter, nanny Puerto Rico",
     "ogImageAlt": "Titi Amanda — Quality Babysitter Services in Puerto Rico"
   },
+  "pages": {
+    "common": {
+      "breadcrumbHome": "Home",
+      "breadcrumbServices": "Services",
+      "includesTitle": "What's included",
+      "idealForTitle": "Ideal for",
+      "howTitle": "How it works",
+      "faqTitle": "Frequently asked questions",
+      "otherServices": "Other services",
+      "ctaTitle": "Need care for a specific date?",
+      "ctaText": "Message me and I'll confirm availability within 24 hours. No commitment.",
+      "ctaButton": "Check availability",
+      "ctaWhatsapp": "Message me on WhatsApp"
+    },
+    "services": {
+      "at-home-care": {
+        "title": "In-Home Babysitter in San Juan, PR | Titi Amanda",
+        "description": "Childcare in your own home across San Juan and metro area. Routines respected, screen-free play, and a sitter with 8+ years of experience.",
+        "h1": "In-home childcare in San Juan",
+        "intro": [
+          "Caring for your child at home has one advantage no other arrangement matches: your child stays in their own environment, with their own toys, their own bed, and their routine intact. That dramatically reduces separation anxiety, especially with infants and preschoolers.",
+          "I come to your home in San Juan or the metro area with activities prepared for your child's age, and I follow the routine you already have rather than imposing a new one. If your child naps at 2:00, they nap at 2:00."
+        ],
+        "includes": [
+          "Prepared, age-appropriate activities with no screens",
+          "Existing meal, nap, and bedtime routines respected",
+          "Help with snacks and meals already prepared by the family",
+          "Spaces we used tidied up before I leave",
+          "A wrap-up when I finish: what they ate, how long they slept, how their mood was"
+        ],
+        "how": [
+          "Message me with dates, times, and your children's ages",
+          "I confirm availability within 24 hours",
+          "Before the first session we go over routines, allergies, and anything important",
+          "I arrive 10 minutes early so you can leave unhurried"
+        ],
+        "faq": [
+          {
+            "q": "What's the minimum booking?",
+            "a": "The minimum booking is four hours. For specific dates or schedules, message me and we'll work it out."
+          },
+          {
+            "q": "Can you watch more than one child?",
+            "a": "Yes. How many depends on their ages — two preschoolers is not the same as an infant plus a newborn. Tell me the ages and I'll be straight with you about whether I can give them all quality attention."
+          },
+          {
+            "q": "Do you work nights and weekends?",
+            "a": "Yes, including date nights and events. Peak season and holiday dates fill up weeks ahead, so the earlier you reach out the better."
+          }
+        ]
+      },
+      "hotel-vacation": {
+        "title": "Hotel Babysitter in San Juan & Condado | Titi Amanda",
+        "description": "Bilingual babysitter for hotels and resorts in San Juan, Condado, and Isla Verde. Ideal for tourists, destination weddings, and nights out.",
+        "h1": "Hotel and vacation babysitting in Puerto Rico",
+        "intro": [
+          "Traveling with kids and never getting an adult dinner or excursion is the most common frustration for families visiting Puerto Rico. I come to your hotel or resort in San Juan, Condado, Isla Verde, or Dorado so you can go out with peace of mind.",
+          "I bring my own materials and activities, because a hotel room has nothing to keep a child engaged. I'm fluent in Spanish and English, so communication with your family and with hotel staff is never an obstacle."
+        ],
+        "includes": [
+          "Care in the room, by the pool, or in the lobby — whatever the family prefers",
+          "Materials and activities I bring myself: books, art, games",
+          "Fully bilingual service in English and Spanish",
+          "Coordination with hotel staff when needed",
+          "Availability for destination weddings and events with extended hours"
+        ],
+        "how": [
+          "Message me with your hotel name, dates, and your children's ages",
+          "I confirm availability within 24 hours",
+          "We arrange the meeting point and any hotel requirements",
+          "You get a check-in message during the session so you can relax"
+        ],
+        "faq": [
+          {
+            "q": "Which hotels do you travel to?",
+            "a": "Hotels in San Juan, Condado, Isla Verde, Old San Juan, Carolina, and Dorado. If yours is outside that area, message me anyway and I'll tell you whether I can get there."
+          },
+          {
+            "q": "How far in advance should I book?",
+            "a": "For peak season, weddings, and holidays, as early as possible — those dates fill weeks ahead. Off-season, a few days is usually enough."
+          },
+          {
+            "q": "Can you provide care during a wedding or event?",
+            "a": "Yes, it's one of the most requested services from traveling families. Weddings are worth arranging well ahead since they usually involve several children from different families."
+          }
+        ]
+      },
+      "special-needs": {
+        "title": "Autism & Special Needs Sitter, San Juan | Titi Amanda",
+        "description": "Specialized care for children with autism and developmental needs in San Juan. Master's in Special Education and Autism.",
+        "h1": "Care for children with autism and developmental needs",
+        "intro": [
+          "Finding someone equipped to care for a child with autism is hard, and leaving them with someone who doesn't understand their needs isn't an option. I hold a master's in Special Education and Autism, a master's in Psychological Counseling, and a bachelor's in Speech Therapy.",
+          "That means I'm not improvising: I work with visual supports, I preview transitions, I recognize signs of sensory overload before they escalate, and I respect whatever communication system your child already uses — spoken language, signs, or a device."
+        ],
+        "includes": [
+          "Visual supports and transition previews to reduce anxiety",
+          "Sensory activities adapted to your child's profile",
+          "Early recognition of overload signals and regulation strategies",
+          "Respect for and use of the communication system your child already has",
+          "Continuity with the strategies used at home and in therapy"
+        ],
+        "how": [
+          "You tell me the diagnosis, the supports they use, and what works",
+          "We arrange a shorter first visit so they can meet me without pressure",
+          "I follow the strategies you already use at home — I don't invent new ones",
+          "I share how the session went and what worked best"
+        ],
+        "faq": [
+          {
+            "q": "What specific training do you have?",
+            "a": "A bachelor's in Speech Therapy, a master's in Special Education and Autism, and a master's in Psychological Counseling, plus 8+ years of direct experience with children."
+          },
+          {
+            "q": "Can you follow my child's therapy plan?",
+            "a": "Yes. I don't replace their therapists, but I do carry through the strategies they already use so your child doesn't lose ground between sessions."
+          },
+          {
+            "q": "What if my child is non-speaking?",
+            "a": "I work with whatever communication system they already use: signs, picture cards, a device, or their own gestures. What matters is that they feel understood, not that they speak."
+          }
+        ]
+      },
+      "family-outing": {
+        "title": "Family Outing Support in San Juan | Titi Amanda",
+        "description": "An extra pair of hands during outings, events, and errands with the kids in San Juan. Professional support for families.",
+        "h1": "Family outing support",
+        "intro": [
+          "Sometimes you don't need to leave the kids at home — you need another pair of hands while they're with you. Beach, restaurant, family event, a long errand: I come along so the outing is enjoyable instead of exhausting.",
+          "It's the ideal service for families with several children of different ages, when tending to one means losing sight of another. I handle the small logistics so you can actually be present with your kids."
+        ],
+        "includes": [
+          "Support through the whole outing, not just occasional supervision",
+          "Focused attention on the youngest while you tend to the older ones",
+          "Help with snacks, changes of clothes, and all the kid gear",
+          "Close supervision in higher-risk places: beach, pool, open areas",
+          "Activities for the waiting stretches at restaurants and events"
+        ],
+        "how": [
+          "Tell me the plan: where you're going, how long, and how many children",
+          "I confirm availability within 24 hours",
+          "We agree on a meeting point and what you need me to bring",
+          "I'm with you for the full outing"
+        ],
+        "faq": [
+          {
+            "q": "Can you come with us to the beach or pool?",
+            "a": "Yes, and supervision is stricter in those settings because of the water. I'll ask that we agree ahead of time on the rules you want me to follow."
+          },
+          {
+            "q": "Do you attend events and family weddings?",
+            "a": "Yes. At events I usually look after several children from the same family so the adults can take part."
+          },
+          {
+            "q": "Do you drive yourself or ride with us?",
+            "a": "We arrange it based on the outing. I normally meet you there, but we can work out something else if that suits you better."
+          }
+        ]
+      }
+    },
+    "faq": {
+      "title": "FAQ | Titi Amanda Babysitter in San Juan, PR",
+      "description": "Answers about rates, hours, service areas, experience, and how to book childcare with Titi Amanda in San Juan, Puerto Rico.",
+      "h1": "Frequently asked questions",
+      "intro": "What families ask me most before booking. If your question isn't here, message me on WhatsApp and I'll answer directly.",
+      "items": [
+        {
+          "q": "Which areas do you serve?",
+          "a": "San Juan, Condado, Isla Verde, Santurce, Miramar, Old San Juan, Carolina, Guaynabo, Bayamón, and Dorado. If you're outside that area, message me anyway and I'll be straight with you about whether I can get there."
+        },
+        {
+          "q": "How much does it cost?",
+          "a": "It depends on how many children, their ages, the duration, and the type of service. Message me with those details and I'll give you a clear price with no surprise fees."
+        },
+        {
+          "q": "What's the minimum booking?",
+          "a": "The minimum booking is four hours. For specific needs, message me and we'll work it out."
+        },
+        {
+          "q": "What experience and training do you have?",
+          "a": "Over 8 years caring for children in homes and hotels across Puerto Rico. A bachelor's in Speech Therapy, a master's in Special Education and Autism, and a master's in Psychological Counseling."
+        },
+        {
+          "q": "What ages do you care for?",
+          "a": "I specialize in infants and preschoolers, and I also care for school-age children. Tell me the ages and I'll be honest about whether it's a good fit."
+        },
+        {
+          "q": "How far in advance should I book?",
+          "a": "The earlier the better. Peak season, holidays, and weekends fill up weeks ahead."
+        },
+        {
+          "q": "Do you use screens during care?",
+          "a": "Not as default entertainment. I bring books, art, and games because care time can be so much more than that. If your family allows screens at certain moments, I respect that rule."
+        },
+        {
+          "q": "How do I book?",
+          "a": "Fill out the form on this site or message me on WhatsApp with dates, times, and your children's ages. I'll confirm availability within 24 hours."
+        }
+      ]
+    }
+  },
   "nav": {
     "home": "Home",
     "services": "Services",
     "activities": "Activities",
     "about": "About me",
-    "contact": "Contact me"
+    "contact": "Contact me",
+    "faq": "FAQ"
   },
   "hero": {
     "title": "Quality Babysitter\nServices",
@@ -58,7 +260,9 @@
           "Errands or special plans"
         ]
       }
-    }
+    },
+    "readMore": "See service details",
+    "viewAll": "See all services"
   },
   "activities": {
     "label": "Activities",
