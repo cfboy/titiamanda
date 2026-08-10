@@ -22,14 +22,19 @@ function HeroCta() {
   const { t } = useTranslation()
   const contactDrawer = useContactDrawer()
   return (
-    <motion.button
-      onClick={contactDrawer.open}
+    // Real anchor to the form as a no-JavaScript fallback; with JS it opens the drawer.
+    <motion.a
+      href="#contact"
+      onClick={e => {
+        e.preventDefault()
+        contactDrawer.open()
+      }}
       whileHover={{ y: -2 }}
       whileTap={{ scale: 0.97 }}
       className="bg-blue-deep hover:bg-blue-deep/90 inline-flex items-center gap-2 rounded-full px-9 py-4 text-base font-semibold text-white shadow-lg transition-colors duration-200"
     >
       {t('hero.cta')}
-    </motion.button>
+    </motion.a>
   )
 }
 

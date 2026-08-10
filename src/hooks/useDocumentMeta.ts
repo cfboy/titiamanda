@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 import type { Route } from '@/routes'
 
-/** Claves de traducción del title/description según el tipo de página. */
+/** Translation keys for title/description per page type. */
 export function metaKeysFor(route: Route): {
   title: string
   description: string
@@ -18,7 +18,7 @@ export function metaKeysFor(route: Route): {
   return { title: 'meta.title', description: 'meta.description' }
 }
 
-/** Mantiene <html lang>, title y meta description en sync con idioma y ruta. */
+/** Keeps <html lang>, title, and meta description in sync with language and route. */
 export function useDocumentMeta(route: Route) {
   const { t, i18n } = useTranslation()
 

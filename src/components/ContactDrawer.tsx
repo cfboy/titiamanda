@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import ContactForm from '@/components/ContactForm'
@@ -12,8 +12,8 @@ import {
 import { ContactDrawerContext } from '@/hooks/useContactDrawer'
 
 /**
- * Monta el drawer una sola vez en el árbol. El formulario vive dentro con
- * ids sufijados para no chocar con la instancia de la sección del home.
+ * Mounts the drawer once in the tree. The form lives inside with suffixed ids
+ * so it doesn't clash with the home-section instance.
  */
 export function ContactDrawerProvider({
   children,
@@ -22,9 +22,11 @@ export function ContactDrawerProvider({
 }) {
   const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
+  // Stable value: opening/closing the drawer must not re-render consumers
+  const value = useMemo(() => ({ open: () => setIsOpen(true) }), [])
 
   return (
-    <ContactDrawerContext.Provider value={{ open: () => setIsOpen(true) }}>
+    <ContactDrawerContext.Provider value={value}>
       {children}
 
       <Drawer open={isOpen} onOpenChange={setIsOpen}>

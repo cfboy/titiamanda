@@ -8,21 +8,15 @@ import logoPrimary from '@/assets/images/logo/full-logo.svg'
 import logoIcon from '@/assets/images/logo/logo-icon.svg'
 import { CONTACT_INFO } from '@/data/config'
 import { useContactDrawer } from '@/hooks/useContactDrawer'
-import { useRoute } from '@/hooks/useRoute'
+import { useAnchorBase, useRoute } from '@/hooks/useRoute'
 import { useScrollSpy } from '@/hooks/useScrollSpy'
 import { useStickyHeader } from '@/hooks/useStickyHeader'
 import { SUPPORTED_LANGS, type SupportedLang } from '@/i18n'
 import { slideInDown } from '@/lib/animations'
 import { cn } from '@/lib/utils'
-import {
-  SERVICE_PAGES,
-  faqPath,
-  homePath,
-  servicePath,
-  translateRoute,
-} from '@/routes'
+import { SERVICE_PAGES, faqPath, servicePath, translateRoute } from '@/routes'
 
-// 'services' se renderiza aparte como desplegable, y 'contact' abre el drawer.
+// 'services' renders separately as a dropdown, and 'contact' opens the drawer.
 const NAV_LINKS = [
   { key: 'home', href: '#top' },
   { key: 'activities', href: '#features' },
@@ -45,7 +39,7 @@ function useMounted() {
   )
 }
 
-/** Desplegable de Servicios en escritorio: lista las 4 páginas de servicio. */
+/** Desktop Services dropdown: lists the 4 service pages. */
 function ServicesMenu({
   isActive,
   anchorHref,
@@ -159,7 +153,7 @@ function LanguageSwitcher({ className }: { className?: string }) {
       {SUPPORTED_LANGS.map(lang => (
         <a
           key={lang}
-          // Lleva a la misma página en el otro idioma, no siempre al home
+          // Goes to the same page in the other language, not always the home
           href={
             translateRoute(route, lang) +
             (typeof window !== 'undefined' ? window.location.hash : '')
@@ -193,20 +187,22 @@ export default function Header() {
   const route = useRoute()
   const contactDrawer = useContactDrawer()
   const isHome = route.kind === 'home'
+  const anchorBase = useAnchorBase()
 
-  // Contacto abre el drawer en cualquier página en vez de mandar al home
-  const openContact = () => {
+  // Contact opens the drawer on any page instead of sending to the home.
+  // The link keeps its real href as a no-JavaScript fallback.
+  const openContact = (e: React.MouseEvent) => {
+    e.preventDefault()
     setMobileOpen(false)
     contactDrawer.open()
   }
 
-  // En el home las anclas existen y hacemos scroll suave; en páginas internas
-  // el enlace debe navegar al home primero.
-  const navHref = (hash: string) =>
-    isHome ? hash : `${homePath(route.lng)}${hash}`
+  // On the home page the anchors exist and we smooth-scroll; on internal
+  // pages the link must navigate to the home first.
+  const navHref = (hash: string) => `${anchorBase}${hash}`
 
   const handleNavClick = (e: React.MouseEvent, hash: string) => {
-    if (!isHome) return // deja que el enlace navegue
+    if (!isHome) return // let the link navigate
     e.preventDefault()
     setMobileOpen(false)
     // Keep the hash current so the language switcher can preserve position
@@ -273,7 +269,7 @@ export default function Header() {
                   </a>
                 </li>
               )
-              // El desplegable de servicios va justo después de Inicio
+              // The services dropdown goes right after Home
               return link.key === 'home'
                 ? [
                     item,
@@ -299,13 +295,18 @@ export default function Header() {
               </a>
             </li>
             <li>
-              <button
-                type="button"
+              <a
+                href={navHref('#contact')}
                 onClick={openContact}
-                className="text-gray-dark hover:text-pink-deep rounded-full px-4 py-2 text-sm font-medium tracking-wider capitalize transition-colors duration-300"
+                className={cn(
+                  'rounded-full px-4 py-2 text-sm font-medium tracking-wider capitalize transition-colors duration-300',
+                  isHome && activeSection === 'contact'
+                    ? 'text-pink-deep bg-pink/10'
+                    : 'text-gray-dark hover:text-pink-deep'
+                )}
               >
                 {t('nav.contact')}
-              </button>
+              </a>
             </li>
             <li>
               <LanguageSwitcher className="ml-2" />
@@ -378,9 +379,9 @@ export default function Header() {
                 {/* Nav links — justify-center-safe: centrado cuando cabe,
                     alineado arriba (y con scroll completo) cuando no cabe */}
                 <nav className="flex flex-1 flex-col items-center justify-center-safe gap-1 overflow-y-auto px-6 pt-2 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
-                  {/* Mismo orden que en escritorio: Inicio primero y los
-                      servicios justo debajo, en lista desplegada — en móvil
-                      esconder detrás de un toggle solo añade fricción */}
+                  {/* Same order as desktop: Home first with the services
+                      right below, as an expanded list — on mobile, hiding
+                      them behind a toggle only adds friction */}
                   {NAV_LINKS.map((link, i) => {
                     const isActive =
                       isHome && activeSection === link.href.replace('#', '')
@@ -477,13 +478,13 @@ export default function Header() {
                     }}
                     className="w-full max-w-xs pt-2"
                   >
-                    <button
-                      type="button"
+                    <a
+                      href={navHref('#contact')}
                       onClick={openContact}
                       className="bg-blue-deep hover:bg-blue-deep/90 block w-full rounded-full px-6 py-3.5 text-center font-semibold text-white shadow-md transition-colors"
                     >
                       {t('nav.contact')}
-                    </button>
+                    </a>
                   </motion.div>
                 </nav>
               </motion.div>

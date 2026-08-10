@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 
 import { CONTACT_INFO } from '@/data/config'
 import { useContactDrawer } from '@/hooks/useContactDrawer'
+import { useAnchorBase } from '@/hooks/useRoute'
 
 interface Crumb {
   label: string
@@ -14,10 +15,11 @@ interface PageShellProps {
   children: React.ReactNode
 }
 
-/** Cabecera común de las páginas internas: migas de pan + H1. */
+/** Shared header for internal pages: breadcrumbs + H1. */
 export default function PageShell({ crumbs, h1, children }: PageShellProps) {
   const { t } = useTranslation()
   const contactDrawer = useContactDrawer()
+  const anchorBase = useAnchorBase()
 
   return (
     <div className="bg-cream">
@@ -48,7 +50,7 @@ export default function PageShell({ crumbs, h1, children }: PageShellProps) {
 
         {children}
 
-        {/* CTA de cierre */}
+        {/* Closing CTA */}
         <section className="mt-14 rounded-3xl bg-white p-8 shadow-lg">
           <h2 className="mb-2 text-xl font-extrabold text-black">
             {t('pages.common.ctaTitle')}
@@ -57,13 +59,17 @@ export default function PageShell({ crumbs, h1, children }: PageShellProps) {
             {t('pages.common.ctaText')}
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <button
-              type="button"
-              onClick={contactDrawer.open}
+            {/* Real anchor to the home form as a no-JavaScript fallback */}
+            <a
+              href={`${anchorBase}#contact`}
+              onClick={e => {
+                e.preventDefault()
+                contactDrawer.open()
+              }}
               className="bg-blue-deep hover:bg-blue-deep/90 inline-flex items-center justify-center rounded-full px-7 py-3 text-sm font-semibold text-white shadow-md transition-colors"
             >
               {t('pages.common.ctaButton')}
-            </button>
+            </a>
             <a
               href={CONTACT_INFO.whatsapp}
               target="_blank"

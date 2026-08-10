@@ -11,15 +11,15 @@ const RouteContext = createContext<Route>({
 
 export const RouteProvider = RouteContext.Provider
 
-/** La ruta que se está renderizando. Header y Footer la usan para saber si
- *  los enlaces de ancla deben apuntar al home o a la sección de esta página. */
+/** The route currently being rendered. Header and PageShell use it to decide
+ *  whether anchor links should point to the home page or to this page. */
 export function useRoute(): Route {
   return useContext(RouteContext)
 }
 
 /**
- * Prefijo para enlaces de ancla: '' en el home (el ancla existe en la página),
- * la ruta del home en páginas internas (hay que navegar primero).
+ * Prefix for anchor links: '' on the home page (the anchor exists there),
+ * the home path on internal pages (they must navigate first).
  */
 export function useAnchorBase(): string {
   const route = useRoute()

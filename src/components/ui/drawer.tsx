@@ -26,7 +26,9 @@ const DrawerOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DrawerPrimitive.Overlay
     ref={ref}
-    className={cn('fixed inset-0 z-50 bg-black/50', className)}
+    // z-65: above the fixed header (z-60) and below the drawer panel (z-70),
+    // so the header is dimmed too while the modal is open.
+    className={cn('fixed inset-0 z-65 bg-black/50', className)}
     {...props}
   />
 ))
@@ -41,8 +43,8 @@ const DrawerContent = React.forwardRef<
     <DrawerPrimitive.Content
       ref={ref}
       className={cn(
-        // outline-none: el foco entra al primer campo, no hace falta anillo
-        // en el contenedor. z-70 para quedar sobre el header fijo (z-60).
+        // outline-none: focus goes to the first field, no ring needed on the
+        // container. z-70 to sit above the fixed header (z-60).
         'fixed inset-x-0 bottom-0 z-70 mt-24 flex h-auto flex-col rounded-t-3xl border-t border-gray-100 bg-white outline-none',
         className
       )}

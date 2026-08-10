@@ -7,9 +7,17 @@ import App from './App.tsx'
 import { initI18n } from './i18n'
 import { resolveRoute } from './routes'
 
-// La ruta se deriva del pathname y debe coincidir con la que usó el prerender,
-// o la hidratación falla.
+// The route derives from the pathname and must match what the prerender used,
+// or hydration fails.
 const route = resolveRoute(window.location.pathname)
+
+// Cache for the root redirect script: remembers the visited language so later
+// visits are not redirected by browser language.
+try {
+  localStorage.setItem('i18nextLng', route.lng)
+} catch {
+  // localStorage may be unavailable (e.g. cookies blocked)
+}
 
 const rootEl = document.getElementById('root')!
 const app = (

@@ -165,8 +165,8 @@ export default function ServicePage({
         </div>
       </section>
 
-      {/* Enlaces internos a los demás servicios: reparten autoridad y dan
-          a Google más rutas de rastreo */}
+      {/* Internal links to the other services: spread authority and give
+          Google more crawl paths */}
       <section className="mt-10">
         <h2 className="mb-4 text-2xl font-extrabold text-black">
           {t('pages.common.otherServices')}

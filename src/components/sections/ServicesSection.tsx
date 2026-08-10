@@ -44,8 +44,8 @@ export default function ServicesSection() {
 
   return (
     <section id="services" className="relative overflow-hidden pt-8 pb-16">
-      {/* Nube decorativa: background-image en vez de <img> para que quede
-          fuera del árbol de accesibilidad y de las auditorías de imágenes */}
+      {/* Decorative cloud: background-image instead of <img> so it stays out
+          of the accessibility tree and image audits */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute top-12 right-32 hidden h-64 w-64 bg-contain bg-no-repeat opacity-40 lg:block"

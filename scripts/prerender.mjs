@@ -1,12 +1,12 @@
 /**
- * Post-build prerender: emite HTML renderizado y con SEO por cada ruta × idioma.
+ * Post-build prerender: emits rendered, SEO-complete HTML for every route × language.
  *   /                              → home (es, x-default)
- *   /servicios/{slug}/             → páginas de servicio (es)
+ *   /servicios/{slug}/             → service pages (es)
  *   /preguntas-frecuentes/         → FAQ (es)
- *   /en/ + /en/services/{slug}/    → lo mismo en inglés
+ *   /en/ + /en/services/{slug}/    → the same in English
  *
- * Genera además dist/sitemap.xml y dist/404.html, y borra el bundle SSR.
- * Corre después de `vite build` (cliente) + `vite build --ssr` (servidor).
+ * Also generates dist/sitemap.xml and dist/404.html, and removes the SSR bundle.
+ * Runs after `vite build` (client) + `vite build --ssr` (server).
  */
 import {
   copyFileSync,
@@ -31,7 +31,7 @@ const locales = {
 
 const OG_LOCALE = { es: 'es_PR', en: 'en_US' }
 
-// --- Guard: los archivos de idioma deben tener las mismas claves ------------
+// --- Guard: locale files must have the same keys ----------------------------
 function flattenKeys(obj, prefix = '') {
   return Object.entries(obj).flatMap(([k, v]) =>
     v && typeof v === 'object' && !Array.isArray(v)
@@ -50,9 +50,9 @@ if (missing.length) {
   process.exit(1)
 }
 
-// Redirección de idioma en la primera visita (solo raíz española). Excluye
-// crawlers para que el renderizador en-US de Googlebot no salga de la página
-// en español, y respeta una preferencia ya guardada.
+// First-visit language redirect (Spanish root only). Excludes crawlers so
+// Googlebot's en-US renderer never leaves the Spanish page, and respects a
+// previously stored preference.
 const REDIRECT_SNIPPET = `<script>(function(){try{if(/bot|crawl|spider|slurp|bing|duckduck|baidu|yandex|facebookexternalhit|whatsapp|telegram|preview|lighthouse/i.test(navigator.userAgent))return;if(localStorage.getItem('i18nextLng'))return;if((navigator.language||'').toLowerCase().indexOf('en')===0){localStorage.setItem('i18nextLng','en');location.replace('/en/'+location.hash)}}catch(e){}})();</script>`
 
 const BUSINESS = {
@@ -77,7 +77,7 @@ const BUSINESS = {
   sameAs: ['https://www.instagram.com/titiamandababysitter/'],
 }
 
-/** JSON-LD según el tipo de página. */
+/** JSON-LD per page type. */
 function jsonLd(route, meta, dict) {
   const url = SITE + route.path
 
@@ -138,59 +138,68 @@ function jsonLd(route, meta, dict) {
   }
 }
 
-/** title/description según el tipo de página (espeja metaKeysFor del cliente). */
-function metaFor(route, dict) {
-  if (route.kind === 'service') {
-    const p = dict.pages.services[route.serviceId]
-    return { ...dict.meta, title: p.title, description: p.description }
+/** Resolves a dot-path key ('pages.faq.title') inside a locale dict, loudly. */
+function tKey(dict, key) {
+  const value = key.split('.').reduce((obj, part) => obj?.[part], dict)
+  if (typeof value !== 'string' || !value) {
+    throw new Error(`Missing locale value for key "${key}"`)
   }
-  if (route.kind === 'faq') {
-    return {
-      ...dict.meta,
-      title: dict.pages.faq.title,
-      description: dict.pages.faq.description,
-    }
-  }
-  return dict.meta
+  return value
 }
 
 function swapMetaContent(html, attr, name, value) {
-  return html.replace(
-    new RegExp(`(<meta ${attr}="${name}" content=")[^"]*(")`),
-    (_, pre, post) => pre + value + post
-  )
+  const re = new RegExp(`(<meta ${attr}="${name}" content=")[^"]*(")`)
+  if (!re.test(html)) {
+    throw new Error(`Template has no <meta ${attr}="${name}"> to swap`)
+  }
+  return html.replace(re, (_, pre, post) => pre + value + post)
 }
 
 function swapLink(html, rel, extra, value) {
-  return html.replace(
-    new RegExp(`(<link rel="${rel}"${extra} href=")[^"]*(")`),
-    (_, pre, post) => pre + value + post
-  )
+  const re = new RegExp(`(<link rel="${rel}"${extra} href=")[^"]*(")`)
+  if (!re.test(html)) {
+    throw new Error(`Template has no <link rel="${rel}"${extra}> to swap`)
+  }
+  return html.replace(re, (_, pre, post) => pre + value + post)
 }
 
 // --- Render ------------------------------------------------------------------
-const { render, routes } = await import(
+const { render, routes, metaKeysFor } = await import(
   pathToFileURL(path.join(dist, 'server/entry-server.js')).href
 )
 const template = readFileSync(path.join(dist, 'index.html'), 'utf8')
 const allRoutes = routes()
 
-/** La misma página en el otro idioma, para hreflang. */
+/** title/description per page type — same key source as the client hook. */
+function metaFor(route, dict) {
+  const keys = metaKeysFor(route)
+  return {
+    ...dict.meta,
+    title: tKey(dict, keys.title),
+    description: tKey(dict, keys.description),
+  }
+}
+
+/** The same page in each language, for hreflang. Throws if one is missing. */
 function alternates(route) {
-  return allRoutes.filter(
+  const alts = allRoutes.filter(
     r =>
       r.kind === route.kind &&
       (r.serviceId ?? null) === (route.serviceId ?? null)
   )
+  const es = alts.find(r => r.lng === 'es')
+  const en = alts.find(r => r.lng === 'en')
+  if (!es || !en) {
+    throw new Error(`Missing language alternate for ${route.path}`)
+  }
+  return { es, en }
 }
 
 for (const route of allRoutes) {
   const dict = locales[route.lng]
   const meta = metaFor(route, dict)
   const url = SITE + route.path
-  const alts = alternates(route)
-  const esAlt = alts.find(r => r.lng === 'es')
-  const enAlt = alts.find(r => r.lng === 'en')
+  const { es: esAlt, en: enAlt } = alternates(route)
 
   let html = template
     .replace('<html lang="es">', `<html lang="${route.lng}">`)
@@ -222,7 +231,7 @@ for (const route of allRoutes) {
   html = swapMetaContent(html, 'name', 'twitter:title', meta.title)
   html = swapMetaContent(html, 'name', 'twitter:description', meta.description)
 
-  // Solo la raíz española redirige por idioma del navegador.
+  // Only the Spanish root redirects by browser language.
   if (route.kind === 'home' && route.lng === 'es') {
     html = html.replace('</head>', `${REDIRECT_SNIPPET}\n</head>`)
   }
@@ -236,9 +245,7 @@ for (const route of allRoutes) {
 // --- Sitemap -----------------------------------------------------------------
 const lastmod = new Date().toISOString().slice(0, 10)
 const entries = allRoutes.map(route => {
-  const alts = alternates(route)
-  const esAlt = alts.find(r => r.lng === 'es')
-  const enAlt = alts.find(r => r.lng === 'en')
+  const { es: esAlt, en: enAlt } = alternates(route)
   return `  <url>
     <loc>${SITE}${route.path}</loc>
     <lastmod>${lastmod}</lastmod>
@@ -258,9 +265,9 @@ ${entries.join('\n')}
 )
 console.log(`generated sitemap.xml (${entries.length} urls)`)
 
-// GitHub Pages sirve 404.html en rutas desconocidas: cae al home en español.
+// GitHub Pages serves 404.html for unknown routes: fall back to the Spanish home.
 copyFileSync(path.join(dist, 'index.html'), path.join(dist, '404.html'))
 
-// No publicar el bundle SSR.
+// Don't publish the SSR bundle.
 rmSync(path.join(dist, 'server'), { recursive: true, force: true })
 console.log('done')

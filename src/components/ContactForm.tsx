@@ -21,9 +21,8 @@ import { createContactSchema } from '@/lib/contactSchema'
 type FormState = 'idle' | 'submitting' | 'success' | 'error'
 
 /**
- * Formulario de contacto reutilizable: lo usan la sección del home y el
- * drawer. Los ids de los campos llevan sufijo para no duplicarse cuando
- * ambos están montados en la misma página.
+ * Reusable contact form: used by the home section and the drawer. Field ids
+ * take a suffix so they don't collide when both are mounted on the same page.
  */
 export default function ContactForm({ idSuffix = '' }: { idSuffix?: string }) {
   const { t, i18n } = useTranslation()
