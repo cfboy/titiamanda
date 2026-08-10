@@ -59,7 +59,7 @@ export default function ServicePage({
           src={service.image}
           alt={t(`services.items.${serviceId}.title`)}
           loading="lazy"
-          className="mb-8 aspect-4/3 w-full rounded-3xl object-cover shadow-xl"
+          className="mb-8 aspect-16/7 w-full rounded-3xl object-cover shadow-xl"
         />
       )}
 

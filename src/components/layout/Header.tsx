@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Instagram } from 'lucide-react'
-import { useState, useSyncExternalStore } from 'react'
+import { Menu, X, Instagram, ChevronDown } from 'lucide-react'
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import { createPortal } from 'react-dom'
 import { useTranslation } from 'react-i18next'
 
@@ -13,11 +13,17 @@ import { useStickyHeader } from '@/hooks/useStickyHeader'
 import { SUPPORTED_LANGS, type SupportedLang } from '@/i18n'
 import { slideInDown } from '@/lib/animations'
 import { cn } from '@/lib/utils'
-import { faqPath, homePath, translateRoute } from '@/routes'
+import {
+  SERVICE_PAGES,
+  faqPath,
+  homePath,
+  servicePath,
+  translateRoute,
+} from '@/routes'
 
+// 'services' se renderiza aparte como desplegable con las páginas de servicio.
 const NAV_LINKS = [
   { key: 'home', href: '#top' },
-  { key: 'services', href: '#services' },
   { key: 'activities', href: '#features' },
   { key: 'about', href: '#about' },
   { key: 'contact', href: '#contact' },
@@ -36,6 +42,102 @@ function useMounted() {
     emptySubscribe,
     () => true,
     () => false
+  )
+}
+
+/** Desplegable de Servicios en escritorio: lista las 4 páginas de servicio. */
+function ServicesMenu({
+  isActive,
+  anchorHref,
+}: {
+  isActive: boolean
+  anchorHref: string
+}) {
+  const { t } = useTranslation()
+  const route = useRoute()
+  const [open, setOpen] = useState(false)
+  const wrapRef = useRef<HTMLLIElement>(null)
+
+  useEffect(() => {
+    if (!open) return
+    const onPointer = (e: PointerEvent) => {
+      if (!wrapRef.current?.contains(e.target as Node)) setOpen(false)
+    }
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    document.addEventListener('pointerdown', onPointer)
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.removeEventListener('pointerdown', onPointer)
+      document.removeEventListener('keydown', onKey)
+    }
+  }, [open])
+
+  return (
+    <li
+      ref={wrapRef}
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-haspopup="true"
+        onClick={() => setOpen(o => !o)}
+        className={cn(
+          'flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium tracking-wider capitalize transition-colors duration-300',
+          isActive || route.kind === 'service'
+            ? 'text-pink-deep bg-pink/10'
+            : 'text-gray-dark hover:text-pink-deep'
+        )}
+      >
+        {t('nav.services')}
+        <ChevronDown
+          size={15}
+          aria-hidden="true"
+          className={cn(
+            'transition-transform duration-200',
+            open && 'rotate-180'
+          )}
+        />
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.ul
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.16 }}
+            className="shadow-light absolute top-full left-0 min-w-64 rounded-2xl border border-gray-100 bg-white p-2"
+          >
+            {SERVICE_PAGES.map(s => (
+              <li key={s.id}>
+                <a
+                  href={servicePath(route.lng, s.id)}
+                  className={cn(
+                    'block rounded-xl px-4 py-2.5 text-sm font-medium transition-colors',
+                    route.serviceId === s.id
+                      ? 'bg-pink/10 text-pink-deep'
+                      : 'text-gray-dark hover:bg-pink/5 hover:text-pink-deep'
+                  )}
+                >
+                  {t(`services.items.${s.id}.title`)}
+                </a>
+              </li>
+            ))}
+            <li className="mt-1 border-t border-gray-100 pt-1">
+              <a
+                href={anchorHref}
+                className="text-gray-text hover:text-pink-deep block rounded-xl px-4 py-2.5 text-sm font-medium transition-colors"
+              >
+                {t('services.viewAll')}
+              </a>
+            </li>
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </li>
   )
 }
 
@@ -148,7 +250,7 @@ export default function Header() {
             {NAV_LINKS.map(link => {
               const isActive =
                 isHome && activeSection === link.href.replace('#', '')
-              return (
+              const item = (
                 <li key={link.href}>
                   <a
                     href={navHref(link.href)}
@@ -164,6 +266,17 @@ export default function Header() {
                   </a>
                 </li>
               )
+              // El desplegable de servicios va justo después de Inicio
+              return link.key === 'home'
+                ? [
+                    item,
+                    <ServicesMenu
+                      key="services-menu"
+                      isActive={isHome && activeSection === 'services'}
+                      anchorHref={navHref('#services')}
+                    />,
+                  ]
+                : item
             })}
             <li>
               <a
@@ -247,7 +360,42 @@ export default function Header() {
                 <div className="h-16 shrink-0" />
 
                 {/* Nav links */}
-                <nav className="flex flex-1 flex-col items-center justify-center gap-2 px-6">
+                <nav className="flex flex-1 flex-col items-center justify-center gap-2 overflow-y-auto px-6 py-6">
+                  {/* Servicios: lista desplegada, no desplegable — en móvil
+                      esconder detrás de un toggle solo añade fricción */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ delay: 0.1, duration: 0.3 }}
+                    className="w-full max-w-xs"
+                  >
+                    <a
+                      href={navHref('#services')}
+                      onClick={e => handleNavClick(e, '#services')}
+                      className="text-gray-text block w-full px-6 pt-2 pb-1 text-center text-xs font-bold tracking-widest uppercase"
+                    >
+                      {t('nav.services')}
+                    </a>
+                    <ul className="space-y-1">
+                      {SERVICE_PAGES.map(s => (
+                        <li key={s.id}>
+                          <a
+                            href={servicePath(route.lng, s.id)}
+                            className={cn(
+                              'block w-full rounded-2xl px-6 py-3 text-center font-semibold transition-colors duration-200',
+                              route.serviceId === s.id
+                                ? 'bg-pink/10 text-pink-deep'
+                                : 'text-gray-dark hover:bg-pink/5 hover:text-pink-deep'
+                            )}
+                          >
+                            {t(`services.items.${s.id}.title`)}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+
                   {NAV_LINKS.map((link, i) => {
                     const isActive =
                       isHome && activeSection === link.href.replace('#', '')
@@ -257,7 +405,7 @@ export default function Header() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
-                        transition={{ delay: 0.1 + i * 0.06, duration: 0.3 }}
+                        transition={{ delay: 0.16 + i * 0.06, duration: 0.3 }}
                         className="w-full max-w-xs"
                       >
                         <a

@@ -261,7 +261,8 @@
         ]
       }
     },
-    "readMore": "Ver detalles del servicio"
+    "readMore": "Ver detalles del servicio",
+    "viewAll": "Ver todos los servicios"
   },
   "activities": {
     "label": "Actividades",
