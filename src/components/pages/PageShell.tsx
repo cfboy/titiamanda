@@ -56,11 +56,11 @@ export default function PageShell({ crumbs, h1, children }: PageShellProps) {
           <p className="text-gray-dark mb-5 leading-relaxed">
             {t('pages.common.ctaText')}
           </p>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-col gap-3 sm:flex-row">
             <button
               type="button"
               onClick={contactDrawer.open}
-              className="bg-blue-deep hover:bg-blue-deep/90 inline-flex items-center rounded-full px-7 py-3 text-sm font-semibold text-white shadow-md transition-colors"
+              className="bg-blue-deep hover:bg-blue-deep/90 inline-flex items-center justify-center rounded-full px-7 py-3 text-sm font-semibold text-white shadow-md transition-colors"
             >
               {t('pages.common.ctaButton')}
             </button>
@@ -68,7 +68,7 @@ export default function PageShell({ crumbs, h1, children }: PageShellProps) {
               href={CONTACT_INFO.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-green-deep border-green-deep/30 hover:bg-green-deep/5 inline-flex items-center rounded-full border px-7 py-3 text-sm font-semibold transition-colors"
+              className="text-green-deep border-green-deep/30 hover:bg-green-deep/5 inline-flex items-center justify-center rounded-full border px-7 py-3 text-sm font-semibold transition-colors"
             >
               {t('pages.common.ctaWhatsapp')}
             </a>

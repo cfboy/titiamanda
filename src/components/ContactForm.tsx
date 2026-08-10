@@ -335,14 +335,14 @@ export default function ContactForm({ idSuffix = '' }: { idSuffix?: string }) {
           )}
 
           {/* Submit */}
-          <div className="mt-2 flex items-center justify-between md:col-span-2">
+          <div className="mt-2 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between md:col-span-2">
             <p className="text-gray-text text-xs">
               {t('contact.form.requiredNote')}
             </p>
             <Button
               type="submit"
               disabled={formState === 'submitting'}
-              className="bg-blue-deep hover:bg-blue-deep/90 h-auto gap-2 rounded-full px-8 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+              className="bg-blue-deep hover:bg-blue-deep/90 h-auto w-full gap-2 rounded-full px-8 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:w-auto"
             >
               {formState === 'submitting' ? (
                 <>

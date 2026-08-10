@@ -373,55 +373,24 @@ export default function Header() {
                 className="fixed inset-0 z-50 flex flex-col bg-white lg:hidden"
               >
                 {/* Top bar spacer */}
-                <div className="h-16 shrink-0" />
+                <div className="h-20 shrink-0" />
 
-                {/* Nav links */}
-                <nav className="flex flex-1 flex-col items-center justify-center gap-1 overflow-y-auto px-6 py-4">
-                  {/* Servicios: lista desplegada, no desplegable — en móvil
+                {/* Nav links — justify-center-safe: centrado cuando cabe,
+                    alineado arriba (y con scroll completo) cuando no cabe */}
+                <nav className="flex flex-1 flex-col items-center justify-center-safe gap-1 overflow-y-auto px-6 pt-2 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
+                  {/* Mismo orden que en escritorio: Inicio primero y los
+                      servicios justo debajo, en lista desplegada — en móvil
                       esconder detrás de un toggle solo añade fricción */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ delay: 0.1, duration: 0.3 }}
-                    className="w-full max-w-xs"
-                  >
-                    <a
-                      href={navHref('#services')}
-                      onClick={e => handleNavClick(e, '#services')}
-                      className="text-gray-text block w-full px-6 pt-2 pb-1 text-center text-xs font-bold tracking-widest uppercase"
-                    >
-                      {t('nav.services')}
-                    </a>
-                    <ul className="space-y-1">
-                      {SERVICE_PAGES.map(s => (
-                        <li key={s.id}>
-                          <a
-                            href={servicePath(route.lng, s.id)}
-                            className={cn(
-                              'block w-full rounded-2xl px-6 py-3 text-center font-semibold transition-colors duration-200',
-                              route.serviceId === s.id
-                                ? 'bg-pink/10 text-pink-deep'
-                                : 'text-gray-dark hover:bg-pink/5 hover:text-pink-deep'
-                            )}
-                          >
-                            {t(`services.items.${s.id}.title`)}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </motion.div>
-
                   {NAV_LINKS.map((link, i) => {
                     const isActive =
                       isHome && activeSection === link.href.replace('#', '')
-                    return (
+                    const item = (
                       <motion.div
                         key={link.href}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
-                        transition={{ delay: 0.16 + i * 0.06, duration: 0.3 }}
+                        transition={{ delay: 0.1 + i * 0.06, duration: 0.3 }}
                         className="w-full max-w-xs"
                       >
                         <a
@@ -438,6 +407,43 @@ export default function Header() {
                         </a>
                       </motion.div>
                     )
+                    if (link.key !== 'home') return item
+                    return [
+                      item,
+                      <motion.div
+                        key="services-mobile"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ delay: 0.16, duration: 0.3 }}
+                        className="w-full max-w-xs"
+                      >
+                        <a
+                          href={navHref('#services')}
+                          onClick={e => handleNavClick(e, '#services')}
+                          className="text-gray-text block w-full px-6 pt-2 pb-1 text-center text-xs font-bold tracking-widest uppercase"
+                        >
+                          {t('nav.services')}
+                        </a>
+                        <ul className="space-y-1">
+                          {SERVICE_PAGES.map(s => (
+                            <li key={s.id}>
+                              <a
+                                href={servicePath(route.lng, s.id)}
+                                className={cn(
+                                  'block w-full rounded-2xl px-6 py-3 text-center font-semibold transition-colors duration-200',
+                                  route.serviceId === s.id
+                                    ? 'bg-pink/10 text-pink-deep'
+                                    : 'text-gray-dark hover:bg-pink/5 hover:text-pink-deep'
+                                )}
+                              >
+                                {t(`services.items.${s.id}.title`)}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </motion.div>,
+                    ]
                   })}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -480,20 +486,6 @@ export default function Header() {
                     </button>
                   </motion.div>
                 </nav>
-
-                {/* Bottom decoration */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.4 }}
-                  className="shrink-0 pb-10 text-center"
-                >
-                  <img
-                    src={logoIcon}
-                    alt=""
-                    className="mx-auto h-10 w-auto opacity-20"
-                  />
-                </motion.div>
               </motion.div>
             )}
           </AnimatePresence>,
