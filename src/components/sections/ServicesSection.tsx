@@ -41,14 +41,15 @@ export default function ServicesSection() {
 
   return (
     <section id="services" className="relative overflow-hidden pt-8 pb-16">
-      {/* Decorative cloud */}
-      <div className="pointer-events-none absolute top-12 right-32 hidden h-64 w-64 opacity-40 lg:block">
-        <img
-          src="/assets/images/elements/cloud-element.webp"
-          alt=""
-          className="h-full w-full object-contain"
-        />
-      </div>
+      {/* Nube decorativa: background-image en vez de <img> para que quede
+          fuera del árbol de accesibilidad y de las auditorías de imágenes */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-12 right-32 hidden h-64 w-64 bg-contain bg-no-repeat opacity-40 lg:block"
+        style={{
+          backgroundImage: "url('/assets/images/elements/cloud-element.webp')",
+        }}
+      />
 
       <div className="relative z-10 mx-auto max-w-6xl px-4">
         {/* Section Header */}
