@@ -43,7 +43,6 @@ export default function ServicePage({
 
   return (
     <PageShell
-      lng={lng}
       h1={t(`${base}.h1`)}
       crumbs={[
         { label: t('pages.common.breadcrumbHome'), href: homePath(lng) },

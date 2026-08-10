@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 import logoPrimary from '@/assets/images/logo/full-logo.svg'
 import logoIcon from '@/assets/images/logo/logo-icon.svg'
 import { CONTACT_INFO } from '@/data/config'
+import { useContactDrawer } from '@/hooks/useContactDrawer'
 import { useRoute } from '@/hooks/useRoute'
 import { useScrollSpy } from '@/hooks/useScrollSpy'
 import { useStickyHeader } from '@/hooks/useStickyHeader'
@@ -21,12 +22,11 @@ import {
   translateRoute,
 } from '@/routes'
 
-// 'services' se renderiza aparte como desplegable con las páginas de servicio.
+// 'services' se renderiza aparte como desplegable, y 'contact' abre el drawer.
 const NAV_LINKS = [
   { key: 'home', href: '#top' },
   { key: 'activities', href: '#features' },
   { key: 'about', href: '#about' },
-  { key: 'contact', href: '#contact' },
 ] as const
 
 function scrollTo(id: string) {
@@ -191,7 +191,14 @@ export default function Header() {
   const activeSection = useScrollSpy()
   const { t } = useTranslation()
   const route = useRoute()
+  const contactDrawer = useContactDrawer()
   const isHome = route.kind === 'home'
+
+  // Contacto abre el drawer en cualquier página en vez de mandar al home
+  const openContact = () => {
+    setMobileOpen(false)
+    contactDrawer.open()
+  }
 
   // En el home las anclas existen y hacemos scroll suave; en páginas internas
   // el enlace debe navegar al home primero.
@@ -292,6 +299,15 @@ export default function Header() {
               </a>
             </li>
             <li>
+              <button
+                type="button"
+                onClick={openContact}
+                className="text-gray-dark hover:text-pink-deep rounded-full px-4 py-2 text-sm font-medium tracking-wider capitalize transition-colors duration-300"
+              >
+                {t('nav.contact')}
+              </button>
+            </li>
+            <li>
               <LanguageSwitcher className="ml-2" />
             </li>
           </ul>
@@ -360,7 +376,7 @@ export default function Header() {
                 <div className="h-16 shrink-0" />
 
                 {/* Nav links */}
-                <nav className="flex flex-1 flex-col items-center justify-center gap-2 overflow-y-auto px-6 py-6">
+                <nav className="flex flex-1 flex-col items-center justify-center gap-1 overflow-y-auto px-6 py-4">
                   {/* Servicios: lista desplegada, no desplegable — en móvil
                       esconder detrás de un toggle solo añade fricción */}
                   <motion.div
@@ -412,7 +428,7 @@ export default function Header() {
                           href={navHref(link.href)}
                           onClick={e => handleNavClick(e, link.href)}
                           className={cn(
-                            'block w-full rounded-2xl px-6 py-4 text-center text-lg font-semibold capitalize transition-colors duration-200',
+                            'block w-full rounded-2xl px-6 py-3 text-center font-semibold capitalize transition-colors duration-200',
                             isActive
                               ? 'bg-pink/10 text-pink-deep'
                               : 'text-gray-dark hover:bg-pink/5 hover:text-pink-deep'
@@ -436,7 +452,7 @@ export default function Header() {
                     <a
                       href={faqPath(route.lng)}
                       className={cn(
-                        'block w-full rounded-2xl px-6 py-4 text-center text-lg font-semibold capitalize transition-colors duration-200',
+                        'block w-full rounded-2xl px-6 py-3 text-center font-semibold capitalize transition-colors duration-200',
                         route.kind === 'faq'
                           ? 'bg-pink/10 text-pink-deep'
                           : 'text-gray-dark hover:bg-pink/5 hover:text-pink-deep'
@@ -444,6 +460,24 @@ export default function Header() {
                     >
                       {t('nav.faq')}
                     </a>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{
+                      delay: 0.16 + (NAV_LINKS.length + 1) * 0.06,
+                      duration: 0.3,
+                    }}
+                    className="w-full max-w-xs pt-2"
+                  >
+                    <button
+                      type="button"
+                      onClick={openContact}
+                      className="bg-blue-deep hover:bg-blue-deep/90 block w-full rounded-full px-6 py-3.5 text-center font-semibold text-white shadow-md transition-colors"
+                    >
+                      {t('nav.contact')}
+                    </button>
                   </motion.div>
                 </nav>
 

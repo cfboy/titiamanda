@@ -13,7 +13,6 @@ export default function FaqPage({ lng }: { lng: SupportedLang }) {
 
   return (
     <PageShell
-      lng={lng}
       h1={t('pages.faq.h1')}
       crumbs={[
         { label: t('pages.common.breadcrumbHome'), href: homePath(lng) },

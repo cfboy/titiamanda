@@ -1,8 +1,7 @@
 import { useTranslation } from 'react-i18next'
 
 import { CONTACT_INFO } from '@/data/config'
-import { type SupportedLang } from '@/i18n'
-import { homePath } from '@/routes'
+import { useContactDrawer } from '@/hooks/useContactDrawer'
 
 interface Crumb {
   label: string
@@ -10,20 +9,15 @@ interface Crumb {
 }
 
 interface PageShellProps {
-  lng: SupportedLang
   crumbs: Crumb[]
   h1: string
   children: React.ReactNode
 }
 
 /** Cabecera común de las páginas internas: migas de pan + H1. */
-export default function PageShell({
-  lng,
-  crumbs,
-  h1,
-  children,
-}: PageShellProps) {
+export default function PageShell({ crumbs, h1, children }: PageShellProps) {
   const { t } = useTranslation()
+  const contactDrawer = useContactDrawer()
 
   return (
     <div className="bg-cream">
@@ -63,12 +57,13 @@ export default function PageShell({
             {t('pages.common.ctaText')}
           </p>
           <div className="flex flex-wrap gap-3">
-            <a
-              href={`${homePath(lng)}#contact`}
+            <button
+              type="button"
+              onClick={contactDrawer.open}
               className="bg-blue-deep hover:bg-blue-deep/90 inline-flex items-center rounded-full px-7 py-3 text-sm font-semibold text-white shadow-md transition-colors"
             >
               {t('pages.common.ctaButton')}
-            </a>
+            </button>
             <a
               href={CONTACT_INFO.whatsapp}
               target="_blank"
