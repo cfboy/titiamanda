@@ -71,19 +71,35 @@ en español e inglés. Escríbeme por WhatsApp para verificar disponibilidad.
 
 ## 5. Fotos (mínimo 10 para que el perfil rankee bien)
 
-Ya disponibles en `public/assets/images/`:
-- `titiamanda-profile.webp` → foto de perfil / propietaria
-- `og-image.png` → foto de portada (logo con marca)
-- `children-coloring.webp`, `children-playing.webp`,
-  `close-up-child-enjoying-didactic-game.webp`,
-  `full-shot-girl-playing-home.webp` → "en el trabajo"
+**Google NO acepta WebP** — solo JPG y PNG. Las del sitio son WebP, así que hay
+un paquete ya convertido y redimensionado listo para subir en:
+
+    ~/Desktop/titiamanda-fotos-google/
+
+| Archivo | Dónde va en el perfil |
+|---|---|
+| `01-amanda-perfil.jpg` | Foto de perfil / propietaria |
+| `02-portada.jpg` | Portada (16:9) |
+| `03-logo.jpg` | Logo (cuadrado 720×720) |
+| `04`–`10` | Galería "en el trabajo" |
+
+Todas cumplen los requisitos de Google: JPG, entre 10 KB y 5 MB, y por encima
+del mínimo de 720 px en el lado mayor.
 
 **Faltan y valen mucho (solo Amanda):** foto con el uniforme rosa de la marca,
 foto de los materiales/juguetes que lleva, foto de un hotel donde ha trabajado
 (sin que salgan niños identificables sin permiso de los padres).
 
 **Regla de oro:** nunca subir fotos de niños ajenos sin permiso escrito de los
-padres. Si hay duda, usar fotos de materiales, actividades y espacios.
+padres. Si hay duda, usar fotos de materiales, actividades y espacios. De las
+fotos `04`–`10`, subir solo aquellas cuyas familias hayan dado permiso.
+
+### Para regenerar el paquete más adelante
+
+```bash
+# JPG desde cualquier fuente, lado mayor 1600px, calidad 82
+sips -s format jpeg -s formatOptions 82 -Z 1600 origen.webp --out salida.jpg
+```
 
 ---
 
