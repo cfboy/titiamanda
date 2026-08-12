@@ -12,7 +12,6 @@ import { useAnchorBase, useRoute } from '@/hooks/useRoute'
 import { useScrollSpy } from '@/hooks/useScrollSpy'
 import { useStickyHeader } from '@/hooks/useStickyHeader'
 import { SUPPORTED_LANGS, type SupportedLang } from '@/i18n'
-import { slideInDown } from '@/lib/animations'
 import { cn } from '@/lib/utils'
 import { SERVICE_PAGES, faqPath, servicePath, translateRoute } from '@/routes'
 
@@ -211,12 +210,12 @@ export default function Header() {
   }
 
   return (
-    <motion.header
-      variants={slideInDown}
-      initial="hidden"
-      animate="visible"
+    // CSS entry animation, not Framer: a Framer `initial` would be serialized
+    // into the prerendered HTML as opacity:0 and keep the header hidden until
+    // hydration.
+    <header
       className={cn(
-        'fixed top-0 right-0 left-0 z-60 transition-all duration-300',
+        'enter-slide-down fixed top-0 right-0 left-0 z-60 transition-all duration-300',
         isSticky
           ? 'shadow-light h-16 bg-white/95 backdrop-blur-sm'
           : 'h-20 bg-transparent'
@@ -233,6 +232,8 @@ export default function Header() {
             <img
               src={logoPrimary}
               alt={t('a11y.logoAlt')}
+              width={820}
+              height={480}
               className={cn(
                 'hidden w-auto object-contain transition-all duration-300 md:block',
                 isSticky ? 'h-12' : 'h-16'
@@ -241,6 +242,8 @@ export default function Header() {
             <img
               src={logoIcon}
               alt={t('a11y.logoAlt')}
+              width={260}
+              height={490}
               className={cn(
                 'block w-auto object-contain transition-all duration-300 md:hidden',
                 isSticky ? 'h-8' : 'h-10'
@@ -492,6 +495,6 @@ export default function Header() {
           </AnimatePresence>,
           document.body
         )}
-    </motion.header>
+    </header>
   )
 }

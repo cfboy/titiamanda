@@ -1,11 +1,9 @@
-import * as LucideIcons from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-
-import type { LucideIcon } from 'lucide-react'
 
 import PageShell from '@/components/pages/PageShell'
 import { SERVICES } from '@/data/config'
 import { type SupportedLang } from '@/i18n'
+import { ICONS } from '@/lib/icons'
 import { cn } from '@/lib/utils'
 import { SERVICE_PAGES, homePath, servicePath } from '@/routes'
 
@@ -26,9 +24,7 @@ export default function ServicePage({
   const { t } = useTranslation()
   const service = SERVICES.find(s => s.id === serviceId)
   const base = `pages.services.${serviceId}`
-  const Icon = service
-    ? (LucideIcons as unknown as Record<string, LucideIcon>)[service.icon]
-    : undefined
+  const Icon = service ? ICONS[service.icon] : undefined
 
   const intro = t(`${base}.intro`, { returnObjects: true }) as string[]
   const includes = t(`${base}.includes`, { returnObjects: true }) as string[]
@@ -57,6 +53,8 @@ export default function ServicePage({
         <img
           src={service.image}
           alt={t(`services.items.${serviceId}.title`)}
+          width={service.imageSize.width}
+          height={service.imageSize.height}
           loading="lazy"
           className="mb-8 aspect-16/7 w-full rounded-3xl object-cover shadow-xl"
         />

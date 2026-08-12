@@ -130,6 +130,8 @@ export default function ServicesSection() {
                           key={`img-${index}`}
                           src={service.image}
                           alt={t(`services.items.${service.id}.title`)}
+                          width={service.imageSize.width}
+                          height={service.imageSize.height}
                           variants={serviceContentVariants}
                           initial="hidden"
                           animate="visible"

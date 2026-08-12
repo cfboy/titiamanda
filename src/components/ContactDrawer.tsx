@@ -1,49 +1,62 @@
-import { useMemo, useState } from 'react'
-import { useTranslation } from 'react-i18next'
+import { Suspense, lazy, useEffect, useMemo, useState } from 'react'
 
-import ContactForm from '@/components/ContactForm'
-import {
-  Drawer,
-  DrawerContent,
-  DrawerDescription,
-  DrawerHeader,
-  DrawerTitle,
-} from '@/components/ui/drawer'
 import { ContactDrawerContext } from '@/hooks/useContactDrawer'
 
+const ContactDrawerDialog = lazy(
+  () => import('@/components/ContactDrawerDialog')
+)
+
+/** Warms the drawer chunk once the browser is idle, so the first tap on a CTA
+ *  doesn't wait on a download. Falls back to a timeout on Safari < 17. */
+function prefetchDialog() {
+  const load = () => void import('@/components/ContactDrawerDialog')
+  if (typeof window.requestIdleCallback === 'function') {
+    const handle = window.requestIdleCallback(load, { timeout: 3000 })
+    return () => window.cancelIdleCallback(handle)
+  }
+  const handle = window.setTimeout(load, 2000)
+  return () => window.clearTimeout(handle)
+}
+
 /**
- * Mounts the drawer once in the tree. The form lives inside with suffixed ids
- * so it doesn't clash with the home-section instance.
+ * Owns the contact drawer's open state for the whole tree.
+ *
+ * The drawer markup lives in a lazily imported module: it is never part of the
+ * prerendered HTML (it starts closed), so loading it on demand keeps `vaul` and
+ * a second copy of the form out of the entry chunk without costing any
+ * server-rendered content.
  */
 export function ContactDrawerProvider({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
+  // Stays true after the first open so the closing animation can play out and
+  // the chunk isn't requested again.
+  const [hasOpened, setHasOpened] = useState(false)
   // Stable value: opening/closing the drawer must not re-render consumers
-  const value = useMemo(() => ({ open: () => setIsOpen(true) }), [])
+  const value = useMemo(
+    () => ({
+      open: () => {
+        setHasOpened(true)
+        setIsOpen(true)
+      },
+    }),
+    []
+  )
+
+  useEffect(prefetchDialog, [])
 
   return (
     <ContactDrawerContext.Provider value={value}>
       {children}
 
-      <Drawer open={isOpen} onOpenChange={setIsOpen}>
-        <DrawerContent className="max-h-[92vh]">
-          <div className="mx-auto flex w-full max-w-2xl flex-col overflow-y-auto px-4 pb-8">
-            <DrawerHeader className="px-0 text-left">
-              <DrawerTitle className="text-2xl font-extrabold text-black">
-                {t('contact.heading')}
-              </DrawerTitle>
-              <DrawerDescription className="text-gray-dark leading-relaxed">
-                {t('contact.intro')}
-              </DrawerDescription>
-            </DrawerHeader>
-            <ContactForm idSuffix="-drawer" />
-          </div>
-        </DrawerContent>
-      </Drawer>
+      {hasOpened && (
+        <Suspense fallback={null}>
+          <ContactDrawerDialog open={isOpen} onOpenChange={setIsOpen} />
+        </Suspense>
+      )}
     </ContactDrawerContext.Provider>
   )
 }

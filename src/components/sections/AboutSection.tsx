@@ -54,6 +54,8 @@ export default function AboutSection() {
               <img
                 src="/assets/images/titiamanda-profile.webp"
                 alt={t('about.photoAlt')}
+                width={700}
+                height={1052}
                 loading="lazy"
                 className="relative z-10 h-auto w-56 mask-[linear-gradient(to_bottom,black_88%,transparent)] object-contain md:w-72 lg:w-80"
               />

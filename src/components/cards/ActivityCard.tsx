@@ -1,11 +1,10 @@
 import { motion } from 'framer-motion'
-import * as LucideIcons from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
 import type { Feature } from '@/data/config'
-import type { LucideIcon } from 'lucide-react'
 
 import { cardFadeInUp } from '@/lib/animations'
+import { ICONS } from '@/lib/icons'
 import { cn } from '@/lib/utils'
 
 interface ActivityCardProps {
@@ -23,9 +22,7 @@ const CARD_BG: Record<string, string> = {
 
 export default function ActivityCard({ feature }: ActivityCardProps) {
   const { t } = useTranslation()
-  const IconComponent = (LucideIcons as unknown as Record<string, LucideIcon>)[
-    feature.icon
-  ]
+  const IconComponent = ICONS[feature.icon]
 
   return (
     <motion.div variants={cardFadeInUp} className="h-full">

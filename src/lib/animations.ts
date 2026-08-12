@@ -32,15 +32,6 @@ export const fadeInRight: Variants = {
   }),
 }
 
-export const slideInDown: Variants = {
-  hidden: { opacity: 0, y: -80 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.75, ease: 'easeOut' },
-  },
-}
-
 export const staggerContainer: Variants = {
   hidden: {},
   visible: {

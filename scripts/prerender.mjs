@@ -214,6 +214,13 @@ for (const route of allRoutes) {
         [
           `<meta property="og:locale:alternate" content="${OG_LOCALE[route.lng === 'es' ? 'en' : 'es']}" />`,
           `<script type="application/ld+json">${JSON.stringify(jsonLd(route, meta, dict))}</script>`,
+          // Only the home page renders the hero, so only it preloads the LCP
+          // image — elsewhere the preload would be an unused 108 kB download.
+          ...(route.kind === 'home'
+            ? [
+                `<link rel="preload" as="image" type="image/webp" href="/assets/images/hero-picture.webp" fetchpriority="high" />`,
+              ]
+            : []),
         ].join('\n  ')
     )
     .replace('<!--app-html-->', () => render(route.path))

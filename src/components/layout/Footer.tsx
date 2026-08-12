@@ -12,6 +12,8 @@ export default function Footer() {
           <img
             src={logoPrimary}
             alt={t('a11y.logoAlt')}
+            width={820}
+            height={480}
             className="h-auto max-w-44 object-contain opacity-80"
           />
           <p className="text-gray-text text-center text-sm leading-relaxed">
