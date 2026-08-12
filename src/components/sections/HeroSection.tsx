@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion'
 import { Trans, useTranslation } from 'react-i18next'
 
 import { useContactDrawer } from '@/hooks/useContactDrawer'
+import { IMAGES } from '@/lib/images'
 
 // Staggered entry, driven by CSS (see .enter-* in index.css) so the hero paints
 // straight out of the prerendered HTML instead of waiting for hydration.
@@ -11,17 +11,13 @@ const HERO_DELAY = {
   body: '225ms',
 } as const
 
-/** Intrinsic size of hero-picture.webp — set explicitly to reserve the box. */
-const HERO_IMAGE = { width: 1000, height: 872 } as const
-
 function HeroImage({ className }: { className: string }) {
   const { t } = useTranslation()
   return (
     <img
-      src="/assets/images/hero-picture.webp"
+      {...IMAGES['hero-picture']}
+      sizes="(min-width: 1024px) 500px, 288px"
       alt={t('hero.imageAlt')}
-      width={HERO_IMAGE.width}
-      height={HERO_IMAGE.height}
       // The LCP candidate: fetch it ahead of everything else, never lazily.
       fetchPriority="high"
       decoding="async"
@@ -50,18 +46,16 @@ function HeroCta() {
   const contactDrawer = useContactDrawer()
   return (
     // Real anchor to the form as a no-JavaScript fallback; with JS it opens the drawer.
-    <motion.a
+    <a
       href="#contact"
       onClick={e => {
         e.preventDefault()
         contactDrawer.open()
       }}
-      whileHover={{ y: -2 }}
-      whileTap={{ scale: 0.97 }}
-      className="bg-blue-deep hover:bg-blue-deep/90 inline-flex items-center gap-2 rounded-full px-9 py-4 text-base font-semibold text-white shadow-lg transition-colors duration-200"
+      className="bg-blue-deep hover:bg-blue-deep/90 inline-flex items-center gap-2 rounded-full px-9 py-4 text-base font-semibold text-white shadow-lg transition-[colors,transform] duration-200 hover:-translate-y-0.5 active:scale-[0.97] motion-reduce:transform-none"
     >
       {t('hero.cta')}
-    </motion.a>
+    </a>
   )
 }
 
@@ -71,7 +65,7 @@ export default function HeroSection() {
   return (
     <section
       id="top"
-      className="bg-cream relative flex items-center overflow-hidden px-4 pt-24 pb-8 md:pt-40 md:pb-12"
+      className="bg-cream relative flex items-center overflow-clip px-4 pt-24 pb-8 md:pt-40 md:pb-12"
     >
       <div className="relative z-10 mx-auto w-full max-w-6xl">
         {/* Mobile layout: flex column — heading, image, subtext+button */}

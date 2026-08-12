@@ -4,6 +4,7 @@ import PageShell from '@/components/pages/PageShell'
 import { SERVICES } from '@/data/config'
 import { type SupportedLang } from '@/i18n'
 import { ICONS } from '@/lib/icons'
+import { IMAGES } from '@/lib/images'
 import { cn } from '@/lib/utils'
 import { SERVICE_PAGES, homePath, servicePath } from '@/routes'
 
@@ -51,10 +52,9 @@ export default function ServicePage({
     >
       {service && (
         <img
-          src={service.image}
+          {...IMAGES[service.image]}
+          sizes="(min-width: 768px) 736px, 100vw"
           alt={t(`services.items.${serviceId}.title`)}
-          width={service.imageSize.width}
-          height={service.imageSize.height}
           loading="lazy"
           className="mb-8 aspect-16/7 w-full rounded-3xl object-cover shadow-xl"
         />

@@ -31,6 +31,22 @@ const locales = {
 
 const OG_LOCALE = { es: 'es_PR', en: 'en_US' }
 
+// Keep in sync with the <img> in src/components/sections/HeroSection.tsx.
+const HERO_SIZES = '(min-width: 1024px) 500px, 288px'
+
+const images = JSON.parse(
+  readFileSync(path.join(root, 'src/data/images.json'), 'utf8')
+)
+
+/** <head> preload for the home page's LCP image. */
+function heroPreload() {
+  const hero = images['hero-picture']
+  return (
+    `<link rel="preload" as="image" type="image/webp" href="${hero.src}"` +
+    ` imagesrcset="${hero.srcSet}" imagesizes="${HERO_SIZES}" fetchpriority="high" />`
+  )
+}
+
 // --- Guard: locale files must have the same keys ----------------------------
 function flattenKeys(obj, prefix = '') {
   return Object.entries(obj).flatMap(([k, v]) =>
@@ -215,12 +231,10 @@ for (const route of allRoutes) {
           `<meta property="og:locale:alternate" content="${OG_LOCALE[route.lng === 'es' ? 'en' : 'es']}" />`,
           `<script type="application/ld+json">${JSON.stringify(jsonLd(route, meta, dict))}</script>`,
           // Only the home page renders the hero, so only it preloads the LCP
-          // image — elsewhere the preload would be an unused 108 kB download.
-          ...(route.kind === 'home'
-            ? [
-                `<link rel="preload" as="image" type="image/webp" href="/assets/images/hero-picture.webp" fetchpriority="high" />`,
-              ]
-            : []),
+          // image — elsewhere the preload would be an unused download. The
+          // srcset/sizes must match HeroSection's <img> exactly, or the browser
+          // preloads one file and then fetches a different one.
+          ...(route.kind === 'home' ? [heroPreload()] : []),
         ].join('\n  ')
     )
     .replace('<!--app-html-->', () => render(route.path))

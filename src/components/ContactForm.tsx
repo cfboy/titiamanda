@@ -1,5 +1,4 @@
 import { useForm } from '@tanstack/react-form'
-import { motion } from 'framer-motion'
 import { Send, CheckCircle, Plus, Loader2, MessageCircle } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -91,11 +90,7 @@ export default function ContactForm({ idSuffix = '' }: { idSuffix?: string }) {
   return (
     <>
       {formState === 'success' ? (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="flex flex-col items-center space-y-4 py-8 text-center"
-        >
+        <div className="swap-in-scale flex flex-col items-center space-y-4 py-8 text-center">
           <div className="bg-green/10 flex h-16 w-16 items-center justify-center rounded-full">
             <CheckCircle size={32} className="text-green" />
           </div>
@@ -112,7 +107,7 @@ export default function ContactForm({ idSuffix = '' }: { idSuffix?: string }) {
             <Plus size={15} />
             {t('contact.form.success.again')}
           </Button>
-        </motion.div>
+        </div>
       ) : (
         <form
           onSubmit={e => {

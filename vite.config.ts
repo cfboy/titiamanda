@@ -16,7 +16,6 @@ import { defineConfig } from 'vite'
  */
 const VENDOR_CHUNKS: Record<string, RegExp> = {
   'vendor-react': /node_modules\/(react|react-dom|scheduler)\//,
-  'vendor-motion': /node_modules\/(framer-motion|motion-dom|motion-utils)\//,
   'vendor-i18n':
     /node_modules\/(i18next|react-i18next|html-parse-stringify|void-elements)\//,
 }

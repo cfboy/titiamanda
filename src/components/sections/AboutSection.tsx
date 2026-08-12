@@ -1,50 +1,27 @@
-import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 
-import {
-  fadeInLeft,
-  fadeInRight,
-  fadeInUp,
-  viewportConfig,
-} from '@/lib/animations'
+import { IMAGES } from '@/lib/images'
 
 export default function AboutSection() {
   const { t } = useTranslation()
 
   return (
-    <section
-      id="about"
-      className="relative overflow-hidden bg-white pt-20 pb-16"
-    >
+    <section id="about" className="relative overflow-clip bg-white pt-20 pb-16">
       <div className="relative z-10 mx-auto max-w-6xl px-4">
         {/* Section Header */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig}
-          custom={0.2}
-          className="mb-14 text-center"
-        >
+        <div className="reveal-up mb-14 text-center">
           <p className="font-secondary mb-3 font-bold tracking-[0.2em] text-black/70">
             {t('about.label')}
           </p>
           <h2 className="mx-auto mb-4 max-w-3xl text-3xl leading-tight font-extrabold whitespace-pre-line text-black">
             {t('about.heading')}
           </h2>
-        </motion.div>
+        </div>
 
         {/* 2-Column Layout */}
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left: Profile Photo */}
-          <motion.div
-            variants={fadeInLeft}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportConfig}
-            custom={0.3}
-            className="flex justify-center lg:justify-end"
-          >
+          <div className="reveal-left flex justify-center lg:justify-end">
             <div className="relative">
               {/* Brand blob behind the transparent cutout — same motif as the
                   services slides; bottom fade melts the torso edge away */}
@@ -52,25 +29,17 @@ export default function AboutSection() {
                 <div className="from-pink/40 to-light-blue/30 h-full w-full rounded-[60%_40%_55%_45%/45%_60%_40%_55%] bg-linear-to-br blur-sm" />
               </div>
               <img
-                src="/assets/images/titiamanda-profile.webp"
+                {...IMAGES['titiamanda-profile']}
+                sizes="(min-width: 1024px) 320px, (min-width: 768px) 288px, 224px"
                 alt={t('about.photoAlt')}
-                width={700}
-                height={1052}
                 loading="lazy"
                 className="relative z-10 h-auto w-56 mask-[linear-gradient(to_bottom,black_88%,transparent)] object-contain md:w-72 lg:w-80"
               />
             </div>
-          </motion.div>
+          </div>
 
           {/* Right: Bio Content */}
-          <motion.div
-            variants={fadeInRight}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportConfig}
-            custom={0.4}
-            className="space-y-6"
-          >
+          <div className="reveal-right space-y-6">
             {/* Stats row */}
             <div className="grid grid-cols-2 gap-2">
               <div className="flex flex-col items-center">
@@ -102,7 +71,7 @@ export default function AboutSection() {
                 {t('about.bio3')}
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
