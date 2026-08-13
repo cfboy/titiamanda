@@ -31,20 +31,31 @@ const locales = {
 
 const OG_LOCALE = { es: 'es_PR', en: 'en_US' }
 
-// Keep in sync with the <img> in src/components/sections/HeroSection.tsx.
-const HERO_SIZES = '(min-width: 1024px) 500px, 288px'
+/**
+ * <head> preload for a page's LCP image, read back out of the markup that was
+ * just rendered rather than restated here. src/srcset/sizes therefore cannot
+ * drift from the <img> the browser will actually resolve — a mismatch would
+ * preload one file and then download a second one.
+ *
+ * A component opts in by marking its above-the-fold image fetchPriority="high";
+ * pages without one (the FAQ) get no preload, which is what they want.
+ */
+function lcpPreload(appHtml) {
+  const tag = appHtml.match(/<img\b[^>]*\bfetchPriority="high"[^>]*>/i)?.[0]
+  if (!tag) return []
 
-const images = JSON.parse(
-  readFileSync(path.join(root, 'src/data/images.json'), 'utf8')
-)
+  const attr = name => tag.match(new RegExp(`\\b${name}="([^"]*)"`, 'i'))?.[1]
+  const src = attr('src')
+  if (!src) throw new Error('LCP image is missing a src')
 
-/** <head> preload for the home page's LCP image. */
-function heroPreload() {
-  const hero = images['hero-picture']
-  return (
-    `<link rel="preload" as="image" type="image/webp" href="${hero.src}"` +
-    ` imagesrcset="${hero.srcSet}" imagesizes="${HERO_SIZES}" fetchpriority="high" />`
-  )
+  const srcSet = attr('srcSet')
+  const sizes = attr('sizes')
+  return [
+    `<link rel="preload" as="image" type="image/webp" href="${src}"` +
+      (srcSet ? ` imagesrcset="${srcSet}"` : '') +
+      (sizes ? ` imagesizes="${sizes}"` : '') +
+      ' fetchpriority="high" />',
+  ]
 }
 
 // --- Guard: locale files must have the same keys ----------------------------
@@ -217,6 +228,8 @@ for (const route of allRoutes) {
   const url = SITE + route.path
   const { es: esAlt, en: enAlt } = alternates(route)
 
+  const appHtml = render(route.path)
+
   let html = template
     .replace('<html lang="es">', `<html lang="${route.lng}">`)
     .replace(/<title>[\s\S]*?<\/title>/, () => `<title>${meta.title}</title>`)
@@ -230,14 +243,10 @@ for (const route of allRoutes) {
         [
           `<meta property="og:locale:alternate" content="${OG_LOCALE[route.lng === 'es' ? 'en' : 'es']}" />`,
           `<script type="application/ld+json">${JSON.stringify(jsonLd(route, meta, dict))}</script>`,
-          // Only the home page renders the hero, so only it preloads the LCP
-          // image — elsewhere the preload would be an unused download. The
-          // srcset/sizes must match HeroSection's <img> exactly, or the browser
-          // preloads one file and then fetches a different one.
-          ...(route.kind === 'home' ? [heroPreload()] : []),
+          ...lcpPreload(appHtml),
         ].join('\n  ')
     )
-    .replace('<!--app-html-->', () => render(route.path))
+    .replace('<!--app-html-->', () => appHtml)
 
   html = swapLink(html, 'canonical', '', url)
   html = swapLink(html, 'alternate', ' hreflang="es"', SITE + esAlt.path)

@@ -55,7 +55,11 @@ export default function ServicePage({
           {...IMAGES[service.image]}
           sizes="(min-width: 768px) 736px, 100vw"
           alt={t(`services.items.${serviceId}.title`)}
-          loading="lazy"
+          // Sits ~260px down the page, so it is this route's LCP element, not a
+          // lazy candidate. fetchPriority also opts it into the <head> preload
+          // that scripts/prerender.mjs derives from the rendered markup.
+          fetchPriority="high"
+          decoding="async"
           className="mb-8 aspect-16/7 w-full rounded-3xl object-cover shadow-xl"
         />
       )}

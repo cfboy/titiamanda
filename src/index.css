@@ -231,8 +231,14 @@
   }
 }
 
-/* Cross-fade played when the services carousel swaps slides. Keyed off the
- * active index in JSX, so changing the key remounts the node and replays it. */
+/* Entrance for the contents of a services-carousel slide and for the contact
+ * form's success panel: a plain time-based animation that plays once, when the
+ * node mounts.
+ *
+ * It deliberately does not replay when the carousel moves. The <AnimatePresence>
+ * this replaced was keyed on each slide's own map index, which is constant, so
+ * it never replayed either — every slide animated once and stayed put. Making
+ * the carousel cross-fade would be a new behaviour, not a restoration. */
 @keyframes swap-in {
   from {
     opacity: 0;
