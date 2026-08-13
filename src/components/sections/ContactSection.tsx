@@ -1,10 +1,8 @@
-import { motion } from 'framer-motion'
 import { Mail, Phone, MessageCircle, Instagram, MapPin } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
 import ContactForm from '@/components/ContactForm'
 import { CONTACT_INFO } from '@/data/config'
-import { fadeInLeft, fadeInRight, viewportConfig } from '@/lib/animations'
 import { cn } from '@/lib/utils'
 
 interface ContactItem {
@@ -60,18 +58,11 @@ export default function ContactSection() {
   const { t } = useTranslation()
 
   return (
-    <section id="contact" className="bg-light relative overflow-hidden py-20">
+    <section id="contact" className="bg-light relative overflow-clip py-20">
       <div className="relative z-10 mx-auto max-w-6xl px-4">
         <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-5">
           {/* Left: Section Header + Contact Info */}
-          <motion.div
-            variants={fadeInLeft}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportConfig}
-            custom={0.2}
-            className="order-1 space-y-8 lg:col-span-2"
-          >
+          <div className="reveal-left order-1 space-y-8 lg:col-span-2">
             {/* Section label + heading */}
             <div>
               <p className="font-secondary mb-3 font-bold tracking-[0.2em] text-black/70">
@@ -120,21 +111,14 @@ export default function ContactSection() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Right: Contact Form */}
-          <motion.div
-            variants={fadeInRight}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportConfig}
-            custom={0.4}
-            className="order-1 lg:order-2 lg:col-span-3"
-          >
+          <div className="reveal-right order-1 lg:order-2 lg:col-span-3">
             <div className="rounded-3xl bg-white p-7 shadow-lg md:p-10">
               <ContactForm />
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

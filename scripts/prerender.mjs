@@ -31,6 +31,33 @@ const locales = {
 
 const OG_LOCALE = { es: 'es_PR', en: 'en_US' }
 
+/**
+ * <head> preload for a page's LCP image, read back out of the markup that was
+ * just rendered rather than restated here. src/srcset/sizes therefore cannot
+ * drift from the <img> the browser will actually resolve — a mismatch would
+ * preload one file and then download a second one.
+ *
+ * A component opts in by marking its above-the-fold image fetchPriority="high";
+ * pages without one (the FAQ) get no preload, which is what they want.
+ */
+function lcpPreload(appHtml) {
+  const tag = appHtml.match(/<img\b[^>]*\bfetchPriority="high"[^>]*>/i)?.[0]
+  if (!tag) return []
+
+  const attr = name => tag.match(new RegExp(`\\b${name}="([^"]*)"`, 'i'))?.[1]
+  const src = attr('src')
+  if (!src) throw new Error('LCP image is missing a src')
+
+  const srcSet = attr('srcSet')
+  const sizes = attr('sizes')
+  return [
+    `<link rel="preload" as="image" type="image/webp" href="${src}"` +
+      (srcSet ? ` imagesrcset="${srcSet}"` : '') +
+      (sizes ? ` imagesizes="${sizes}"` : '') +
+      ' fetchpriority="high" />',
+  ]
+}
+
 // --- Guard: locale files must have the same keys ----------------------------
 function flattenKeys(obj, prefix = '') {
   return Object.entries(obj).flatMap(([k, v]) =>
@@ -201,6 +228,8 @@ for (const route of allRoutes) {
   const url = SITE + route.path
   const { es: esAlt, en: enAlt } = alternates(route)
 
+  const appHtml = render(route.path)
+
   let html = template
     .replace('<html lang="es">', `<html lang="${route.lng}">`)
     .replace(/<title>[\s\S]*?<\/title>/, () => `<title>${meta.title}</title>`)
@@ -214,9 +243,10 @@ for (const route of allRoutes) {
         [
           `<meta property="og:locale:alternate" content="${OG_LOCALE[route.lng === 'es' ? 'en' : 'es']}" />`,
           `<script type="application/ld+json">${JSON.stringify(jsonLd(route, meta, dict))}</script>`,
+          ...lcpPreload(appHtml),
         ].join('\n  ')
     )
-    .replace('<!--app-html-->', () => render(route.path))
+    .replace('<!--app-html-->', () => appHtml)
 
   html = swapLink(html, 'canonical', '', url)
   html = swapLink(html, 'alternate', ' hreflang="es"', SITE + esAlt.path)

@@ -1,0 +1,38 @@
+{
+  "hero-picture": {
+    "src": "/assets/images/hero-picture-1000.webp",
+    "srcSet": "/assets/images/hero-picture-600.webp 600w, /assets/images/hero-picture-1000.webp 1000w",
+    "width": 1000,
+    "height": 872
+  },
+  "children-coloring": {
+    "src": "/assets/images/children-coloring-900.webp",
+    "srcSet": "/assets/images/children-coloring-480.webp 480w, /assets/images/children-coloring-900.webp 900w",
+    "width": 900,
+    "height": 1600
+  },
+  "children-playing": {
+    "src": "/assets/images/children-playing-1152.webp",
+    "srcSet": "/assets/images/children-playing-480.webp 480w, /assets/images/children-playing-900.webp 900w, /assets/images/children-playing-1152.webp 1152w",
+    "width": 1152,
+    "height": 2048
+  },
+  "full-shot-girl-playing-home": {
+    "src": "/assets/images/full-shot-girl-playing-home-1472.webp",
+    "srcSet": "/assets/images/full-shot-girl-playing-home-480.webp 480w, /assets/images/full-shot-girl-playing-home-900.webp 900w, /assets/images/full-shot-girl-playing-home-1472.webp 1472w",
+    "width": 1472,
+    "height": 2208
+  },
+  "close-up-child-enjoying-didactic-game": {
+    "src": "/assets/images/close-up-child-enjoying-didactic-game-1472.webp",
+    "srcSet": "/assets/images/close-up-child-enjoying-didactic-game-480.webp 480w, /assets/images/close-up-child-enjoying-didactic-game-900.webp 900w, /assets/images/close-up-child-enjoying-didactic-game-1472.webp 1472w",
+    "width": 1472,
+    "height": 981
+  },
+  "titiamanda-profile": {
+    "src": "/assets/images/titiamanda-profile-700.webp",
+    "srcSet": "/assets/images/titiamanda-profile-450.webp 450w, /assets/images/titiamanda-profile-700.webp 700w",
+    "width": 700,
+    "height": 1052
+  }
+}

@@ -1,4 +1,3 @@
-import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -12,13 +11,7 @@ import {
 } from '@/components/ui/carousel'
 import { SERVICES } from '@/data/config'
 import { useLang } from '@/hooks/useRoute'
-import {
-  fadeInUp,
-  fadeInLeft,
-  fadeInRight,
-  serviceContentVariants,
-  viewportConfig,
-} from '@/lib/animations'
+import { IMAGES } from '@/lib/images'
 import { cn } from '@/lib/utils'
 import { servicePath } from '@/routes'
 
@@ -43,7 +36,7 @@ export default function ServicesSection() {
   const carouselRef = useRef<CarouselApi | undefined>(undefined)
 
   return (
-    <section id="services" className="relative overflow-hidden pt-8 pb-16">
+    <section id="services" className="relative overflow-clip pt-8 pb-16">
       {/* Decorative cloud: background-image instead of <img> so it stays out
           of the accessibility tree and image audits */}
       <div
@@ -56,21 +49,14 @@ export default function ServicesSection() {
 
       <div className="relative z-10 mx-auto max-w-6xl px-4">
         {/* Section Header */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig}
-          custom={0.2}
-          className="mb-14 text-center"
-        >
+        <div className="reveal-up mb-14 text-center">
           <p className="font-secondary mb-3 font-bold tracking-[0.2em] text-black/70">
             {t('services.label')}
           </p>
           <h2 className="mx-auto mb-4 max-w-xl text-3xl leading-tight font-extrabold whitespace-pre-line text-black md:text-4xl">
             {t('services.heading')}
           </h2>
-        </motion.div>
+        </div>
 
         {/* Service Content Carousel */}
         <div className="relative px-4">
@@ -98,114 +84,79 @@ export default function ServicesSection() {
                   {/* Service Content — 2-column layout */}
                   <div className="grid grid-cols-1 items-center gap-10 lg:min-h-105 lg:grid-cols-2 lg:gap-16">
                     {/* Left: Service Image with blob */}
-                    <motion.div
-                      variants={fadeInLeft}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={viewportConfig}
-                      custom={0.4}
-                      className="relative flex justify-center"
-                    >
+                    <div className="relative flex justify-center">
                       {/* Animated blob background */}
-                      <AnimatePresence mode="wait">
-                        <motion.div
-                          key={`blob-${index}`}
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.5 }}
-                          className="pointer-events-none absolute inset-0 flex items-center justify-center"
-                        >
-                          <div
-                            className={cn(
-                              'h-[88%] w-[88%] rounded-[60%_40%_55%_45%/45%_60%_40%_55%] bg-linear-to-br blur-sm transition-all duration-500',
-                              BLOB_COLORS[service.color]
-                            )}
-                          />
-                        </motion.div>
-                      </AnimatePresence>
-
-                      <AnimatePresence mode="wait">
-                        <motion.img
-                          key={`img-${index}`}
-                          src={service.image}
-                          alt={t(`services.items.${service.id}.title`)}
-                          variants={serviceContentVariants}
-                          initial="hidden"
-                          animate="visible"
-                          exit="exit"
-                          loading="lazy"
-                          className="relative z-10 aspect-4/3 w-full max-w-md rounded-3xl object-cover shadow-xl"
+                      <div className="swap-in-scale pointer-events-none absolute inset-0 flex items-center justify-center">
+                        <div
+                          className={cn(
+                            'h-[88%] w-[88%] rounded-[60%_40%_55%_45%/45%_60%_40%_55%] bg-linear-to-br blur-sm transition-all duration-500',
+                            BLOB_COLORS[service.color]
+                          )}
                         />
-                      </AnimatePresence>
-                    </motion.div>
+                      </div>
+
+                      <img
+                        {...IMAGES[service.image]}
+                        sizes="(min-width: 640px) 448px, 92vw"
+                        alt={t(`services.items.${service.id}.title`)}
+                        loading="lazy"
+                        // Below the fold, and heavy: let it yield bandwidth to
+                        // the hero rather than compete with the LCP image.
+                        fetchPriority="low"
+                        className="swap-in relative z-10 aspect-4/3 w-full max-w-md rounded-3xl object-cover shadow-xl"
+                      />
+                    </div>
 
                     {/* Right: Service Details */}
-                    <motion.div
-                      variants={fadeInRight}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={viewportConfig}
-                      custom={0.5}
-                      className="space-y-6"
-                    >
-                      <AnimatePresence mode="wait">
-                        <motion.div
-                          key={`content-${index}`}
-                          variants={serviceContentVariants}
-                          initial="hidden"
-                          animate="visible"
-                          exit="exit"
-                          className="space-y-5"
-                        >
-                          {/* Title */}
-                          <h3 className="text-gray-dark text-2xl leading-tight font-extrabold md:text-3xl">
-                            {t(`services.items.${service.id}.title`)}
-                          </h3>
+                    <div className="space-y-6">
+                      <div className="swap-in space-y-5">
+                        {/* Title */}
+                        <h3 className="text-gray-dark text-2xl leading-tight font-extrabold md:text-3xl">
+                          {t(`services.items.${service.id}.title`)}
+                        </h3>
 
-                          {/* Description */}
-                          <p className="text-gray-dark text-base leading-relaxed md:text-lg">
-                            {t(`services.items.${service.id}.description`)}
+                        {/* Description */}
+                        <p className="text-gray-dark text-base leading-relaxed md:text-lg">
+                          {t(`services.items.${service.id}.description`)}
+                        </p>
+
+                        {/* Ideal For */}
+                        <div className="space-y-2">
+                          <p className="text-gray-dark text-sm font-bold">
+                            {t('services.idealForLabel')}
                           </p>
+                          <ul className="space-y-1.5">
+                            {(
+                              t(`services.items.${service.id}.idealFor`, {
+                                returnObjects: true,
+                              }) as string[]
+                            ).map(item => (
+                              <li
+                                key={item}
+                                className="text-gray-dark flex items-center gap-2.5 text-sm md:text-base"
+                              >
+                                <span
+                                  aria-hidden="true"
+                                  className={cn(
+                                    'h-1.5 w-1.5 shrink-0 rounded-full',
+                                    DOT_COLORS[service.color]
+                                  )}
+                                />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
 
-                          {/* Ideal For */}
-                          <div className="space-y-2">
-                            <p className="text-gray-dark text-sm font-bold">
-                              {t('services.idealForLabel')}
-                            </p>
-                            <ul className="space-y-1.5">
-                              {(
-                                t(`services.items.${service.id}.idealFor`, {
-                                  returnObjects: true,
-                                }) as string[]
-                              ).map(item => (
-                                <li
-                                  key={item}
-                                  className="text-gray-dark flex items-center gap-2.5 text-sm md:text-base"
-                                >
-                                  <span
-                                    aria-hidden="true"
-                                    className={cn(
-                                      'h-1.5 w-1.5 shrink-0 rounded-full',
-                                      DOT_COLORS[service.color]
-                                    )}
-                                  />
-                                  {item}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-
-                          <a
-                            href={servicePath(lng, service.id)}
-                            className="text-blue-deep hover:text-blue-deep/80 inline-flex items-center gap-1.5 text-sm font-semibold underline underline-offset-4 transition-colors"
-                          >
-                            {t('services.readMore')}
-                            <span aria-hidden="true">→</span>
-                          </a>
-                        </motion.div>
-                      </AnimatePresence>
-                    </motion.div>
+                        <a
+                          href={servicePath(lng, service.id)}
+                          className="text-blue-deep hover:text-blue-deep/80 inline-flex items-center gap-1.5 text-sm font-semibold underline underline-offset-4 transition-colors"
+                        >
+                          {t('services.readMore')}
+                          <span aria-hidden="true">→</span>
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </CarouselItem>
               ))}

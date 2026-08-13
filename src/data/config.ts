@@ -1,3 +1,6 @@
+import type { IconName } from '@/lib/icons'
+import type { ImageName } from '@/lib/images'
+
 export type ServiceColor = 'pink' | 'blue' | 'orange' | 'green'
 export type FeatureColor = 'pink' | 'blue' | 'orange' | 'green' | 'dark'
 
@@ -6,15 +9,16 @@ export type FeatureColor = 'pink' | 'blue' | 'orange' | 'green' | 'dark'
 
 export interface Service {
   id: string
-  icon: string
-  image: string
+  icon: IconName
+  /** Key into IMAGES (src/lib/images.ts) — carries srcset and intrinsic size. */
+  image: ImageName
   color: ServiceColor
   delay: number
 }
 
 export interface Feature {
   id: string
-  icon: string
+  icon: IconName
   color: FeatureColor
   delay: number
 }
@@ -23,28 +27,28 @@ export const SERVICES: Service[] = [
   {
     id: 'at-home-care',
     icon: 'House',
-    image: '/assets/images/children-coloring.webp',
+    image: 'children-coloring',
     color: 'pink',
     delay: 0.3,
   },
   {
     id: 'hotel-vacation',
     icon: 'Luggage',
-    image: '/assets/images/children-playing.webp',
+    image: 'children-playing',
     color: 'blue',
     delay: 0.4,
   },
   {
     id: 'special-needs',
     icon: 'Heart',
-    image: '/assets/images/full-shot-girl-playing-home.webp',
+    image: 'full-shot-girl-playing-home',
     color: 'orange',
     delay: 0.5,
   },
   {
     id: 'family-outing',
     icon: 'Users',
-    image: '/assets/images/close-up-child-enjoying-didactic-game.webp',
+    image: 'close-up-child-enjoying-didactic-game',
     color: 'green',
     delay: 0.6,
   },

@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { useState, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -12,7 +11,6 @@ import {
   type CarouselApi,
 } from '@/components/ui/carousel'
 import { FEATURES } from '@/data/config'
-import { fadeInUp, staggerContainer, viewportConfig } from '@/lib/animations'
 import { cn } from '@/lib/utils'
 
 export default function ActivitiesSection() {
@@ -23,48 +21,44 @@ export default function ActivitiesSection() {
   return (
     <section
       id="features"
-      className="bg-light-blue relative overflow-hidden py-20"
+      className="bg-light-blue relative overflow-clip py-20"
     >
       <div className="relative z-10 mx-auto max-w-6xl px-4">
         {/* Section Header */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig}
-          custom={0.2}
-          className="mb-14"
-        >
+        <div className="reveal-up mb-14">
           <p className="font-secondary mb-3 font-bold tracking-[0.2em] text-black/70">
             {t('activities.label')}
           </p>
           <h2 className="mb-4 max-w-lg text-3xl leading-tight font-extrabold text-black md:text-4xl">
             {t('activities.heading')}
           </h2>
-        </motion.div>
+        </div>
 
         {/* Desktop: all 8 activities visible at once — the safety/supervision
             cards must never hide behind a carousel */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig}
-          className="hidden gap-4 lg:grid lg:grid-cols-4"
-        >
+        {/* Only this grid sits on the page's scroll timeline; the carousel
+            below lives inside Embla's own scroll container, where a view()
+            timeline would resolve against the carousel instead of the page.
+            `delay` staggers the cards by shifting where each one starts in the
+            scroll range — the scroll-driven equivalent of animation-delay. */}
+        <div className="hidden gap-4 lg:grid lg:grid-cols-4">
           {FEATURES.map(feature => (
-            <ActivityCard key={feature.id} feature={feature} />
+            <div
+              key={feature.id}
+              className="reveal-up h-full"
+              style={
+                {
+                  '--reveal-start': `${feature.delay * 20}%`,
+                } as React.CSSProperties
+              }
+            >
+              <ActivityCard feature={feature} />
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Mobile/tablet: carousel */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig}
-          className="px-4 lg:hidden"
-        >
+        <div className="px-4 lg:hidden">
           <Carousel
             opts={{
               align: 'start',
@@ -88,7 +82,7 @@ export default function ActivitiesSection() {
                   key={feature.id}
                   className="basis-full pl-2 sm:basis-1/2 md:pl-4 lg:basis-1/3 xl:basis-1/4"
                 >
-                  <div className="p-1">
+                  <div className="h-full p-1">
                     <ActivityCard feature={feature} />
                   </div>
                 </CarouselItem>
@@ -123,7 +117,7 @@ export default function ActivitiesSection() {
               </button>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

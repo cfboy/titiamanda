@@ -1,4 +1,3 @@
-import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Instagram, ChevronDown } from 'lucide-react'
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import { createPortal } from 'react-dom'
@@ -8,11 +7,11 @@ import logoPrimary from '@/assets/images/logo/full-logo.svg'
 import logoIcon from '@/assets/images/logo/logo-icon.svg'
 import { CONTACT_INFO } from '@/data/config'
 import { useContactDrawer } from '@/hooks/useContactDrawer'
+import { usePresence } from '@/hooks/usePresence'
 import { useAnchorBase, useRoute } from '@/hooks/useRoute'
 import { useScrollSpy } from '@/hooks/useScrollSpy'
 import { useStickyHeader } from '@/hooks/useStickyHeader'
 import { SUPPORTED_LANGS, type SupportedLang } from '@/i18n'
-import { slideInDown } from '@/lib/animations'
 import { cn } from '@/lib/utils'
 import { SERVICE_PAGES, faqPath, servicePath, translateRoute } from '@/routes'
 
@@ -50,6 +49,7 @@ function ServicesMenu({
   const { t } = useTranslation()
   const route = useRoute()
   const [open, setOpen] = useState(false)
+  const presence = usePresence(open, 160)
   const wrapRef = useRef<HTMLLIElement>(null)
 
   useEffect(() => {
@@ -96,41 +96,38 @@ function ServicesMenu({
         />
       </button>
 
-      <AnimatePresence>
-        {open && (
-          <motion.ul
-            initial={{ opacity: 0, y: -6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.16 }}
-            className="shadow-light absolute top-full left-0 min-w-64 rounded-2xl border border-gray-100 bg-white p-2"
-          >
-            {SERVICE_PAGES.map(s => (
-              <li key={s.id}>
-                <a
-                  href={servicePath(route.lng, s.id)}
-                  className={cn(
-                    'block rounded-xl px-4 py-2.5 text-sm font-medium transition-colors',
-                    route.serviceId === s.id
-                      ? 'bg-pink/10 text-pink-deep'
-                      : 'text-gray-dark hover:bg-pink/5 hover:text-pink-deep'
-                  )}
-                >
-                  {t(`services.items.${s.id}.title`)}
-                </a>
-              </li>
-            ))}
-            <li className="mt-1 border-t border-gray-100 pt-1">
+      {presence && (
+        <ul
+          className={cn(
+            'shadow-light absolute top-full left-0 min-w-64 rounded-2xl border border-gray-100 bg-white p-2',
+            presence === 'closing' ? 'menu-out' : 'menu-in'
+          )}
+        >
+          {SERVICE_PAGES.map(s => (
+            <li key={s.id}>
               <a
-                href={anchorHref}
-                className="text-gray-text hover:text-pink-deep block rounded-xl px-4 py-2.5 text-sm font-medium transition-colors"
+                href={servicePath(route.lng, s.id)}
+                className={cn(
+                  'block rounded-xl px-4 py-2.5 text-sm font-medium transition-colors',
+                  route.serviceId === s.id
+                    ? 'bg-pink/10 text-pink-deep'
+                    : 'text-gray-dark hover:bg-pink/5 hover:text-pink-deep'
+                )}
               >
-                {t('services.viewAll')}
+                {t(`services.items.${s.id}.title`)}
               </a>
             </li>
-          </motion.ul>
-        )}
-      </AnimatePresence>
+          ))}
+          <li className="mt-1 border-t border-gray-100 pt-1">
+            <a
+              href={anchorHref}
+              className="text-gray-text hover:text-pink-deep block rounded-xl px-4 py-2.5 text-sm font-medium transition-colors"
+            >
+              {t('services.viewAll')}
+            </a>
+          </li>
+        </ul>
+      )}
     </li>
   )
 }
@@ -179,6 +176,7 @@ function LanguageSwitcher({ className }: { className?: string }) {
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const sheet = usePresence(mobileOpen, 350)
   // Portal targets document.body, which doesn't exist during prerendering.
   const mounted = useMounted()
   const isSticky = useStickyHeader()
@@ -211,12 +209,12 @@ export default function Header() {
   }
 
   return (
-    <motion.header
-      variants={slideInDown}
-      initial="hidden"
-      animate="visible"
+    // CSS entry animation, not Framer: a Framer `initial` would be serialized
+    // into the prerendered HTML as opacity:0 and keep the header hidden until
+    // hydration.
+    <header
       className={cn(
-        'fixed top-0 right-0 left-0 z-60 transition-all duration-300',
+        'enter-slide-down fixed top-0 right-0 left-0 z-60 transition-all duration-300',
         isSticky
           ? 'shadow-light h-16 bg-white/95 backdrop-blur-sm'
           : 'h-20 bg-transparent'
@@ -233,6 +231,8 @@ export default function Header() {
             <img
               src={logoPrimary}
               alt={t('a11y.logoAlt')}
+              width={820}
+              height={480}
               className={cn(
                 'hidden w-auto object-contain transition-all duration-300 md:block',
                 isSticky ? 'h-12' : 'h-16'
@@ -241,6 +241,8 @@ export default function Header() {
             <img
               src={logoIcon}
               alt={t('a11y.logoAlt')}
+              width={260}
+              height={490}
               className={cn(
                 'block w-auto object-contain transition-all duration-300 md:hidden',
                 isSticky ? 'h-8' : 'h-10'
@@ -327,171 +329,149 @@ export default function Header() {
             </a>
 
             {/* Mobile Menu Button */}
-            <motion.button
-              className="text-gray-dark hover:text-pink relative z-60 p-2 transition-colors"
+            {/* Both icons stay mounted and cross-fade, which needs no
+                presence tracking — only a transform and an opacity. */}
+            <button
+              type="button"
+              className="text-gray-dark hover:text-pink relative z-60 grid h-9 w-9 place-items-center transition-colors active:scale-90 motion-reduce:transform-none"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label={t('a11y.toggleMenu')}
-              whileTap={{ scale: 0.9 }}
+              aria-expanded={mobileOpen}
             >
-              <AnimatePresence mode="wait" initial={false}>
-                {mobileOpen ? (
-                  <motion.span
-                    key="close"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.15 }}
-                  >
-                    <X size={22} className="text-pink" />
-                  </motion.span>
-                ) : (
-                  <motion.span
-                    key="menu"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.15 }}
-                  >
-                    <Menu size={22} />
-                  </motion.span>
+              <span
+                className={cn(
+                  'col-start-1 row-start-1 transition-all duration-150',
+                  mobileOpen ? 'rotate-0 opacity-100' : '-rotate-90 opacity-0'
                 )}
-              </AnimatePresence>
-            </motion.button>
+              >
+                <X size={22} className="text-pink" />
+              </span>
+              <span
+                className={cn(
+                  'col-start-1 row-start-1 transition-all duration-150',
+                  mobileOpen ? 'rotate-90 opacity-0' : 'rotate-0 opacity-100'
+                )}
+              >
+                <Menu size={22} />
+              </span>
+            </button>
           </div>
         </nav>
       </div>
 
       {/* Mobile Menu — full screen overlay via portal */}
       {mounted &&
+        sheet &&
         createPortal(
-          <AnimatePresence>
-            {mobileOpen && (
-              <motion.div
-                initial={{ opacity: 0, clipPath: 'inset(0 0 100% 0)' }}
-                animate={{ opacity: 1, clipPath: 'inset(0 0 0% 0)' }}
-                exit={{ opacity: 0, clipPath: 'inset(0 0 100% 0)' }}
-                transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-                className="fixed inset-0 z-50 flex flex-col bg-white lg:hidden"
-              >
-                {/* Top bar spacer */}
-                <div className="h-20 shrink-0" />
+          <div
+            className={cn(
+              'fixed inset-0 z-50 flex flex-col bg-white lg:hidden',
+              sheet === 'closing' ? 'sheet-out' : 'sheet-in'
+            )}
+          >
+            {/* Top bar spacer */}
+            <div className="h-20 shrink-0" />
 
-                {/* Nav links — justify-center-safe: centrado cuando cabe,
+            {/* Nav links — justify-center-safe: centrado cuando cabe,
                     alineado arriba (y con scroll completo) cuando no cabe */}
-                <nav className="flex flex-1 flex-col items-center justify-center-safe gap-1 overflow-y-auto px-6 pt-2 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
-                  {/* Same order as desktop: Home first with the services
+            <nav className="flex flex-1 flex-col items-center justify-center-safe gap-1 overflow-y-auto px-6 pt-2 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
+              {/* Same order as desktop: Home first with the services
                       right below, as an expanded list — on mobile, hiding
                       them behind a toggle only adds friction */}
-                  {NAV_LINKS.map((link, i) => {
-                    const isActive =
-                      isHome && activeSection === link.href.replace('#', '')
-                    const item = (
-                      <motion.div
-                        key={link.href}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ delay: 0.1 + i * 0.06, duration: 0.3 }}
-                        className="w-full max-w-xs"
-                      >
-                        <a
-                          href={navHref(link.href)}
-                          onClick={e => handleNavClick(e, link.href)}
-                          className={cn(
-                            'block w-full rounded-2xl px-6 py-3 text-center font-semibold capitalize transition-colors duration-200',
-                            isActive
-                              ? 'bg-pink/10 text-pink-deep'
-                              : 'text-gray-dark hover:bg-pink/5 hover:text-pink-deep'
-                          )}
-                        >
-                          {t(`nav.${link.key}`)}
-                        </a>
-                      </motion.div>
-                    )
-                    if (link.key !== 'home') return item
-                    return [
-                      item,
-                      <motion.div
-                        key="services-mobile"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ delay: 0.16, duration: 0.3 }}
-                        className="w-full max-w-xs"
-                      >
-                        <a
-                          href={navHref('#services')}
-                          onClick={e => handleNavClick(e, '#services')}
-                          className="text-gray-text block w-full px-6 pt-2 pb-1 text-center text-xs font-bold tracking-widest uppercase"
-                        >
-                          {t('nav.services')}
-                        </a>
-                        <ul className="space-y-1">
-                          {SERVICE_PAGES.map(s => (
-                            <li key={s.id}>
-                              <a
-                                href={servicePath(route.lng, s.id)}
-                                className={cn(
-                                  'block w-full rounded-2xl px-6 py-3 text-center font-semibold transition-colors duration-200',
-                                  route.serviceId === s.id
-                                    ? 'bg-pink/10 text-pink-deep'
-                                    : 'text-gray-dark hover:bg-pink/5 hover:text-pink-deep'
-                                )}
-                              >
-                                {t(`services.items.${s.id}.title`)}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </motion.div>,
-                    ]
-                  })}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{
-                      delay: 0.1 + NAV_LINKS.length * 0.06,
-                      duration: 0.3,
-                    }}
-                    className="w-full max-w-xs"
+              {NAV_LINKS.map((link, i) => {
+                const isActive =
+                  isHome && activeSection === link.href.replace('#', '')
+                const item = (
+                  <div
+                    key={link.href}
+                    style={{ animationDelay: `${100 + i * 60}ms` }}
+                    className="menu-item-in w-full max-w-xs"
                   >
                     <a
-                      href={faqPath(route.lng)}
+                      href={navHref(link.href)}
+                      onClick={e => handleNavClick(e, link.href)}
                       className={cn(
                         'block w-full rounded-2xl px-6 py-3 text-center font-semibold capitalize transition-colors duration-200',
-                        route.kind === 'faq'
+                        isActive
                           ? 'bg-pink/10 text-pink-deep'
                           : 'text-gray-dark hover:bg-pink/5 hover:text-pink-deep'
                       )}
                     >
-                      {t('nav.faq')}
+                      {t(`nav.${link.key}`)}
                     </a>
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{
-                      delay: 0.16 + (NAV_LINKS.length + 1) * 0.06,
-                      duration: 0.3,
-                    }}
-                    className="w-full max-w-xs pt-2"
+                  </div>
+                )
+                if (link.key !== 'home') return item
+                return [
+                  item,
+                  <div
+                    key="services-mobile"
+                    style={{ animationDelay: '160ms' }}
+                    className="menu-item-in w-full max-w-xs"
                   >
                     <a
-                      href={navHref('#contact')}
-                      onClick={openContact}
-                      className="bg-blue-deep hover:bg-blue-deep/90 block w-full rounded-full px-6 py-3.5 text-center font-semibold text-white shadow-md transition-colors"
+                      href={navHref('#services')}
+                      onClick={e => handleNavClick(e, '#services')}
+                      className="text-gray-text block w-full px-6 pt-2 pb-1 text-center text-xs font-bold tracking-widest uppercase"
                     >
-                      {t('nav.contact')}
+                      {t('nav.services')}
                     </a>
-                  </motion.div>
-                </nav>
-              </motion.div>
-            )}
-          </AnimatePresence>,
+                    <ul className="space-y-1">
+                      {SERVICE_PAGES.map(s => (
+                        <li key={s.id}>
+                          <a
+                            href={servicePath(route.lng, s.id)}
+                            className={cn(
+                              'block w-full rounded-2xl px-6 py-3 text-center font-semibold transition-colors duration-200',
+                              route.serviceId === s.id
+                                ? 'bg-pink/10 text-pink-deep'
+                                : 'text-gray-dark hover:bg-pink/5 hover:text-pink-deep'
+                            )}
+                          >
+                            {t(`services.items.${s.id}.title`)}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>,
+                ]
+              })}
+              <div
+                style={{
+                  animationDelay: `${100 + NAV_LINKS.length * 60}ms`,
+                }}
+                className="menu-item-in w-full max-w-xs"
+              >
+                <a
+                  href={faqPath(route.lng)}
+                  className={cn(
+                    'block w-full rounded-2xl px-6 py-3 text-center font-semibold capitalize transition-colors duration-200',
+                    route.kind === 'faq'
+                      ? 'bg-pink/10 text-pink-deep'
+                      : 'text-gray-dark hover:bg-pink/5 hover:text-pink-deep'
+                  )}
+                >
+                  {t('nav.faq')}
+                </a>
+              </div>
+              <div
+                style={{
+                  animationDelay: `${160 + (NAV_LINKS.length + 1) * 60}ms`,
+                }}
+                className="menu-item-in w-full max-w-xs pt-2"
+              >
+                <a
+                  href={navHref('#contact')}
+                  onClick={openContact}
+                  className="bg-blue-deep hover:bg-blue-deep/90 block w-full rounded-full px-6 py-3.5 text-center font-semibold text-white shadow-md transition-colors"
+                >
+                  {t('nav.contact')}
+                </a>
+              </div>
+            </nav>
+          </div>,
           document.body
         )}
-    </motion.header>
+    </header>
   )
 }

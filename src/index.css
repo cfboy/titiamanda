@@ -1,5 +1,59 @@
 @import "tailwindcss";
 
+/* Self-hosted fonts (files in public/assets/fonts, `latin` + `latin-ext`
+ * subsets pulled from Google Fonts).
+ *
+ * They used to load from fonts.googleapis.com, which put a render-blocking
+ * stylesheet on a third-party origin — a DNS lookup and TLS handshake ahead of
+ * the first paint — and requested the full 100..900 weight range plus italics
+ * that nothing on the site uses. REM ships as one variable file covering the
+ * 400-800 the design actually needs; Gaegu only has a latin cut, which is
+ * enough for Spanish and English.
+ *
+ * `font-display: swap` keeps text visible in the fallback face while the woff2
+ * is still in flight.
+ */
+@font-face {
+  font-family: 'REM';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/assets/fonts/rem-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'REM';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/assets/fonts/rem-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Gaegu';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/gaegu-400-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Gaegu';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/fonts/gaegu-700-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 @theme {
   --color-pink: #f99898;
   --color-cream: #fff3eb;
@@ -51,28 +105,6 @@
   --shadow-light: 0px 0px 10px rgba(0, 0, 0, 0.15);
   --shadow-medium: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
 
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-float-slow: float 8s ease-in-out infinite;
-  --animate-float-reverse: floatReverse 7s ease-in-out infinite;
-  --animate-bounce-slow: bounceSlow 4s ease-in-out infinite;
-  --animate-fade-in-up: fadeInUp 0.6s ease-out;
-
-  --keyframes-float: {
-    0%, 100%: { transform: translateY(0px) },
-    50%: { transform: translateY(-20px) }
-  };
-  --keyframes-floatReverse: {
-    0%, 100%: { transform: translateY(-10px) },
-    50%: { transform: translateY(10px) }
-  };
-  --keyframes-bounceSlow: {
-    0%, 100%: { transform: translateY(0) },
-    50%: { transform: translateY(-15px) }
-  };
-  --keyframes-fadeInUp: {
-    from: { opacity: 0, transform: translateY(30px) },
-    to: { opacity: 1, transform: translateY(0) }
-  };
 }
 
 @layer base {
@@ -97,6 +129,234 @@
     --input: 0 0% 89%;
     --ring: 210 97% 47%;
     --radius: 0.75rem;
+  }
+}
+
+/* Above-the-fold entry animations.
+ *
+ * These deliberately do NOT go through Framer Motion. Framer serializes
+ * `initial={{ opacity: 0 }}` into the prerendered HTML, so the header and the
+ * whole hero shipped as `style="opacity:0"` and stayed invisible until the JS
+ * bundle had downloaded, parsed and hydrated — which is what pushed FCP/LCP
+ * past 6s. As plain CSS the animation starts as soon as the stylesheet is
+ * parsed, and the resting state is the visible one, so the content is never
+ * gated on JavaScript.
+ *
+ * Delays are roughly half the original Framer values: same choreography,
+ * finished within ~0.8s instead of ~1.2s.
+ */
+@keyframes enter-fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+@keyframes enter-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+@keyframes enter-fade-left {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+}
+@keyframes enter-fade-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+@keyframes enter-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-80px);
+  }
+}
+
+/* Scroll reveals for everything below the fold.
+ *
+ * These were Framer `whileInView` variants, which meant the prerendered HTML
+ * carried style="opacity:0" on most of the page: without JavaScript the body
+ * never appeared, and framer-motion sat on the critical path purely to make
+ * content visible. Scroll-driven CSS animations do the same job with no JS at
+ * all, and degrade honestly — a browser without `animation-timeline` support
+ * skips the @supports block entirely and simply renders the content.
+ *
+ * `--reveal-start` staggers siblings by delaying where in the scroll range each
+ * one begins; see FEATURES[].delay in src/data/config.ts.
+ */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}
+@keyframes reveal-left {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+}
+@keyframes reveal-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    @layer utilities {
+      .reveal-up,
+      .reveal-left,
+      .reveal-right {
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: view();
+        animation-range: entry var(--reveal-start, 0%) cover 22%;
+      }
+      .reveal-up {
+        animation-name: reveal-up;
+      }
+      .reveal-left {
+        animation-name: reveal-left;
+      }
+      .reveal-right {
+        animation-name: reveal-right;
+      }
+    }
+  }
+}
+
+/* Entrance for the contents of a services-carousel slide and for the contact
+ * form's success panel: a plain time-based animation that plays once, when the
+ * node mounts.
+ *
+ * It deliberately does not replay when the carousel moves. The <AnimatePresence>
+ * this replaced was keyed on each slide's own map index, which is constant, so
+ * it never replayed either — every slide animated once and stayed put. Making
+ * the carousel cross-fade would be a new behaviour, not a restoration. */
+@keyframes swap-in {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+@keyframes swap-in-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @layer utilities {
+    .swap-in {
+      animation: swap-in 0.4s ease-out both;
+    }
+    .swap-in-scale {
+      animation: swap-in-scale 0.5s ease-out both;
+    }
+  }
+}
+
+/* Menu open/close animations.
+ *
+ * Unlike the reveals above these are defined unconditionally, because the
+ * closing ones have to finish for the node to unmount (usePresence waits on the
+ * duration). Reduced motion collapses them to an instant instead of removing
+ * them. */
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+@keyframes menu-out {
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+@keyframes sheet-in {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+  }
+}
+@keyframes sheet-out {
+  to {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+  }
+}
+@keyframes menu-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@layer utilities {
+  .menu-in {
+    animation: menu-in 0.16s ease-out both;
+  }
+  .menu-out {
+    animation: menu-out 0.16s ease-in both;
+  }
+  .sheet-in {
+    animation: sheet-in 0.35s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+  .sheet-out {
+    animation: sheet-out 0.35s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+  .menu-item-in {
+    animation: menu-item-in 0.3s ease-out both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-in,
+  .menu-out,
+  .sheet-in,
+  .sheet-out,
+  .menu-item-in {
+    animation-duration: 0.01ms;
+  }
+}
+
+/* no-preference, not `reduce`: with the animation simply absent, the element
+   renders in its final state — the correct fallback in both directions. */
+@media (prefers-reduced-motion: no-preference) {
+  @layer utilities {
+    .enter-fade-down,
+    .enter-fade-up,
+    .enter-fade-left,
+    .enter-fade-scale,
+    .enter-slide-down {
+      animation-duration: 0.55s;
+      animation-timing-function: ease-out;
+      animation-fill-mode: both;
+    }
+    .enter-fade-down {
+      animation-name: enter-fade-down;
+    }
+    .enter-fade-up {
+      animation-name: enter-fade-up;
+    }
+    .enter-fade-left {
+      animation-name: enter-fade-left;
+    }
+    .enter-fade-scale {
+      animation-name: enter-fade-scale;
+    }
+    .enter-slide-down {
+      animation-name: enter-slide-down;
+      animation-duration: 0.75s;
+    }
   }
 }
 
