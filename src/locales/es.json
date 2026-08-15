@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Niñera y Cuido de Niños — Área Metro, PR | Titi Amanda",
+    "title": "Niñera en San Juan y Área Metro, PR | Titi Amanda",
     "description": "Niñera en el área metro de PR: San Juan, Carolina, Guaynabo y Bayamón. Cuido a domicilio y en hoteles, sin pantallas y con rutinas respetadas.",
     "keywords": "niñera, niñera área metro, niñera San Juan, niñera Carolina, niñera Guaynabo, niñera Bayamón, cuido de niños Puerto Rico, niñera a domicilio, babysitter Puerto Rico, babysitter San Juan",
     "ogImageAlt": "Titi Amanda — Servicios de Niñera de Calidad en Puerto Rico"
@@ -21,9 +21,9 @@
     },
     "services": {
       "at-home-care": {
-        "title": "Niñera a Domicilio — Área Metro, PR | Titi Amanda",
+        "title": "Niñera a Domicilio en San Juan y Área Metro | Titi Amanda",
         "description": "Cuido de niños en tu hogar en San Juan, Carolina, Guaynabo, Bayamón y área metro. Sin pantallas, rutinas respetadas y 8+ años de experiencia.",
-        "h1": "Cuido de niños a domicilio en el área metro",
+        "h1": "Cuido de niños a domicilio en San Juan y el área metro",
         "intro": [
           "Cuidar a tu hijo en su propia casa tiene una ventaja que ningún otro arreglo iguala: el niño se queda en su ambiente, con sus juguetes, su cama y su rutina intacta. Eso reduce muchísimo la ansiedad de separación, sobre todo en infantes y preescolares.",
           "Llego a tu hogar en San Juan, Carolina, Guaynabo, Bayamón y el área metro con actividades preparadas según la edad de tu hijo, y sigo la rutina que ya tienen establecida en vez de imponer una nueva. Si tu hijo duerme siesta a las 2:00, duerme siesta a las 2:00."
@@ -61,7 +61,7 @@
         ]
       },
       "hotel-vacation": {
-        "title": "Niñera en Hoteles — Área Metro, PR | Titi Amanda",
+        "title": "Niñera en Hoteles de San Juan y Condado | Titi Amanda",
         "description": "Niñera bilingüe para hoteles en San Juan, Carolina, Guaynabo, Bayamón y área metro. Ideal para turistas, bodas y noches libres.",
         "h1": "Niñera en hoteles y vacaciones en Puerto Rico",
         "intro": [
@@ -97,7 +97,7 @@
         ]
       },
       "special-needs": {
-        "title": "Cuido con Autismo — Área Metro, PR | Titi Amanda",
+        "title": "Cuido de Niños con Autismo en San Juan, PR | Titi Amanda",
         "description": "Cuido especializado para niños con autismo en el área metro de PR. Maestría en Educación Especial y Autismo.",
         "h1": "Cuido para niños con autismo y necesidades del desarrollo",
         "intro": [
@@ -133,7 +133,7 @@
         ]
       },
       "family-outing": {
-        "title": "Salidas Familiares — Área Metro, PR | Titi Amanda",
+        "title": "Salidas Familiares con Niños en San Juan | Titi Amanda",
         "description": "Manos extra durante salidas y eventos con niños en San Juan, Carolina, Guaynabo, Bayamón y área metro.",
         "h1": "Acompañamiento en salidas familiares",
         "intro": [
@@ -170,7 +170,7 @@
       }
     },
     "faq": {
-      "title": "Preguntas Frecuentes | Niñera Área Metro, PR | Titi Amanda",
+      "title": "Preguntas Frecuentes | Titi Amanda Niñera en San Juan",
       "description": "Respuestas sobre tarifas, horarios, zonas de servicio y cómo reservar niñera en el área metro de Puerto Rico.",
       "h1": "Preguntas frecuentes",
       "intro": "Lo que más me preguntan las familias antes de reservar. Si tu pregunta no está aquí, escríbeme por WhatsApp y te contesto directamente.",
@@ -253,7 +253,7 @@
     "faq": "Preguntas"
   },
   "hero": {
-    "title": "Niñera a domicilio en el\nárea metro de Puerto Rico",
+    "title": "Niñera en San Juan y el\nárea metro de Puerto Rico",
     "subtitle": "Cuido personalizado en hogares y hoteles, brindando <comfort>comodidad</comfort>, <safety>seguridad</safety> y <joy>aprendizaje divertido</joy> a cada niño.",
     "cta": "Solicita disponibilidad",
     "imageAlt": "Niños felices con Titi Amanda"
