@@ -8,7 +8,7 @@ import { DEFAULT_LANG, SUPPORTED_LANGS, type SupportedLang } from '@/i18n'
  * <a href> serves the right HTML with no JavaScript involved.
  */
 
-export type RouteKind = 'home' | 'service' | 'faq'
+export type RouteKind = 'home' | 'service' | 'faq' | 'privacy'
 
 export interface Route {
   kind: RouteKind
@@ -32,8 +32,8 @@ export const SERVICE_PAGES = [
 ] as const
 
 const SEGMENTS = {
-  es: { services: 'servicios', faq: 'preguntas-frecuentes' },
-  en: { services: 'services', faq: 'faq' },
+  es: { services: 'servicios', faq: 'preguntas-frecuentes', privacy: 'privacidad' },
+  en: { services: 'services', faq: 'faq', privacy: 'privacy' },
 } as const
 
 /** Language prefix: '' for Spanish (root), '/en' for English. */
@@ -55,11 +55,16 @@ export function faqPath(lng: SupportedLang): string {
   return `${langPrefix(lng)}/${SEGMENTS[lng].faq}/`
 }
 
+export function privacyPath(lng: SupportedLang): string {
+  return `${langPrefix(lng)}/${SEGMENTS[lng].privacy}/`
+}
+
 /** The same page in the other language — for the switcher and for hreflang. */
 export function translateRoute(route: Route, lng: SupportedLang): string {
   if (route.kind === 'service' && route.serviceId)
     return servicePath(lng, route.serviceId)
   if (route.kind === 'faq') return faqPath(lng)
+  if (route.kind === 'privacy') return privacyPath(lng)
   return homePath(lng)
 }
 
@@ -74,6 +79,7 @@ export function allRoutes(): Route[] {
       path: servicePath(lng, s.id),
     })),
     { kind: 'faq' as const, lng, path: faqPath(lng) },
+    { kind: 'privacy' as const, lng, path: privacyPath(lng) },
   ])
 }
 

@@ -152,7 +152,9 @@ export default function ServicesSection() {
                           href={servicePath(lng, service.id)}
                           className="text-blue-deep hover:text-blue-deep/80 inline-flex items-center gap-1.5 text-sm font-semibold underline underline-offset-4 transition-colors"
                         >
-                          {t('services.readMore')}
+                          {t(`services.items.${service.id}.linkText`, {
+                            defaultValue: t('services.readMore'),
+                          })}
                           <span aria-hidden="true">→</span>
                         </a>
                       </div>

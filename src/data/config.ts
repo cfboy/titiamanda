@@ -77,7 +77,7 @@ export const CONTACT_INFO = {
   whatsapp: 'https://wa.me/17875857123',
   instagram: 'https://www.instagram.com/titiamandababysitter/',
   instagramHandle: '@titiamandababysitter',
-  location: 'San Juan, Puerto Rico',
+  location: 'Área metro de Puerto Rico',
   webhook: 'https://hook.us2.make.com/mg4r1kqxumwo6lq65r7h2cde39moc4m9',
 }
 

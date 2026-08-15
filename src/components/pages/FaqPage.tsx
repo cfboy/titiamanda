@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next'
 
 import PageShell from '@/components/pages/PageShell'
 import { type SupportedLang } from '@/i18n'
-import { homePath } from '@/routes'
+import { homePath, servicePath } from '@/routes'
 
 export default function FaqPage({ lng }: { lng: SupportedLang }) {
   const { t } = useTranslation()
@@ -33,6 +33,30 @@ export default function FaqPage({ lng }: { lng: SupportedLang }) {
           </div>
         ))}
       </div>
+
+      <section className="mt-12">
+        <h2 className="mb-4 text-2xl font-extrabold text-black">
+          {t('pages.faq.related.title')}
+        </h2>
+        <ul className="flex flex-wrap gap-2.5">
+          <li>
+            <a
+              href={servicePath(lng, 'at-home-care')}
+              className="text-gray-dark hover:border-pink-deep hover:text-pink-deep inline-flex rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium transition-colors"
+            >
+              {t('pages.faq.related.atHome')}
+            </a>
+          </li>
+          <li>
+            <a
+              href={servicePath(lng, 'hotel-vacation')}
+              className="text-gray-dark hover:border-pink-deep hover:text-pink-deep inline-flex rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium transition-colors"
+            >
+              {t('pages.faq.related.hotel')}
+            </a>
+          </li>
+        </ul>
+      </section>
     </PageShell>
   )
 }

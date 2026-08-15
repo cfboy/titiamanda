@@ -99,6 +99,9 @@ const BUSINESS = {
   },
   areaServed: [
     { '@type': 'City', name: 'San Juan' },
+    { '@type': 'City', name: 'Carolina' },
+    { '@type': 'City', name: 'Guaynabo' },
+    { '@type': 'City', name: 'Bayamón' },
     { '@type': 'AdministrativeArea', name: 'Puerto Rico' },
   ],
   sameAs: ['https://www.instagram.com/titiamandababysitter/'],

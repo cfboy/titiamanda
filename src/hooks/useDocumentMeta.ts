@@ -15,6 +15,11 @@ export function metaKeysFor(route: Route): {
     }
   if (route.kind === 'faq')
     return { title: 'pages.faq.title', description: 'pages.faq.description' }
+  if (route.kind === 'privacy')
+    return {
+      title: 'pages.privacy.title',
+      description: 'pages.privacy.description',
+    }
   return { title: 'meta.title', description: 'meta.description' }
 }
 

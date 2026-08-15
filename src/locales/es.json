@@ -1,8 +1,8 @@
 {
   "meta": {
-    "title": "Niñera y Cuido de Niños en San Juan, PR | Titi Amanda",
-    "description": "Niñera profesional en San Juan, Puerto Rico. Cuido de niños a domicilio y en hoteles, con juego sin pantallas y aprendizaje divertido.",
-    "keywords": "niñera, niñera San Juan, cuido de niños, cuido de niños Puerto Rico, niñera en hoteles, niñera a domicilio, cuido para niños con autismo, babysitter Puerto Rico",
+    "title": "Niñera y Cuido de Niños — Área Metro, PR | Titi Amanda",
+    "description": "Niñera en el área metro de PR: San Juan, Carolina, Guaynabo y Bayamón. Cuido a domicilio y en hoteles, sin pantallas y con rutinas respetadas.",
+    "keywords": "niñera, niñera área metro, niñera San Juan, niñera Carolina, niñera Guaynabo, niñera Bayamón, cuido de niños Puerto Rico, niñera a domicilio, babysitter Puerto Rico, babysitter San Juan",
     "ogImageAlt": "Titi Amanda — Servicios de Niñera de Calidad en Puerto Rico"
   },
   "pages": {
@@ -21,12 +21,12 @@
     },
     "services": {
       "at-home-care": {
-        "title": "Niñera a Domicilio en San Juan, PR | Titi Amanda",
-        "description": "Cuido de niños en tu hogar en San Juan y área metro. Rutinas respetadas, juego sin pantallas y una niñera con 8+ años de experiencia.",
-        "h1": "Cuido de niños a domicilio en San Juan",
+        "title": "Niñera a Domicilio — Área Metro, PR | Titi Amanda",
+        "description": "Cuido de niños en tu hogar en San Juan, Carolina, Guaynabo, Bayamón y área metro. Sin pantallas, rutinas respetadas y 8+ años de experiencia.",
+        "h1": "Cuido de niños a domicilio en el área metro",
         "intro": [
           "Cuidar a tu hijo en su propia casa tiene una ventaja que ningún otro arreglo iguala: el niño se queda en su ambiente, con sus juguetes, su cama y su rutina intacta. Eso reduce muchísimo la ansiedad de separación, sobre todo en infantes y preescolares.",
-          "Llego a tu hogar en San Juan o el área metro con actividades preparadas según la edad de tu hijo, y sigo la rutina que ya tienen establecida en vez de imponer una nueva. Si tu hijo duerme siesta a las 2:00, duerme siesta a las 2:00."
+          "Llego a tu hogar en San Juan, Carolina, Guaynabo, Bayamón y el área metro con actividades preparadas según la edad de tu hijo, y sigo la rutina que ya tienen establecida en vez de imponer una nueva. Si tu hijo duerme siesta a las 2:00, duerme siesta a las 2:00."
         ],
         "includes": [
           "Actividades preparadas y adaptadas a la edad, sin pantallas",
@@ -43,6 +43,10 @@
         ],
         "faq": [
           {
+            "q": "¿Ofrecen babysitter a domicilio en el área metro?",
+            "a": "Sí. Ofrezco cuido de niños a domicilio en San Juan, Carolina, Guaynabo, Bayamón y el área metro de Puerto Rico. Llego a tu hogar con actividades preparadas y respeto la rutina de tu familia. Escríbeme con las fechas y edades para confirmar disponibilidad."
+          },
+          {
             "q": "¿Cuál es el tiempo mínimo de servicio?",
             "a": "El mínimo es de cuatro horas. Para fechas y horarios específicos, escríbeme y lo coordinamos."
           },
@@ -57,8 +61,8 @@
         ]
       },
       "hotel-vacation": {
-        "title": "Niñera en Hoteles de San Juan y Condado | Titi Amanda",
-        "description": "Niñera bilingüe para hoteles y resorts en San Juan, Condado e Isla Verde. Ideal para turistas, bodas de destino y noches libres.",
+        "title": "Niñera en Hoteles — Área Metro, PR | Titi Amanda",
+        "description": "Niñera bilingüe para hoteles en San Juan, Carolina, Guaynabo, Bayamón y área metro. Ideal para turistas, bodas y noches libres.",
         "h1": "Niñera en hoteles y vacaciones en Puerto Rico",
         "intro": [
           "Viajar con niños y no poder disfrutar una cena o una excursión de adultos es la frustración más común de las familias que visitan Puerto Rico. Voy a tu hotel o resort en San Juan, Condado, Isla Verde o Dorado para que puedan salir tranquilos.",
@@ -93,8 +97,8 @@
         ]
       },
       "special-needs": {
-        "title": "Cuido de Niños con Autismo en San Juan | Titi Amanda",
-        "description": "Cuido especializado para niños con autismo y necesidades del desarrollo en San Juan. Maestría en Educación Especial y Autismo.",
+        "title": "Cuido con Autismo — Área Metro, PR | Titi Amanda",
+        "description": "Cuido especializado para niños con autismo en el área metro de PR. Maestría en Educación Especial y Autismo.",
         "h1": "Cuido para niños con autismo y necesidades del desarrollo",
         "intro": [
           "Encontrar a alguien preparado para cuidar a un niño con autismo es difícil, y dejarlo con alguien que no entiende sus necesidades no es una opción. Tengo maestría en Educación Especial y Autismo, y maestría en Consejería Psicológica, además de bachillerato en Terapia del Habla.",
@@ -129,8 +133,8 @@
         ]
       },
       "family-outing": {
-        "title": "Acompañamiento en Salidas Familiares | Titi Amanda",
-        "description": "Manos extra durante salidas, eventos y diligencias con los niños en San Juan. Acompañamiento profesional para familias.",
+        "title": "Salidas Familiares — Área Metro, PR | Titi Amanda",
+        "description": "Manos extra durante salidas y eventos con niños en San Juan, Carolina, Guaynabo, Bayamón y área metro.",
         "h1": "Acompañamiento en salidas familiares",
         "intro": [
           "A veces no necesitas dejar a los niños en casa, necesitas otro par de manos mientras están contigo. Playa, restaurante, evento familiar, una diligencia larga: los acompaño para que la salida sea disfrutable en vez de agotadora.",
@@ -166,14 +170,14 @@
       }
     },
     "faq": {
-      "title": "Preguntas Frecuentes | Titi Amanda Niñera en San Juan",
-      "description": "Respuestas sobre tarifas, horarios, zonas de servicio, experiencia y cómo reservar cuido de niños con Titi Amanda en San Juan, PR.",
+      "title": "Preguntas Frecuentes | Niñera Área Metro, PR | Titi Amanda",
+      "description": "Respuestas sobre tarifas, horarios, zonas de servicio y cómo reservar niñera en el área metro de Puerto Rico.",
       "h1": "Preguntas frecuentes",
       "intro": "Lo que más me preguntan las familias antes de reservar. Si tu pregunta no está aquí, escríbeme por WhatsApp y te contesto directamente.",
       "items": [
         {
           "q": "¿En qué pueblos ofreces servicio?",
-          "a": "San Juan, Condado, Isla Verde, Santurce, Miramar, Old San Juan, Carolina, Guaynabo, Bayamón y Dorado. Si estás fuera de esa zona, escríbeme igual y te digo con franqueza si puedo llegar."
+          "a": "San Juan, Carolina, Guaynabo, Bayamón y el área metro — incluyendo Condado, Isla Verde, Santurce, Miramar, Old San Juan y Dorado. Si estás fuera de esa zona, escríbeme igual y te digo con franqueza si puedo llegar."
         },
         {
           "q": "¿Cuánto cuesta el servicio?",
@@ -203,6 +207,40 @@
           "q": "¿Cómo reservo?",
           "a": "Completa el formulario del sitio o escríbeme por WhatsApp con las fechas, horas y edades de los niños. Te confirmo disponibilidad dentro de 24 horas."
         }
+      ],
+      "related": {
+        "title": "Servicios en tu zona",
+        "atHome": "Niñera a domicilio en el área metro",
+        "hotel": "Babysitter en hoteles de Puerto Rico"
+      }
+    },
+    "privacy": {
+      "title": "Política de Privacidad | Titi Amanda",
+      "description": "Cómo Titi Amanda recopila, usa y protege la información que compartes al solicitar servicios de niñera en Puerto Rico.",
+      "h1": "Política de privacidad",
+      "intro": "Esta política explica qué información recopilo cuando usas el formulario de contacto o me escribes, y cómo la uso para coordinar servicios de cuido de niños.",
+      "updated": "Última actualización: agosto de 2026.",
+      "sections": [
+        {
+          "title": "Información que recopilo",
+          "body": "Cuando completas el formulario o me contactas, puedo recibir tu nombre, correo, teléfono, información sobre tus hijos (nombres y edades), tipo de servicio solicitado y cualquier detalle adicional que compartas voluntariamente."
+        },
+        {
+          "title": "Cómo uso tu información",
+          "body": "Uso estos datos únicamente para responder consultas, confirmar disponibilidad, coordinar el servicio y dar seguimiento antes y después del cuido. No vendo ni comparto tu información con terceros para marketing."
+        },
+        {
+          "title": "Almacenamiento y seguridad",
+          "body": "Los mensajes del formulario se envían a través de un servicio de automatización seguro para que pueda responder con prontitud. Tomo medidas razonables para proteger la información, aunque ningún sistema en línea es 100 % seguro."
+        },
+        {
+          "title": "Tus derechos",
+          "body": "Puedes pedirme que corrija o elimine la información que me hayas compartido escribiéndome directamente por correo o WhatsApp."
+        },
+        {
+          "title": "Contacto",
+          "body": "Para preguntas sobre esta política, escríbeme a titiamandababysitter@gmail.com o por WhatsApp al +1 (787) 585-7123."
+        }
       ]
     }
   },
@@ -215,7 +253,7 @@
     "faq": "Preguntas"
   },
   "hero": {
-    "title": "Servicios de Niñera\nde Calidad",
+    "title": "Niñera a domicilio en el\nárea metro de Puerto Rico",
     "subtitle": "Cuido personalizado en hogares y hoteles, brindando <comfort>comodidad</comfort>, <safety>seguridad</safety> y <joy>aprendizaje divertido</joy> a cada niño.",
     "cta": "Solicita disponibilidad",
     "imageAlt": "Niños felices con Titi Amanda"
@@ -228,6 +266,7 @@
       "at-home-care": {
         "title": "Cuido en el Hogar",
         "description": "Cuido de niños personalizado en la comodidad de tu hogar. Ofrezco un ambiente seguro, acogedor y lleno de actividades, adaptado a la rutina de tu hijo.",
+        "linkText": "Niñera a domicilio en el área metro",
         "idealFor": [
           "Familias que viven en Puerto Rico",
           "Padres que trabajan desde casa",
@@ -263,6 +302,12 @@
     },
     "readMore": "Ver detalles del servicio",
     "viewAll": "Ver todos los servicios"
+  },
+  "serviceArea": {
+    "label": "Zona de servicio",
+    "heading": "Niñera y babysitter en el área metro de Puerto Rico",
+    "body": "Atiendo familias en San Juan, Carolina, Guaynabo, Bayamón y el área metro — incluyendo Condado, Isla Verde, Santurce, Miramar, Old San Juan y Dorado.",
+    "inHomeLink": "Niñera a domicilio en el área metro"
   },
   "activities": {
     "label": "Actividades",
@@ -368,6 +413,8 @@
     }
   },
   "footer": {
+    "navLabel": "Enlaces del sitio",
+    "privacy": "Privacidad",
     "copyright": "Copyright © {{year}} Titi Amanda Babysitter Services. Todos los derechos reservados.",
     "tagline": "Cuido de niños con amor en Puerto Rico. ❤️"
   },

@@ -1,8 +1,8 @@
 {
   "meta": {
-    "title": "Babysitter & Childcare in San Juan, PR | Titi Amanda",
-    "description": "Professional babysitter in San Juan, Puerto Rico. In-home and hotel childcare with screen-free play, quality care, and joyful learning.",
-    "keywords": "babysitter, babysitter San Juan, childcare Puerto Rico, hotel babysitting, vacation babysitter, in-home childcare, special needs babysitter, nanny Puerto Rico",
+    "title": "Babysitter Puerto Rico | In-Home & Hotel Care, Metro Area",
+    "description": "Babysitter in the Puerto Rico metro: San Juan, Carolina, Guaynabo, Bayamón. In-home and hotel childcare with screen-free play and quality care.",
+    "keywords": "babysitter, babysitter Puerto Rico, babysitter metro area, babysitter San Juan, babysitter Carolina, babysitter Guaynabo, babysitter Bayamón, in-home babysitter, hotel babysitting, childcare Puerto Rico",
     "ogImageAlt": "Titi Amanda — Quality Babysitter Services in Puerto Rico"
   },
   "pages": {
@@ -21,12 +21,12 @@
     },
     "services": {
       "at-home-care": {
-        "title": "In-Home Babysitter in San Juan, PR | Titi Amanda",
-        "description": "Childcare in your own home across San Juan and metro area. Routines respected, screen-free play, and a sitter with 8+ years of experience.",
-        "h1": "In-home childcare in San Juan",
+        "title": "In-Home Babysitter — Puerto Rico Metro Area | Titi Amanda",
+        "description": "In-home childcare in San Juan, Carolina, Guaynabo, Bayamón and metro area. Screen-free play, routines respected, 8+ years of experience.",
+        "h1": "In-home childcare in the metro area",
         "intro": [
           "Caring for your child at home has one advantage no other arrangement matches: your child stays in their own environment, with their own toys, their own bed, and their routine intact. That dramatically reduces separation anxiety, especially with infants and preschoolers.",
-          "I come to your home in San Juan or the metro area with activities prepared for your child's age, and I follow the routine you already have rather than imposing a new one. If your child naps at 2:00, they nap at 2:00."
+          "I come to your home in San Juan, Carolina, Guaynabo, Bayamón, and the metro area with activities prepared for your child's age, and I follow the routine you already have rather than imposing a new one. If your child naps at 2:00, they nap at 2:00."
         ],
         "includes": [
           "Prepared, age-appropriate activities with no screens",
@@ -43,6 +43,10 @@
         ],
         "faq": [
           {
+            "q": "Do you offer in-home babysitting in the metro area?",
+            "a": "Yes. I provide in-home babysitting in San Juan, Carolina, Guaynabo, Bayamón, and the greater Puerto Rico metro area. I come to your home with prepared activities and follow your family's routine. Message me with dates and ages to confirm availability."
+          },
+          {
             "q": "What's the minimum booking?",
             "a": "The minimum booking is four hours. For specific dates or schedules, message me and we'll work it out."
           },
@@ -57,8 +61,8 @@
         ]
       },
       "hotel-vacation": {
-        "title": "Hotel Babysitter in San Juan & Condado | Titi Amanda",
-        "description": "Bilingual babysitter for hotels and resorts in San Juan, Condado, and Isla Verde. Ideal for tourists, destination weddings, and nights out.",
+        "title": "Hotel Babysitter — Metro Area, PR | Titi Amanda",
+        "description": "Bilingual hotel babysitter in San Juan, Carolina, Guaynabo, Bayamón and metro area. Ideal for tourists, weddings, and nights out.",
         "h1": "Hotel and vacation babysitting in Puerto Rico",
         "intro": [
           "Traveling with kids and never getting an adult dinner or excursion is the most common frustration for families visiting Puerto Rico. I come to your hotel or resort in San Juan, Condado, Isla Verde, or Dorado so you can go out with peace of mind.",
@@ -93,8 +97,8 @@
         ]
       },
       "special-needs": {
-        "title": "Autism & Special Needs Sitter, San Juan | Titi Amanda",
-        "description": "Specialized care for children with autism and developmental needs in San Juan. Master's in Special Education and Autism.",
+        "title": "Autism & Special Needs Sitter — Metro Area | Titi Amanda",
+        "description": "Specialized care for children with autism in the Puerto Rico metro area. Master's in Special Education and Autism.",
         "h1": "Care for children with autism and developmental needs",
         "intro": [
           "Finding someone equipped to care for a child with autism is hard, and leaving them with someone who doesn't understand their needs isn't an option. I hold a master's in Special Education and Autism, a master's in Psychological Counseling, and a bachelor's in Speech Therapy.",
@@ -129,8 +133,8 @@
         ]
       },
       "family-outing": {
-        "title": "Family Outing Support in San Juan | Titi Amanda",
-        "description": "An extra pair of hands during outings, events, and errands with the kids in San Juan. Professional support for families.",
+        "title": "Family Outing Support — Metro Area, PR | Titi Amanda",
+        "description": "Extra hands during outings and events with kids in San Juan, Carolina, Guaynabo, Bayamón and the metro area.",
         "h1": "Family outing support",
         "intro": [
           "Sometimes you don't need to leave the kids at home — you need another pair of hands while they're with you. Beach, restaurant, family event, a long errand: I come along so the outing is enjoyable instead of exhausting.",
@@ -166,14 +170,14 @@
       }
     },
     "faq": {
-      "title": "FAQ | Titi Amanda Babysitter in San Juan, PR",
-      "description": "Answers about rates, hours, service areas, experience, and how to book childcare with Titi Amanda in San Juan, Puerto Rico.",
+      "title": "FAQ | Babysitter Metro Area, PR | Titi Amanda",
+      "description": "Answers about rates, hours, service areas, and how to book babysitting in the Puerto Rico metro area.",
       "h1": "Frequently asked questions",
       "intro": "What families ask me most before booking. If your question isn't here, message me on WhatsApp and I'll answer directly.",
       "items": [
         {
           "q": "Which areas do you serve?",
-          "a": "San Juan, Condado, Isla Verde, Santurce, Miramar, Old San Juan, Carolina, Guaynabo, Bayamón, and Dorado. If you're outside that area, message me anyway and I'll be straight with you about whether I can get there."
+          "a": "San Juan, Carolina, Guaynabo, Bayamón, and the metro area — including Condado, Isla Verde, Santurce, Miramar, Old San Juan, and Dorado. If you're outside that area, message me anyway and I'll be straight with you about whether I can get there."
         },
         {
           "q": "How much does it cost?",
@@ -203,6 +207,40 @@
           "q": "How do I book?",
           "a": "Fill out the form on this site or message me on WhatsApp with dates, times, and your children's ages. I'll confirm availability within 24 hours."
         }
+      ],
+      "related": {
+        "title": "Services in your area",
+        "atHome": "In-home babysitter in the metro area",
+        "hotel": "Hotel babysitter in the metro area"
+      }
+    },
+    "privacy": {
+      "title": "Privacy Policy | Titi Amanda",
+      "description": "How Titi Amanda collects, uses, and protects information you share when requesting babysitting services in Puerto Rico.",
+      "h1": "Privacy policy",
+      "intro": "This policy explains what information I collect when you use the contact form or message me, and how I use it to coordinate childcare services.",
+      "updated": "Last updated: August 2026.",
+      "sections": [
+        {
+          "title": "Information I collect",
+          "body": "When you complete the form or contact me, I may receive your name, email, phone number, information about your children (names and ages), the service type requested, and any additional details you choose to share."
+        },
+        {
+          "title": "How I use your information",
+          "body": "I use this information only to respond to inquiries, confirm availability, coordinate care, and follow up before and after a session. I do not sell or share your information with third parties for marketing."
+        },
+        {
+          "title": "Storage and security",
+          "body": "Form messages are sent through a secure automation service so I can respond promptly. I take reasonable steps to protect your information, though no online system is 100% secure."
+        },
+        {
+          "title": "Your rights",
+          "body": "You can ask me to correct or delete information you have shared by emailing or messaging me on WhatsApp."
+        },
+        {
+          "title": "Contact",
+          "body": "For questions about this policy, reach me at titiamandababysitter@gmail.com or WhatsApp at +1 (787) 585-7123."
+        }
       ]
     }
   },
@@ -215,7 +253,7 @@
     "faq": "FAQ"
   },
   "hero": {
-    "title": "Quality Babysitter\nServices",
+    "title": "Babysitter in the\nPuerto Rico metro area",
     "subtitle": "Personalized care in homes and hotels, bringing <comfort>comfort</comfort>, <safety>safety</safety>, and <joy>joyful learning</joy> to every child.",
     "cta": "Check availability",
     "imageAlt": "Happy children with Titi Amanda"
@@ -228,6 +266,7 @@
       "at-home-care": {
         "title": "At Home Care",
         "description": "Personalized childcare in the comfort of your home. I provide a safe, engaging, and nurturing environment tailored to your child's routine.",
+        "linkText": "In-home babysitter in the metro area",
         "idealFor": [
           "Families living in Puerto Rico",
           "Parents who work from home",
@@ -263,6 +302,12 @@
     },
     "readMore": "See service details",
     "viewAll": "See all services"
+  },
+  "serviceArea": {
+    "label": "Service area",
+    "heading": "Babysitter in the Puerto Rico metro area",
+    "body": "I care for families in San Juan, Carolina, Guaynabo, Bayamón, and the metro area — including Condado, Isla Verde, Santurce, Miramar, Old San Juan, and Dorado.",
+    "inHomeLink": "In-home babysitter in the metro area"
   },
   "activities": {
     "label": "Activities",
@@ -368,6 +413,8 @@
     }
   },
   "footer": {
+    "navLabel": "Site links",
+    "privacy": "Privacy",
     "copyright": "Copyright © {{year}} Titi Amanda Babysitter Services. All Rights Reserved.",
     "tagline": "Quality childcare with love in Puerto Rico. ❤️"
   },
