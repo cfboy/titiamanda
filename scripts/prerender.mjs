@@ -174,12 +174,25 @@ function jsonLd(route, meta, dict) {
     }
   }
 
+  // Home. The page and the business are two things: /en/ and / are different
+  // pages, but they describe one business, and a node's url is a claim about
+  // the entity that carries it. Overwriting BUSINESS.url with the route url
+  // published /en/ as the business's own address, contradicting the / copy
+  // under the same @id. The page identity lives on WebPage instead, and every
+  // route now agrees on what #business says about itself.
   return {
     '@context': 'https://schema.org',
-    ...BUSINESS,
-    url,
-    description: meta.description,
-    inLanguage: route.lng,
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        url,
+        name: meta.title,
+        description: meta.description,
+        inLanguage: route.lng,
+        mainEntity: { '@id': `${SITE}/#business` },
+      },
+      { ...BUSINESS, description: dict.meta.description },
+    ],
   }
 }
 
