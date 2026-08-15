@@ -40,7 +40,12 @@
        injected here per route by scripts/prerender.mjs -->
   <!--head-seo-->
 
-  <!-- Favicon -->
+  <!-- Favicon. The .ico exists mainly so /favicon.ico is not a 404: crawlers and
+       older browsers request that path by convention before reading these tags.
+       It is generated from favicon.svg, so the SVG stays the source of truth —
+       regenerate it if the monogram changes. Declared first and without a type,
+       so anything that understands SVG still picks the vector below. -->
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
