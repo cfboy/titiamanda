@@ -159,6 +159,21 @@ function jsonLd(route, meta, dict) {
     }
   }
 
+  // A policy page is not the business. Emitting BUSINESS here would publish a
+  // second node under the same @id whose url and description point at the
+  // policy instead of the homepage — conflicting claims about one entity.
+  if (route.kind === 'privacy') {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      url,
+      name: meta.title,
+      description: meta.description,
+      inLanguage: route.lng,
+      publisher: { '@id': `${SITE}/#business` },
+    }
+  }
+
   return {
     '@context': 'https://schema.org',
     ...BUSINESS,

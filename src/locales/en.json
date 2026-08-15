@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Babysitter Puerto Rico | In-Home & Hotel Care, Metro Area",
+    "title": "Babysitter in San Juan & Metro Puerto Rico | Titi Amanda",
     "description": "Babysitter in the Puerto Rico metro: San Juan, Carolina, Guaynabo, Bayamón. In-home and hotel childcare with screen-free play and quality care.",
     "keywords": "babysitter, babysitter Puerto Rico, babysitter metro area, babysitter San Juan, babysitter Carolina, babysitter Guaynabo, babysitter Bayamón, in-home babysitter, hotel babysitting, childcare Puerto Rico",
     "ogImageAlt": "Titi Amanda — Quality Babysitter Services in Puerto Rico"
@@ -21,9 +21,9 @@
     },
     "services": {
       "at-home-care": {
-        "title": "In-Home Babysitter — Puerto Rico Metro Area | Titi Amanda",
+        "title": "In-Home Babysitter in San Juan & Metro PR | Titi Amanda",
         "description": "In-home childcare in San Juan, Carolina, Guaynabo, Bayamón and metro area. Screen-free play, routines respected, 8+ years of experience.",
-        "h1": "In-home childcare in the metro area",
+        "h1": "In-home childcare in San Juan and the metro area",
         "intro": [
           "Caring for your child at home has one advantage no other arrangement matches: your child stays in their own environment, with their own toys, their own bed, and their routine intact. That dramatically reduces separation anxiety, especially with infants and preschoolers.",
           "I come to your home in San Juan, Carolina, Guaynabo, Bayamón, and the metro area with activities prepared for your child's age, and I follow the routine you already have rather than imposing a new one. If your child naps at 2:00, they nap at 2:00."
@@ -61,7 +61,7 @@
         ]
       },
       "hotel-vacation": {
-        "title": "Hotel Babysitter — Metro Area, PR | Titi Amanda",
+        "title": "Hotel Babysitter in San Juan & Condado | Titi Amanda",
         "description": "Bilingual hotel babysitter in San Juan, Carolina, Guaynabo, Bayamón and metro area. Ideal for tourists, weddings, and nights out.",
         "h1": "Hotel and vacation babysitting in Puerto Rico",
         "intro": [
@@ -97,7 +97,7 @@
         ]
       },
       "special-needs": {
-        "title": "Autism & Special Needs Sitter — Metro Area | Titi Amanda",
+        "title": "Autism & Special Needs Sitter, San Juan | Titi Amanda",
         "description": "Specialized care for children with autism in the Puerto Rico metro area. Master's in Special Education and Autism.",
         "h1": "Care for children with autism and developmental needs",
         "intro": [
@@ -133,7 +133,7 @@
         ]
       },
       "family-outing": {
-        "title": "Family Outing Support — Metro Area, PR | Titi Amanda",
+        "title": "Family Outing Support in San Juan, PR | Titi Amanda",
         "description": "Extra hands during outings and events with kids in San Juan, Carolina, Guaynabo, Bayamón and the metro area.",
         "h1": "Family outing support",
         "intro": [
@@ -170,7 +170,7 @@
       }
     },
     "faq": {
-      "title": "FAQ | Babysitter Metro Area, PR | Titi Amanda",
+      "title": "FAQ | Titi Amanda Babysitter in San Juan, PR",
       "description": "Answers about rates, hours, service areas, and how to book babysitting in the Puerto Rico metro area.",
       "h1": "Frequently asked questions",
       "intro": "What families ask me most before booking. If your question isn't here, message me on WhatsApp and I'll answer directly.",
@@ -253,7 +253,7 @@
     "faq": "FAQ"
   },
   "hero": {
-    "title": "Babysitter in the\nPuerto Rico metro area",
+    "title": "Babysitter in San Juan and\nmetro Puerto Rico",
     "subtitle": "Personalized care in homes and hotels, bringing <comfort>comfort</comfort>, <safety>safety</safety>, and <joy>joyful learning</joy> to every child.",
     "cta": "Check availability",
     "imageAlt": "Happy children with Titi Amanda"
