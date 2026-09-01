@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 import ContactForm from '@/components/ContactForm'
 import { CONTACT_INFO } from '@/data/config'
+import { trackContactClick, type ContactMethod } from '@/lib/analytics'
 import { cn } from '@/lib/utils'
 
 interface ContactItem {
@@ -12,6 +13,8 @@ interface ContactItem {
   href: string | null
   bgColor: string
   target?: string
+  /** Omitted for the location row, which is text rather than a link. */
+  method?: ContactMethod
 }
 
 const CONTACT_ITEMS: ContactItem[] = [
@@ -21,6 +24,7 @@ const CONTACT_ITEMS: ContactItem[] = [
     display: CONTACT_INFO.email,
     href: `mailto:${CONTACT_INFO.email}`,
     bgColor: 'bg-pink',
+    method: 'email',
   },
   {
     icon: Phone,
@@ -28,6 +32,7 @@ const CONTACT_ITEMS: ContactItem[] = [
     display: CONTACT_INFO.phone,
     href: `tel:${CONTACT_INFO.phoneRaw}`,
     bgColor: 'bg-blue',
+    method: 'phone',
   },
   {
     icon: MessageCircle,
@@ -36,6 +41,7 @@ const CONTACT_ITEMS: ContactItem[] = [
     href: CONTACT_INFO.whatsapp,
     bgColor: 'bg-green',
     target: '_blank',
+    method: 'whatsapp',
   },
   {
     icon: Instagram,
@@ -44,6 +50,7 @@ const CONTACT_ITEMS: ContactItem[] = [
     href: CONTACT_INFO.instagram,
     bgColor: 'bg-pink',
     target: '_blank',
+    method: 'instagram',
   },
   {
     icon: MapPin,
@@ -100,6 +107,10 @@ export default function ContactSection() {
                         href={item.href}
                         target={item.target}
                         rel={item.target ? 'noopener noreferrer' : undefined}
+                        onClick={() =>
+                          item.method &&
+                          trackContactClick(item.method, 'contact_section')
+                        }
                         className="text-sm text-black transition-colors duration-300 hover:text-black/70"
                       >
                         {item.display}

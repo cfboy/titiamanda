@@ -219,7 +219,7 @@
       "description": "Cómo Titi Amanda recopila, usa y protege la información que compartes al solicitar servicios de niñera en Puerto Rico.",
       "h1": "Política de privacidad",
       "intro": "Esta política explica qué información recopilo cuando usas el formulario de contacto o me escribes, y cómo la uso para coordinar servicios de cuido de niños.",
-      "updated": "Última actualización: agosto de 2026.",
+      "updated": "Última actualización: septiembre de 2026.",
       "sections": [
         {
           "title": "Información que recopilo",
@@ -232,6 +232,10 @@
         {
           "title": "Almacenamiento y seguridad",
           "body": "Los mensajes del formulario se envían a través de un servicio de automatización seguro para que pueda responder con prontitud. Tomo medidas razonables para proteger la información, aunque ningún sistema en línea es 100 % seguro."
+        },
+        {
+          "title": "Analítica del sitio",
+          "body": "Este sitio usa Google Analytics para entender cómo se navega la página: cuántas personas la visitan, qué secciones leen y desde qué tipo de dispositivo. Google coloca cookies y recibe datos como tu dirección IP aproximada. No uso esta información para identificarte y no la cruzo con lo que envías por el formulario. Puedes bloquearla con la extensión oficial de Google o con la configuración de tu navegador."
         },
         {
           "title": "Tus derechos",

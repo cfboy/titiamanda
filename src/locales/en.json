@@ -219,7 +219,7 @@
       "description": "How Titi Amanda collects, uses, and protects information you share when requesting babysitting services in Puerto Rico.",
       "h1": "Privacy policy",
       "intro": "This policy explains what information I collect when you use the contact form or message me, and how I use it to coordinate childcare services.",
-      "updated": "Last updated: August 2026.",
+      "updated": "Last updated: September 2026.",
       "sections": [
         {
           "title": "Information I collect",
@@ -232,6 +232,10 @@
         {
           "title": "Storage and security",
           "body": "Form messages are sent through a secure automation service so I can respond promptly. I take reasonable steps to protect your information, though no online system is 100% secure."
+        },
+        {
+          "title": "Site analytics",
+          "body": "This site uses Google Analytics to understand how the page is used: how many people visit, which sections they read, and from what kind of device. Google sets cookies and receives data such as your approximate IP address. I do not use this information to identify you, and I do not combine it with what you send through the form. You can block it with Google's official opt-out extension or through your browser settings."
         },
         {
           "title": "Your rights",
