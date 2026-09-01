@@ -12,6 +12,7 @@ import { useAnchorBase, useRoute } from '@/hooks/useRoute'
 import { useScrollSpy } from '@/hooks/useScrollSpy'
 import { useStickyHeader } from '@/hooks/useStickyHeader'
 import { SUPPORTED_LANGS, type SupportedLang } from '@/i18n'
+import { trackContactClick, trackEvent } from '@/lib/analytics'
 import { cn } from '@/lib/utils'
 import { SERVICE_PAGES, faqPath, servicePath, translateRoute } from '@/routes'
 
@@ -192,6 +193,7 @@ export default function Header() {
   const openContact = (e: React.MouseEvent) => {
     e.preventDefault()
     setMobileOpen(false)
+    trackEvent('contact_drawer_open', { place: 'header' })
     contactDrawer.open()
   }
 
@@ -322,6 +324,7 @@ export default function Header() {
               href={CONTACT_INFO.instagram}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackContactClick('instagram', 'header')}
               className="text-gray-dark hover:text-pink p-2 transition-colors"
               aria-label={t('a11y.instagram')}
             >

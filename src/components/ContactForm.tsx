@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
 import { CONTACT_INFO, SERVICE_OPTIONS } from '@/data/config'
+import { trackContactClick, trackEvent, trackLead } from '@/lib/analytics'
 import { createContactSchema } from '@/lib/contactSchema'
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error'
@@ -27,6 +28,9 @@ export default function ContactForm({ idSuffix = '' }: { idSuffix?: string }) {
   const { t, i18n } = useTranslation()
   const [formState, setFormState] = useState<FormState>('idle')
   const fid = (name: string) => `${name}${idSuffix}`
+  // Which of the two mounts this is, for analytics. The suffix already tells
+  // them apart, so no second prop has to be threaded through.
+  const place = idSuffix === '-drawer' ? 'drawer' : 'contact_section'
 
   const contactSchema = useMemo(
     () => createContactSchema(t),
@@ -76,8 +80,10 @@ export default function ContactForm({ idSuffix = '' }: { idSuffix?: string }) {
         })
         if (!res.ok) throw new Error('Network error')
         setFormState('success')
+        trackLead(value.service, place)
       } catch {
         setFormState('error')
+        trackEvent('contact_form_error', { place })
       }
     },
   })
@@ -320,6 +326,7 @@ export default function ContactForm({ idSuffix = '' }: { idSuffix?: string }) {
                 href={CONTACT_INFO.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackContactClick('whatsapp', 'form_error')}
                 className="text-green-deep mt-1.5 inline-flex items-center gap-1.5 text-sm font-semibold underline underline-offset-2"
               >
                 <MessageCircle size={15} />

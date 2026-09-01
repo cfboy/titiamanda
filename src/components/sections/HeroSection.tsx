@@ -1,6 +1,7 @@
 import { Trans, useTranslation } from 'react-i18next'
 
 import { useContactDrawer } from '@/hooks/useContactDrawer'
+import { trackEvent } from '@/lib/analytics'
 import { IMAGES } from '@/lib/images'
 
 // Staggered entry, driven by CSS (see .enter-* in index.css) so the hero paints
@@ -50,6 +51,7 @@ function HeroCta() {
       href="#contact"
       onClick={e => {
         e.preventDefault()
+        trackEvent('contact_drawer_open', { place: 'hero' })
         contactDrawer.open()
       }}
       className="bg-blue-deep hover:bg-blue-deep/90 inline-flex items-center gap-2 rounded-full px-9 py-4 text-base font-semibold text-white shadow-lg transition-[colors,transform] duration-200 hover:-translate-y-0.5 active:scale-[0.97] motion-reduce:transform-none"

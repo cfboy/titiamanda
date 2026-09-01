@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { CONTACT_INFO } from '@/data/config'
 import { useContactDrawer } from '@/hooks/useContactDrawer'
 import { useAnchorBase } from '@/hooks/useRoute'
+import { trackContactClick, trackEvent } from '@/lib/analytics'
 
 interface Crumb {
   label: string
@@ -64,6 +65,7 @@ export default function PageShell({ crumbs, h1, children }: PageShellProps) {
               href={`${anchorBase}#contact`}
               onClick={e => {
                 e.preventDefault()
+                trackEvent('contact_drawer_open', { place: 'page_cta' })
                 contactDrawer.open()
               }}
               className="bg-blue-deep hover:bg-blue-deep/90 inline-flex items-center justify-center rounded-full px-7 py-3 text-sm font-semibold text-white shadow-md transition-colors"
@@ -74,6 +76,7 @@ export default function PageShell({ crumbs, h1, children }: PageShellProps) {
               href={CONTACT_INFO.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackContactClick('whatsapp', 'page_cta')}
               className="text-green-deep border-green-deep/30 hover:bg-green-deep/5 inline-flex items-center justify-center rounded-full border px-7 py-3 text-sm font-semibold transition-colors"
             >
               {t('pages.common.ctaWhatsapp')}
